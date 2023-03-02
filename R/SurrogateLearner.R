@@ -110,7 +110,6 @@ SurrogateLearner = R6Class("SurrogateLearner",
     predict = function(xdt) {
       assert_xdt(xdt)
       xdt = fix_xdt_missing(xdt, x_cols = self$x_cols, archive = self$archive)
-      xdt = char_to_fct(xdt)
 
       pred = self$model$predict_newdata(newdata = xdt)
       if (self$model$predict_type == "se") {
@@ -180,14 +179,21 @@ SurrogateLearner = R6Class("SurrogateLearner",
       }
     },
 
-    #' @field properties (`character()`)\cr
-    #' Stores a set of properties/capabilities the learner has.
-    #' A complete list of candidate properties, grouped by task type, is stored in [`mlr_reflections$learner_properties`][mlr_reflections].
+    #' @template field_properties_surrogate
     properties = function(rhs) {
       if (missing(rhs)) {
         self$model$properties
       } else {
         stop("$properties is read-only.")
+      }
+    },
+
+    #' @template field_predict_type_surrogate
+    predict_type = function(rhs) {
+      if (missing(rhs)) {
+        self$model$predict_type
+      } else {
+        stop("$predict_type is read-only. To change it, modify $predict_type of the model directly.")
       }
     }
   ),
@@ -197,7 +203,7 @@ SurrogateLearner = R6Class("SurrogateLearner",
     # Also calculates the insample performance based on the `perf_measure` hyperparameter if `assert_insample_perf = TRUE`.
     .update = function() {
       xydt = self$archive$data[, c(self$x_cols, self$y_cols), with = FALSE]
-      task = TaskRegr$new(id = "surrogate_task", backend = char_to_fct(xydt), target = self$y_cols)
+      task = TaskRegr$new(id = "surrogate_task", backend = xydt, target = self$y_cols)
       assert_learnable(task, learner = self$model)
       self$model$train(task)
 

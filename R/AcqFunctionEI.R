@@ -57,6 +57,7 @@ AcqFunctionEI = R6Class("AcqFunctionEI",
 
     #' @field y_best (`numeric(1)`)\cr
     #'   Best objective function value observed so far.
+    #'   In the case of maximization, this already includes the necessary change of sign.
     y_best = NULL,
 
     #' @description
@@ -65,7 +66,7 @@ AcqFunctionEI = R6Class("AcqFunctionEI",
     #' @param surrogate (`NULL` | [SurrogateLearner]).
     initialize = function(surrogate = NULL) {
       assert_r6(surrogate, "SurrogateLearner", null.ok = TRUE)
-      super$initialize("acq_ei", surrogate = surrogate, direction = "maximize", label = "Expected Improvement", man = "mlr3mbo::mlr_acqfunctions_ei")
+      super$initialize("acq_ei", surrogate = surrogate, requires_predict_type_se = TRUE, direction = "maximize", label = "Expected Improvement", man = "mlr3mbo::mlr_acqfunctions_ei")
     },
 
     #' @description

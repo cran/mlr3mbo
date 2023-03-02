@@ -57,6 +57,7 @@ are represented by missing \code{NA} values in the training design data.
 We simply handle those with an imputation method, added to the ranger random forest, more
 concretely we use \code{po("imputesample")} (for logicals) and \code{po("imputeoor")} (for anything else) from
 package \CRANpkg{mlr3pipelines}.
+Characters are always encoded as factors via \code{po("colapply")}.
 Out of range imputation makes sense for tree-based methods and is usually hard to beat, see Ding et al. (2010).
 In the case of dependencies, the following learner is used as a fallback:
 \code{lrn("regr.featureless")}.
@@ -70,7 +71,7 @@ wrapped as a \link{SurrogateLearnerCollection}.
 \references{
 \itemize{
 \item Ding, Yufeng, Simonoff, S J (2010).
-\dQuote{An investigation of missing data methods for classification trees applied to binary response data.}
+\dQuote{An Investigation of Missing Data Methods for Classification Trees Applied to Binary Response Data.}
 \emph{Journal of Machine Learning Research}, \bold{11}(1), 131--170.
 }
 }

@@ -6,7 +6,7 @@ format_bib = function(...) {
 #' @importFrom utils bibentry
 bibentries = c(
   huang_2012 = bibentry("article",
-    title    = "Erratum to: Global optimization of stochastic black-box systems via sequential kriging meta-models",
+    title    = "Erratum To: Global Optimization of Stochastic Black-box Systems via Sequential Kriging Meta-Models",
     author   = "D. Huang and T. T. Allen and W. I. Notz and N. Zheng",
     year     = "2012",
     volume   = "54",
@@ -26,7 +26,7 @@ bibentries = c(
   ),
 
   ding_2010 = bibentry("article",
-    title   = "An investigation of missing data methods for classification trees applied to binary response data.",
+    title   = "An Investigation of Missing Data Methods for Classification Trees Applied to Binary Response Data",
     author  = "Ding, Yufeng and Simonoff, Jeffrey S",
     year    = "2010",
     volume  = "11",
@@ -93,7 +93,7 @@ bibentries = c(
     pages      = "50--66"
   ),
 
-  horn_2015 = bibentry("inproceedings",
+  horn_2015    = bibentry("inproceedings",
     title      = "Model-Based Multi-objective Optimization: Taxonomy, Multi-Point Proposal, Toolbox and Benchmark",
     author     = "Horn, Daniel and Wagner, Tobias and Biermann, Dirk and Weihs, Claus and Bischl, Bernd",
     year       = "2015",
@@ -102,9 +102,9 @@ bibentries = c(
   ),
 
   ginsbourger_2008 = bibentry("misc",
-    title  = "A Multi-Points Criterion for Deterministic Parallel Global Optimization Based on Gaussian processes",
-    author = "Ginsbourger, David and Le Riche, Rodolphe and Carraro, Laurent",
-    year   = "2008"
+    title          = "A Multi-Points Criterion for Deterministic Parallel Global Optimization Based on Gaussian Processes",
+    author         = "Ginsbourger, David and Le Riche, Rodolphe and Carraro, Laurent",
+    year           = "2008"
   )
 )
 

@@ -1,7 +1,7 @@
 Type: Package
 Package: mlr3mbo
 Title: Flexible Bayesian Optimization
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(
     person("Lennart", "Schneider", , "lennart.sch@web.de", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0003-4152-5308")),
@@ -50,19 +50,19 @@ Encoding: UTF-8
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 NeedsCompilation: yes
-RoxygenNote: 7.2.1
-Collate: 'mlr_acqfunctions.R' 'AcqFunction.R' 'AcqFunctionCB.R'
-        'AcqFunctionEI.R' 'AcqFunctionEIPS.R' 'AcqFunctionMean.R'
-        'AcqFunctionPI.R' 'AcqFunctionSmsEgo.R' 'AcqOptimizer.R'
-        'OptimizerMbo.R' 'Surrogate.R' 'SurrogateLearner.R'
-        'SurrogateLearnerCollection.R' 'TunerMbo.R'
-        'mlr_loop_functions.R' 'bayesopt_ego.R' 'bayesopt_mpcl.R'
-        'bayesopt_parego.R' 'bayesopt_smsego.R' 'bibentries.R'
-        'helper.R' 'loop_function.R' 'mbo_defaults.R'
+RoxygenNote: 7.2.3
+Collate: 'mlr_acqfunctions.R' 'AcqFunction.R' 'AcqFunctionAEI.R'
+        'AcqFunctionCB.R' 'AcqFunctionEI.R' 'AcqFunctionEIPS.R'
+        'AcqFunctionMean.R' 'AcqFunctionPI.R' 'AcqFunctionSmsEgo.R'
+        'AcqOptimizer.R' 'aaa.R' 'OptimizerMbo.R' 'Surrogate.R'
+        'SurrogateLearner.R' 'SurrogateLearnerCollection.R'
+        'TunerMbo.R' 'mlr_loop_functions.R' 'bayesopt_ego.R'
+        'bayesopt_mpcl.R' 'bayesopt_parego.R' 'bayesopt_smsego.R'
+        'bibentries.R' 'helper.R' 'loop_function.R' 'mbo_defaults.R'
         'result_by_default.R' 'result_by_surrogate_design.R' 'sugar.R'
         'zzz.R'
 VignetteBuilder: knitr
-Packaged: 2022-11-17 10:29:58 UTC; lps
+Packaged: 2023-03-02 23:54:07 UTC; lps
 Author: Lennart Schneider [cre, aut] (<https://orcid.org/0000-0003-4152-5308>),
   Jakob Richter [aut] (<https://orcid.org/0000-0003-4481-5554>),
   Marc Becker [aut] (<https://orcid.org/0000-0002-8115-0400>),
@@ -78,4 +78,4 @@ Author: Lennart Schneider [cre, aut] (<https://orcid.org/0000-0003-4152-5308>),
   Luis Paquete [cph]
 Maintainer: Lennart Schneider <lennart.sch@web.de>
 Repository: CRAN
-Date/Publication: 2022-11-18 10:40:02 UTC
+Date/Publication: 2023-03-03 00:20:02 UTC

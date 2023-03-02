@@ -65,6 +65,7 @@ AcqFunctionEIPS = R6Class("AcqFunctionEIPS",
 
     #' @field y_best (`numeric(1)`)\cr
     #'   Best objective function value observed so far.
+    #'   In the case of maximization, this already includes the necessary change of sign.
     y_best = NULL,
 
     #' @description
@@ -75,7 +76,7 @@ AcqFunctionEIPS = R6Class("AcqFunctionEIPS",
       assert_r6(surrogate, "SurrogateLearnerCollection", null.ok = TRUE)
       # FIXME: check that y_col, time_col is the same as surrogate$y_cols?
 
-      super$initialize("acq_eips", surrogate = surrogate, direction = "maximize", label = "Expected Improvement Per Second", man = "mlr3mbo::mlr_acqfunctions_eips")
+      super$initialize("acq_eips", surrogate = surrogate, requires_predict_type_se = TRUE, direction = "maximize", label = "Expected Improvement Per Second", man = "mlr3mbo::mlr_acqfunctions_eips")
     },
 
     #' @description
