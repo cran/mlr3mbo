@@ -12,10 +12,13 @@ Based on the predictions of a \link{Surrogate}, the acquisition function encodes
 Other Acquisition Function: 
 \code{\link{mlr_acqfunctions_aei}},
 \code{\link{mlr_acqfunctions_cb}},
+\code{\link{mlr_acqfunctions_ehvigh}},
+\code{\link{mlr_acqfunctions_ehvi}},
 \code{\link{mlr_acqfunctions_eips}},
 \code{\link{mlr_acqfunctions_ei}},
 \code{\link{mlr_acqfunctions_mean}},
 \code{\link{mlr_acqfunctions_pi}},
+\code{\link{mlr_acqfunctions_sd}},
 \code{\link{mlr_acqfunctions_smsego}},
 \code{\link{mlr_acqfunctions}}
 }
@@ -45,13 +48,16 @@ String in the format \verb{[pkg]::[topic]} pointing to a manual page for this ob
 Points to the \link[bbotk:Archive]{bbotk::Archive} of the surrogate.}
 
 \item{\code{fun}}{(\code{function})\cr
-Pointing to the private acquistion function to be implemented by subclasses.}
+Pointing to the private acquisition function to be implemented by subclasses.}
 
 \item{\code{surrogate}}{(\link{Surrogate})\cr
 Surrogate.}
 
 \item{\code{requires_predict_type_se}}{(\code{logical(1)})\cr
 Whether the acquisition function requires the surrogate to have \code{"se"} as \verb{$predict_type}.}
+
+\item{\code{packages}}{(\code{character()})\cr
+Set of required packages.}
 }
 \if{html}{\out{</div>}}
 }
@@ -88,6 +94,7 @@ Note that the surrogate can be initialized lazy and can later be set via the act
   surrogate,
   requires_predict_type_se,
   direction,
+  packages = NULL,
   label = NA_character_,
   man = NA_character_
 )}\if{html}{\out{</div>}}
@@ -111,6 +118,10 @@ Whether the acquisition function requires the surrogate to have \code{"se"} as \
 Optimization direction of the acquisition function relative to the direction of the
 objective function of the \link[bbotk:OptimInstance]{bbotk::OptimInstance}.
 Must be \code{"same"}, \code{"minimize"}, or \code{"maximize"}.}
+
+\item{\code{packages}}{(\code{character()})\cr
+Set of required packages.
+A warning is signaled prior to construction if at least one of the packages is not installed, but loaded (not attached) later on-demand via \code{\link[=requireNamespace]{requireNamespace()}}.}
 
 \item{\code{label}}{(\code{character(1)})\cr
 Label for this object.}

@@ -51,7 +51,7 @@ if (requireNamespace("mlr3learners") &
     nugget.stability = 10^-8,
     control = list(trace = FALSE))
 
-  surrogate = srlrnc(list(learner, learner$clone(deep = TRUE)), archive = instance$archive)
+  surrogate = srlrn(list(learner, learner$clone(deep = TRUE)), archive = instance$archive)
 
   acq_function = acqf("smsego", surrogate = surrogate)
 
@@ -76,10 +76,13 @@ Other Acquisition Function:
 \code{\link{AcqFunction}},
 \code{\link{mlr_acqfunctions_aei}},
 \code{\link{mlr_acqfunctions_cb}},
+\code{\link{mlr_acqfunctions_ehvigh}},
+\code{\link{mlr_acqfunctions_ehvi}},
 \code{\link{mlr_acqfunctions_eips}},
 \code{\link{mlr_acqfunctions_ei}},
 \code{\link{mlr_acqfunctions_mean}},
 \code{\link{mlr_acqfunctions_pi}},
+\code{\link{mlr_acqfunctions_sd}},
 \code{\link{mlr_acqfunctions}}
 }
 \concept{Acquisition Function}
@@ -90,10 +93,12 @@ Other Acquisition Function:
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
 \item{\code{ys_front}}{(\code{matrix()})\cr
-Approximated Pareto front.}
+Approximated Pareto front.
+Signs are corrected with respect to assuming minimization of objectives.}
 
 \item{\code{ref_point}}{(\code{numeric()})\cr
-Reference point.}
+Reference point.
+Signs are corrected with respect to assuming minimization of objectives.}
 
 \item{\code{epsilon}}{(\code{numeric()})\cr
 Epsilon used for the additive epsilon dominance.}

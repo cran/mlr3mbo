@@ -30,30 +30,38 @@ AcqFunction = R6Class("AcqFunction",
     #'   Optimization direction of the acquisition function relative to the direction of the
     #'   objective function of the [bbotk::OptimInstance].
     #'   Must be `"same"`, `"minimize"`, or `"maximize"`.
+    #' @param packages (`character()`)\cr
+    #'   Set of required packages.
+    #'   A warning is signaled prior to construction if at least one of the packages is not installed, but loaded (not attached) later on-demand via [requireNamespace()].
     #' @param label (`character(1)`)\cr
     #'   Label for this object.
     #' @param man (`character(1)`)\cr
     #'   String in the format `[pkg]::[topic]` pointing to a manual page for this object.
-    initialize = function(id, constants = ParamSet$new(), surrogate, requires_predict_type_se, direction, label = NA_character_, man = NA_character_) {
+    initialize = function(id, constants = ParamSet$new(), surrogate, requires_predict_type_se, direction, packages = NULL, label = NA_character_, man = NA_character_) {
       # FIXME: Should we allow alternative search_space as additional argument?
       # If we do, we need to trafo values before updating the surrogate and predicting?
       assert_string(id)
       assert_r6(surrogate, classes = "Surrogate", null.ok = TRUE)
+      assert_character(packages, null.ok = TRUE)
+      if (!is.null(packages)) {
+        check_packages_installed(packages, msg = sprintf("Package '%%s' required but not installed for acquisition function '%s'", sprintf("<%s:%s>", "AcqFunction", id)))
+      }
       private$.requires_predict_type_se = assert_flag(requires_predict_type_se)
       private$.label = assert_string(label, na.ok = TRUE)
       private$.man = assert_string(man, na.ok = TRUE)
+      private$.packages = packages
       self$direction = assert_choice(direction, c("same", "minimize", "maximize"))
       if (is.null(surrogate)) {
         domain = ParamSet$new()
         codomain = ParamSet$new()
       } else {
         if (requires_predict_type_se && surrogate$predict_type != "se") {
-          stopf('%s requires the surrogate to have `"se"` as `$predict_type`.', label)
+          stopf("Acquisition function '%s' requires the surrogate to have `\"se\"` as `$predict_type`.", sprintf("<%s:%s>", "AcqFunction", id))
         }
         private$.surrogate = surrogate
         private$.archive = assert_r6(surrogate$archive, classes = "Archive")
         codomain = generate_acq_codomain(surrogate$archive$codomain, id = id, direction = direction)
-        self$surrogate_max_to_min = surrogate_mult_max_to_min(surrogate$archive$codomain, y_cols = surrogate$y_cols)
+        self$surrogate_max_to_min = surrogate_mult_max_to_min(surrogate$archive$codomain, cols_y = surrogate$cols_y)
         domain = surrogate$archive$search_space$clone(deep = TRUE)
         domain$trafo = NULL
       }
@@ -152,7 +160,7 @@ AcqFunction = R6Class("AcqFunction",
     },
 
     #' @field fun (`function`)\cr
-    #'   Pointing to the private acquistion function to be implemented by subclasses.
+    #'   Pointing to the private acquisition function to be implemented by subclasses.
     fun = function(lhs) {
       if (!missing(lhs) && !identical(lhs, private$.fun)) stop("$fun is read-only.")
       private$.fun
@@ -166,12 +174,12 @@ AcqFunction = R6Class("AcqFunction",
       } else {
         assert_r6(rhs, classes = "Surrogate")
         if (self$requires_predict_type_se && rhs$predict_type != "se") {
-          stopf('%s requires the surrogate to have `"se"` as `$predict_type`.', self$label)
+          stopf("Acquisition function '%s' requires the surrogate to have `\"se\"` as `$predict_type`.", format(self))
         }
         private$.surrogate = rhs
         private$.archive = assert_r6(rhs$archive, classes = "Archive")
         codomain = generate_acq_codomain(rhs$archive$codomain, id = self$id, direction = self$direction)
-        self$surrogate_max_to_min = surrogate_mult_max_to_min(rhs$archive$codomain, y_cols = rhs$y_cols)
+        self$surrogate_max_to_min = surrogate_mult_max_to_min(rhs$archive$codomain, cols_y = rhs$cols_y)
         domain = rhs$archive$search_space$clone(deep = TRUE)
         domain$trafo = NULL
         self$codomain = Codomain$new(codomain$params)  # lazy initialization requires this
@@ -186,6 +194,16 @@ AcqFunction = R6Class("AcqFunction",
         stop("$requires_predict_type_se is read-only.")
       }
       private$.requires_predict_type_se
+    },
+
+    #' @field packages (`character()`)\cr
+    #'   Set of required packages.
+    packages = function(rhs) {
+      if (missing(rhs)) {
+        private$.packages
+      } else {
+        stop("$packages is read-only.")
+      }
     }
   ),
 
@@ -206,7 +224,9 @@ AcqFunction = R6Class("AcqFunction",
 
     .surrogate = NULL,
 
-    .requires_predict_type_se = NULL
+    .requires_predict_type_se = NULL,
+
+    .packages = NULL
   )
 )
 

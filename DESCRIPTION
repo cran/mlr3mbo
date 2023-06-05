@@ -1,7 +1,7 @@
 Type: Package
 Package: mlr3mbo
 Title: Flexible Bayesian Optimization
-Version: 0.1.2
+Version: 0.2.1
 Authors@R: c(
     person("Lennart", "Schneider", , "lennart.sch@web.de", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0003-4152-5308")),
@@ -38,13 +38,13 @@ Description: A modern and flexible approach to Bayesian Optimization / Model
 License: LGPL-3
 URL: https://mlr3mbo.mlr-org.com, https://github.com/mlr-org/mlr3mbo
 BugReports: https://github.com/mlr-org/mlr3mbo/issues
-Depends: mlr3tuning (>= 0.14.0), R (>= 3.1.0)
+Depends: R (>= 3.1.0)
 Imports: bbotk (>= 0.5.4), checkmate (>= 2.0.0), data.table, lgr (>=
-        0.3.4), mlr3 (>= 0.14.0), mlr3misc (>= 0.11.0), paradox (>=
-        0.10.0), R6 (>= 2.4.1)
-Suggests: DiceKriging, knitr, lhs, mlr3learners (>= 0.5.4),
-        mlr3pipelines (>= 0.4.2), nloptr, ranger, rgenoud, rmarkdown,
-        rpart, spacefillr, stringi, testthat (>= 3.0.0),
+        0.3.4), mlr3 (>= 0.14.0), mlr3misc (>= 0.11.0), mlr3tuning (>=
+        0.14.0), paradox (>= 0.10.0), spacefillr, R6 (>= 2.4.1)
+Suggests: DiceKriging, emoa, fastGHQuad, knitr, lhs, mlr3learners (>=
+        0.5.4), mlr3pipelines (>= 0.4.2), nloptr, ranger, rgenoud,
+        rmarkdown, rpart, stringi, testthat (>= 3.0.0),
 ByteCompile: no
 Encoding: UTF-8
 Config/testthat/edition: 3
@@ -52,17 +52,20 @@ Config/testthat/parallel: false
 NeedsCompilation: yes
 RoxygenNote: 7.2.3
 Collate: 'mlr_acqfunctions.R' 'AcqFunction.R' 'AcqFunctionAEI.R'
-        'AcqFunctionCB.R' 'AcqFunctionEI.R' 'AcqFunctionEIPS.R'
-        'AcqFunctionMean.R' 'AcqFunctionPI.R' 'AcqFunctionSmsEgo.R'
-        'AcqOptimizer.R' 'aaa.R' 'OptimizerMbo.R' 'Surrogate.R'
-        'SurrogateLearner.R' 'SurrogateLearnerCollection.R'
-        'TunerMbo.R' 'mlr_loop_functions.R' 'bayesopt_ego.R'
+        'AcqFunctionCB.R' 'AcqFunctionEHVI.R' 'AcqFunctionEHVIGH.R'
+        'AcqFunctionEI.R' 'AcqFunctionEIPS.R' 'AcqFunctionMean.R'
+        'AcqFunctionPI.R' 'AcqFunctionSD.R' 'AcqFunctionSmsEgo.R'
+        'AcqOptimizer.R' 'aaa.R' 'OptimizerMbo.R'
+        'mlr_result_assigners.R' 'ResultAssigner.R'
+        'ResultAssignerArchive.R' 'ResultAssignerSurrogate.R'
+        'Surrogate.R' 'SurrogateLearner.R'
+        'SurrogateLearnerCollection.R' 'TunerMbo.R'
+        'mlr_loop_functions.R' 'bayesopt_ego.R' 'bayesopt_emo.R'
         'bayesopt_mpcl.R' 'bayesopt_parego.R' 'bayesopt_smsego.R'
         'bibentries.R' 'helper.R' 'loop_function.R' 'mbo_defaults.R'
-        'result_by_default.R' 'result_by_surrogate_design.R' 'sugar.R'
-        'zzz.R'
+        'sugar.R' 'zzz.R'
 VignetteBuilder: knitr
-Packaged: 2023-03-02 23:54:07 UTC; lps
+Packaged: 2023-06-05 09:13:30 UTC; lps
 Author: Lennart Schneider [cre, aut] (<https://orcid.org/0000-0003-4152-5308>),
   Jakob Richter [aut] (<https://orcid.org/0000-0003-4481-5554>),
   Marc Becker [aut] (<https://orcid.org/0000-0002-8115-0400>),
@@ -78,4 +81,4 @@ Author: Lennart Schneider [cre, aut] (<https://orcid.org/0000-0003-4152-5308>),
   Luis Paquete [cph]
 Maintainer: Lennart Schneider <lennart.sch@web.de>
 Repository: CRAN
-Date/Publication: 2023-03-03 00:20:02 UTC
+Date/Publication: 2023-06-05 11:00:02 UTC

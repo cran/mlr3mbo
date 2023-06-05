@@ -175,7 +175,7 @@ surrogate = SurrogateLearner$new(lrn("regr.km"))
 surrogate = srlrn(lrn("regr.km"))
 
 ## -----------------------------------------------------------------------------
-surrogate$model
+surrogate$learner
 
 ## -----------------------------------------------------------------------------
 surrogate$param_set
@@ -237,6 +237,15 @@ optimizer = opt("mbo",
 
 ## -----------------------------------------------------------------------------
 optimizer
+
+## -----------------------------------------------------------------------------
+as.data.table(mlr_result_assigners)
+
+## -----------------------------------------------------------------------------
+result_assigner = ResultAssignerArchive$new()
+
+## -----------------------------------------------------------------------------
+result_assigner = ras("archive")
 
 ## -----------------------------------------------------------------------------
 tuner = TunerMbo$new(bayesopt_ego,
@@ -464,7 +473,7 @@ bayesopt_custom
 #    nugget.stability = 10^-8,
 #    control = list(trace = FALSE))
 #  learner_y2 = learner_y1$clone(deep = TRUE)
-#  surrogate = srlrnc(list(learner_y1, learner_y2))
+#  surrogate = srlrn(list(learner_y1, learner_y2))
 #  acq_function = acqf("smsego")
 #  acq_optimizer = acqo(opt("nloptr", algorithm = "NLOPT_GN_DIRECT_L"),
 #    terminator = trm("stagnation", threshold = 1e-8))
@@ -500,9 +509,9 @@ bayesopt_custom
 #  task = tsk("wine")
 #  learner = lrn("classif.rpart",
 #    cp = to_tune(lower = 1e-4, upper = 1, logscale = TRUE),
-#    maxdepth = to_tune(lower = 1, upper = 30),
-#    minbucket = to_tune(lower = 1, upper = 100),
-#    minsplit = to_tune(lower = 1, upper = 100))
+#    maxdepth = to_tune(lower = 1, upper = 10),
+#    minbucket = to_tune(lower = 1, upper = 10),
+#    minsplit = to_tune(lower = 1, upper = 10))
 #  resampling = rsmp("cv", folds = 3)
 #  measure = msr("classif.acc")
 #  
@@ -532,15 +541,14 @@ bayesopt_custom
 #  set.seed(2906)
 #  tuner$optimize(instance)
 #  instance$result
-#  instance$archive$best() # result_function is result_by_surrogate_design
 
 ## ---- eval=FALSE--------------------------------------------------------------
 #  task = tsk("wine")
 #  learner = lrn("classif.rpart",
 #    cp = to_tune(lower = 1e-4, upper = 1, logscale = TRUE),
-#    maxdepth = to_tune(lower = 1, upper = 30),
-#    minbucket = to_tune(lower = 1, upper = 100),
-#    minsplit = to_tune(lower = 1, upper = 100))
+#    maxdepth = to_tune(lower = 1, upper = 10),
+#    minbucket = to_tune(lower = 1, upper = 10),
+#    minsplit = to_tune(lower = 1, upper = 10))
 #  resampling = rsmp("cv", folds = 3)
 #  measures = msrs(c("classif.acc", "selected_features"))
 #  
@@ -562,13 +570,11 @@ bayesopt_custom
 #  acq_function = acqf("ei")
 #  acq_optimizer = acqo(opt("focus_search", n_points = 100L, maxit = 9),
 #    terminator = trm("evals", n_evals = 3000))
-#  # result_by_surrogate_design is by default not sensible for ParEGO
 #  tuner = tnr("mbo",
 #    loop_function = bayesopt_parego,
 #    surrogate = surrogate,
 #    acq_function = acq_function,
-#    acq_optimizer = acq_optimizer,
-#    result_function = result_by_default)
+#    acq_optimizer = acq_optimizer)
 #  
 #  set.seed(2906)
 #  tuner$optimize(instance)

@@ -66,7 +66,7 @@ if (requireNamespace("mlr3learners") &
 
   surrogate$update()
 
-  surrogate$model$model
+  surrogate$learner$model
 }
 }
 \section{Super class}{
@@ -124,7 +124,7 @@ Retrieves the currently active predict type, e.g. \code{"response"}.}
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SurrogateLearner$new(learner, archive = NULL, x_cols = NULL, y_col = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SurrogateLearner$new(learner, archive = NULL, cols_x = NULL, col_y = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -135,12 +135,12 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \item{\code{archive}}{(\link[bbotk:Archive]{bbotk::Archive} | \code{NULL})\cr
 \link[bbotk:Archive]{bbotk::Archive} of the \link[bbotk:OptimInstance]{bbotk::OptimInstance}.}
 
-\item{\code{x_cols}}{(\code{character()} | \code{NULL})\cr
-Column Id's of variables that should be used as features.
+\item{\code{cols_x}}{(\code{character()} | \code{NULL})\cr
+Column id's of variables that should be used as features.
 By default, automatically inferred based on the archive.}
 
-\item{\code{y_col}}{(\code{character(1)} | \code{NULL})\cr
-Column Id of variable that should be used as a target.
+\item{\code{col_y}}{(\code{character(1)} | \code{NULL})\cr
+Column id of variable that should be used as a target.
 By default, automatically inferred based on the archive.}
 }
 \if{html}{\out{</div>}}
