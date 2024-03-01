@@ -25,7 +25,7 @@
 #' }
 #' \item{`catch_errors`}{`logical(1)`\cr
 #'   Should errors during updating the surrogate be caught and propagated to the `loop_function` which can then handle
-#'   the failed infill optimization (as a result of the failed surrogate) appropriately by, e.g., proposing a randomly sampled point for evaluation?
+#'   the failed acquisition function optimization (as a result of the failed surrogate) appropriately by, e.g., proposing a randomly sampled point for evaluation?
 #'   Default is `TRUE`.
 #' }
 #' }
@@ -54,16 +54,9 @@
 #'
 #'   instance$eval_batch(xdt)
 #'
-#'   learner1 = lrn("regr.km",
-#'     covtype = "matern3_2",
-#'     optim.method = "gen",
-#'     nugget.stability = 10^-8,
-#'     control = list(trace = FALSE))
+#'   learner1 = default_gp()
 #'
-#'   learner2 = lrn("regr.ranger",
-#'     num.trees = 500,
-#'     keep.inbag = TRUE,
-#'     se.method = "jack")
+#'   learner2 = default_rf()
 #'
 #'   surrogate = srlrn(list(learner1, learner2), archive = instance$archive)
 #'
@@ -103,11 +96,11 @@ SurrogateLearnerCollection = R6Class("SurrogateLearnerCollection",
       assert_character(cols_x, min.len = 1L, null.ok = TRUE)
       assert_character(cols_y, len = length(learners), null.ok = TRUE)
 
-      ps = ParamSet$new(list(
-        ParamLgl$new("assert_insample_perf"),
-        ParamUty$new("perf_measures", custom_check = function(x) check_list(x, types = "MeasureRegr", any.missing = FALSE, len = length(learners))),  # FIXME: actually want check_measures
-        ParamUty$new("perf_thresholds", custom_check = function(x) check_double(x, lower = -Inf, upper = Inf, any.missing = FALSE, len = length(learners))),
-        ParamLgl$new("catch_errors"))
+      ps = ps(
+        assert_insample_perf = p_lgl(),
+        perf_measures = p_uty(custom_check = function(x) check_list(x, types = "MeasureRegr", any.missing = FALSE, len = length(learners))),  # FIXME: actually want check_measures
+        perf_thresholds = p_uty(custom_check = function(x) check_double(x, lower = -Inf, upper = Inf, any.missing = FALSE, len = length(learners))),
+        catch_errors = p_lgl()
       )
       ps$values = list(assert_insample_perf = FALSE, catch_errors = TRUE)
       ps$add_dep("perf_measures", on = "assert_insample_perf", cond = CondEqual$new(TRUE))

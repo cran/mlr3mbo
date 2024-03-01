@@ -27,7 +27,7 @@ Default is \code{0}.
 }
 \item{\code{catch_errors}}{\code{logical(1)}\cr
 Should errors during updating the surrogate be caught and propagated to the \code{loop_function} which can then handle
-the failed infill optimization (as a result of the failed surrogate) appropriately by, e.g., proposing a randomly sampled point for evaluation?
+the failed acquisition function optimization (as a result of the failed surrogate) appropriately by, e.g., proposing a randomly sampled point for evaluation?
 Default is \code{TRUE}.
 }
 }
@@ -56,11 +56,7 @@ if (requireNamespace("mlr3learners") &
 
   instance$eval_batch(xdt)
 
-  learner = lrn("regr.km",
-    covtype = "matern3_2",
-    optim.method = "gen",
-    nugget.stability = 10^-8,
-    control = list(trace = FALSE))
+  learner = default_gp()
 
   surrogate = srlrn(learner, archive = instance$archive)
 

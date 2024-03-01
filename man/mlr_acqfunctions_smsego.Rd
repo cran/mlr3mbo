@@ -45,11 +45,7 @@ if (requireNamespace("mlr3learners") &
 
   instance$eval_batch(data.table(x = c(-6, -5, 3, 9)))
 
-  learner = lrn("regr.km",
-    covtype = "matern3_2",
-    optim.method = "gen",
-    nugget.stability = 10^-8,
-    control = list(trace = FALSE))
+  learner = default_gp()
 
   surrogate = srlrn(list(learner, learner$clone(deep = TRUE)), archive = instance$archive)
 
@@ -74,16 +70,16 @@ In \emph{International Conference on Evolutionary Multi-Criterion Optimization},
 \seealso{
 Other Acquisition Function: 
 \code{\link{AcqFunction}},
+\code{\link{mlr_acqfunctions}},
 \code{\link{mlr_acqfunctions_aei}},
 \code{\link{mlr_acqfunctions_cb}},
-\code{\link{mlr_acqfunctions_ehvigh}},
 \code{\link{mlr_acqfunctions_ehvi}},
-\code{\link{mlr_acqfunctions_eips}},
+\code{\link{mlr_acqfunctions_ehvigh}},
 \code{\link{mlr_acqfunctions_ei}},
+\code{\link{mlr_acqfunctions_eips}},
 \code{\link{mlr_acqfunctions_mean}},
 \code{\link{mlr_acqfunctions_pi}},
-\code{\link{mlr_acqfunctions_sd}},
-\code{\link{mlr_acqfunctions}}
+\code{\link{mlr_acqfunctions_sd}}
 }
 \concept{Acquisition Function}
 \section{Super classes}{

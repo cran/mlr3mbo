@@ -16,6 +16,13 @@ By optimizing a comparably cheap to evaluate acquisition function defined on the
 Detailed descriptions of different MBO flavors are provided in the documentation of the respective \link{loop_function}.
 
 Termination is handled via a \link[bbotk:Terminator]{bbotk::Terminator} part of the \link[bbotk:OptimInstance]{bbotk::OptimInstance} to be optimized.
+
+Note that in general the \link{Surrogate} is updated one final time on all available data after the optimization process has terminated.
+However, in certain scenarios this is not always possible or meaningful, e.g., when using \code{\link[=bayesopt_parego]{bayesopt_parego()}} for multi-objective optimization
+which uses a surrogate that relies on a scalarization of the objectives.
+It is therefore recommended to manually inspect the \link{Surrogate} after optimization if it is to be used, e.g., for visualization purposes to make
+sure that it has been properly updated on all available data.
+If this final update of the \link{Surrogate} could not be performed successfully, a warning will be logged.
 }
 \section{Archive}{
 
@@ -50,13 +57,7 @@ if (requireNamespace("mlr3learners") &
     objective = objective,
     terminator = trm("evals", n_evals = 5))
 
-  learner = lrn("regr.km",
-    covtype = "matern3_2",
-    optim.method = "gen",
-    nugget.stability = 10^-8,
-    control = list(trace = FALSE))
-
-  surrogate = srlrn(learner)
+  surrogate = default_surrogate(instance)
 
   acq_function = acqf("ei")
 
@@ -122,7 +123,8 @@ The result assigner.}
 \item{\code{param_classes}}{(\code{character()})\cr
 Supported parameter classes that the optimizer can optimize.
 Determined based on the \code{surrogate} and the \code{acq_optimizer}.
-Subclasses of \link[paradox:Param]{paradox::Param}.}
+This corresponds to the values given by a \link[paradox:ParamSet]{paradox::ParamSet}'s
+\verb{$class} field.}
 
 \item{\code{properties}}{(\code{character()})\cr
 Set of properties of the optimizer.

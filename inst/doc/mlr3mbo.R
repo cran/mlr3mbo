@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 
 library(knitr)
 opts_chunk$set(
@@ -180,7 +180,7 @@ surrogate$learner
 ## -----------------------------------------------------------------------------
 surrogate$param_set
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  library(mlr3)
 #  library(mlr3learners)
 #  # there are plenty of more in mlr3extralearners
@@ -216,10 +216,10 @@ acq_optimizer$terminator
 ## -----------------------------------------------------------------------------
 acq_optimizer$param_set
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  as.data.table(mlr_optimizers)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  as.data.table(mlr_terminators)
 
 ## -----------------------------------------------------------------------------
@@ -255,7 +255,7 @@ tuner = TunerMbo$new(bayesopt_ego,
 
 mlr3misc::get_private(tuner)[[".optimizer"]]
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  repeat {
 #    xdt = tryCatch({
 #      .
@@ -296,11 +296,7 @@ instance = OptimInstanceSingleCrit$new(
 initial_design = data.table(x = rep(1, 4))
 instance$eval_batch(initial_design)
 
-surrogate = srlrn(lrn("regr.km",
-  covtype = "matern3_2",
-  optim.method = "gen",
-  nugget.stability = 10^-8,
-  control = list(trace = FALSE)))
+surrogate = srlrn(default_gp())
 acq_function = acqf("ei")
 acq_optimizer = acqo(opt("random_search", batch_size = 1000),
   terminator = trm("evals", n_evals = 1000))
@@ -315,7 +311,7 @@ optimizer$optimize(instance)
 ## -----------------------------------------------------------------------------
 instance$archive$data
 
-## ---- error = TRUE------------------------------------------------------------
+## ----error = TRUE-------------------------------------------------------------
 instance$archive$clear()
 instance$eval_batch(initial_design)
 optimizer$surrogate$param_set$values$catch_errors = FALSE
@@ -340,7 +336,7 @@ attr(bayesopt_custom, "man") = ""  # no man page
 ## -----------------------------------------------------------------------------
 bayesopt_custom
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  objective_function = function(xs) {
 #    list(y = 418.9829 * 2 - (sum(unlist(xs) * sin(sqrt(abs(unlist(xs)))))))
 #  }
@@ -359,10 +355,7 @@ bayesopt_custom
 #    terminator = trm("evals", n_evals = 60))
 #  
 #  # Gaussian Process, EI, DIRECT
-#  surrogate = srlrn(lrn("regr.km",
-#    covtype = "matern3_2",
-#    optim.method = "gen",
-#    nugget.stability = 10^-8, control = list(trace = FALSE)))
+#  surrogate = srlrn(default_gp())
 #  acq_function = acqf("ei")
 #  acq_optimizer = acqo(opt("nloptr", algorithm = "NLOPT_GN_DIRECT_L"),
 #    terminator = trm("stagnation", threshold = 1e-8))
@@ -375,7 +368,7 @@ bayesopt_custom
 #  set.seed(2906)
 #  optimizer$optimize(instance)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  library(ggplot2)
 #  
 #  ggplot(aes(x = batch_nr, y = cummin(y)), data = instance$archive$data) +
@@ -384,7 +377,7 @@ bayesopt_custom
 #    labs(x = "Batch Nr.", y = "Best y") +
 #    theme_minimal()
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  xdt = generate_design_grid(instance$search_space, resolution = 101)$data
 #  ydt = objective$eval_dt(xdt)
 #  ggplot(aes(x = x1, y = x2, z = y), data = cbind(xdt, ydt)) +
@@ -393,7 +386,7 @@ bayesopt_custom
 #    scale_color_gradient(low = "lightgrey", high = "red") +
 #    theme_minimal()
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  objective_function = function(xs) {
 #    list(y1 = xs$x^2, y2 = (xs$x - 2)^2)
 #  }
@@ -411,11 +404,7 @@ bayesopt_custom
 #    terminator = trm("evals", n_evals = 30))
 #  
 #  # Gaussian Process, EI, DIRECT
-#  surrogate = srlrn(lrn("regr.km",
-#    covtype = "matern3_2",
-#    optim.method = "gen",
-#    nugget.stability = 10^-8,
-#    control = list(trace = FALSE)))
+#  surrogate = srlrn(default_gp())
 #  acq_function = acqf("ei")
 #  acq_optimizer = acqo(opt("nloptr", algorithm = "NLOPT_GN_DIRECT_L"),
 #    terminator = trm("stagnation", threshold = 1e-8))
@@ -428,12 +417,12 @@ bayesopt_custom
 #  set.seed(2906)
 #  optimizer$optimize(instance)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  ggplot(aes(x = y1, y = y2), data = instance$archive$best()) +
 #    geom_point() +
 #    theme_minimal()
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  library(emoa)
 #  library(mlr3misc)
 #  library(data.table)
@@ -449,7 +438,7 @@ bayesopt_custom
 #    labs(x = "Batch Nr.", y = "Dominated Hypervolume") +
 #    theme_minimal()
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  objective_function = function(xs) {
 #    list(y1 = xs$x^2, y2 = (xs$x - 2)^2)
 #  }
@@ -467,11 +456,7 @@ bayesopt_custom
 #    terminator = trm("evals", n_evals = 30))
 #  
 #  # Gaussian Processes, SMS-EGO, DIRECT
-#  learner_y1 = lrn("regr.km",
-#    covtype = "matern3_2",
-#    optim.method = "gen",
-#    nugget.stability = 10^-8,
-#    control = list(trace = FALSE))
+#  learner_y1 = default_gp()
 #  learner_y2 = learner_y1$clone(deep = TRUE)
 #  surrogate = srlrn(list(learner_y1, learner_y2))
 #  acq_function = acqf("smsego")
@@ -486,12 +471,12 @@ bayesopt_custom
 #  set.seed(2906)
 #  optimizer$optimize(instance)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  ggplot(aes(x = y1, y = y2), data = instance$archive$best()) +
 #    geom_point() +
 #    theme_minimal()
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  anytime_hypervolume = map_dtr(unique(instance$archive$data$batch_nr), function(bnr) {
 #    pareto = instance$archive$best(batch = 1:bnr)[, instance$archive$cols_y, with = FALSE]
 #    dhv = dominated_hypervolume(t(pareto), ref = t(t(c(100, 144))))
@@ -504,7 +489,7 @@ bayesopt_custom
 #    labs(x = "Batch Nr.", y = "Dominated Hypervolume") +
 #    theme_minimal()
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  library(mlr3)
 #  task = tsk("wine")
 #  learner = lrn("classif.rpart",
@@ -523,12 +508,7 @@ bayesopt_custom
 #    terminator = trm("evals", n_evals = 30))
 #  
 #  # Gaussian Process, EI, FocusSearch
-#  surrogate = srlrn(lrn("regr.km",
-#    covtype = "matern3_2",
-#    optim.method = "gen",
-#    nugget.estim = TRUE,
-#    jitter = 1e-12,
-#    control = list(trace = FALSE)))
+#  surrogate = srlrn(default_gp(noisy = TRUE))
 #  acq_function = acqf("ei")
 #  acq_optimizer = acqo(opt("focus_search", n_points = 100L, maxit = 9),
 #    terminator = trm("evals", n_evals = 3000))
@@ -542,7 +522,7 @@ bayesopt_custom
 #  tuner$optimize(instance)
 #  instance$result
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  task = tsk("wine")
 #  learner = lrn("classif.rpart",
 #    cp = to_tune(lower = 1e-4, upper = 1, logscale = TRUE),
@@ -561,12 +541,7 @@ bayesopt_custom
 #    store_models = TRUE) # required due to selected features
 #  
 #  # Gaussian Process, EI, FocusSearch
-#  surrogate = srlrn(lrn("regr.km",
-#    covtype = "matern3_2",
-#    optim.method = "gen",
-#    nugget.estim = TRUE,
-#    jitter = 1e-12,
-#    control = list(trace = FALSE)))
+#  surrogate = srlrn(default_gp(noisy = TRUE))
 #  acq_function = acqf("ei")
 #  acq_optimizer = acqo(opt("focus_search", n_points = 100L, maxit = 9),
 #    terminator = trm("evals", n_evals = 3000))

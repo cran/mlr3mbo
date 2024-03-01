@@ -46,11 +46,7 @@
 #'
 #'   instance$eval_batch(data.table(x = c(-6, -5, 3, 9)))
 #'
-#'   learner = lrn("regr.km",
-#'     covtype = "matern3_2",
-#'     optim.method = "gen",
-#'     nugget.stability = 10^-8,
-#'     control = list(trace = FALSE))
+#'   learner = default_gp()
 #'
 #'   surrogate = srlrn(list(learner, learner$clone(deep = TRUE)), archive = instance$archive)
 #'
@@ -96,10 +92,10 @@ AcqFunctionSmsEgo = R6Class("AcqFunctionSmsEgo",
       assert_number(lambda, lower = 1, finite = TRUE)
       assert_number(epsilon, lower = 0, finite = TRUE, null.ok = TRUE)
 
-      constants = ParamSet$new(list(
-        ParamDbl$new("lambda", lower = 0, default = 1),
-        ParamDbl$new("epsilon", lower = 0, default = NULL, special_vals = list(NULL))  # for NULL, it will be calculated dynamically
-      ))
+      constants = ps(
+        lambda = p_dbl(lower = 0, default = 1),
+        epsilon = p_dbl(lower = 0, default = NULL, special_vals = list(NULL))  # for NULL, it will be calculated dynamically
+      )
       constants$values$lambda = lambda
       constants$values$epsilon = epsilon
 

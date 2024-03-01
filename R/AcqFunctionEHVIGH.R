@@ -47,11 +47,7 @@
 #'
 #'   instance$eval_batch(data.table(x = c(-6, -5, 3, 9)))
 #'
-#'   learner = lrn("regr.km",
-#'     covtype = "matern3_2",
-#'     optim.method = "gen",
-#'     nugget.stability = 10^-8,
-#'     control = list(trace = FALSE))
+#'   learner = default_gp()
 #'
 #'   surrogate = srlrn(list(learner, learner$clone(deep = TRUE)), archive = instance$archive)
 #'
@@ -97,10 +93,10 @@ AcqFunctionEHVIGH = R6Class("AcqFunctionEHVIGH",
       assert_r6(surrogate, "SurrogateLearnerCollection", null.ok = TRUE)
       assert_int(k, lower = 2L)
 
-      constants = ParamSet$new(list(
-        ParamInt$new("k", lower = 2L, default = 15L),
-        ParamDbl$new("r", lower = 0, upper = 1, default = 0.2)
-      ))
+      constants = ps(
+        k = p_int(lower = 2L, default = 15L),
+        r = p_dbl(lower = 0, upper = 1, default = 0.2)
+      )
       constants$values$k = k
       constants$values$r = r
 

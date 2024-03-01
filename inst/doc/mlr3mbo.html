@@ -49,7 +49,7 @@ overflow: visible;
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -148,6 +148,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 div.csl-bib-body { }
 div.csl-entry {
 clear: both;
+margin-bottom: 0em;
 }
 .hanging div.csl-entry {
 margin-left:2em;
@@ -411,18 +412,21 @@ the following dictionary can be inspected:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(mlr3mbo)</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">as.data.table</span>(mlr_loop_functions)</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co">#&gt;                key                         label    instance</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt; 1:    bayesopt_ego Efficient Global Optimization single-crit</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co">#&gt; 2:    bayesopt_emo           Multi-Objective EGO  multi-crit</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#&gt; 3:   bayesopt_mpcl      Multipoint Constant Liar single-crit</span></span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co">#&gt; 4: bayesopt_parego                        ParEGO  multi-crit</span></span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co">#&gt; 5: bayesopt_smsego                       SMS-EGO  multi-crit</span></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">#&gt;                                   man</span></span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co">#&gt; 1:    mlr3mbo::mlr_loop_functions_ego</span></span>
-<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="co">#&gt; 2:    mlr3mbo::mlr_loop_functions_emo</span></span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="co">#&gt; 3:   mlr3mbo::mlr_loop_functions_mpcl</span></span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="co">#&gt; 4: mlr3mbo::mlr_loop_functions_parego</span></span>
-<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co">#&gt; 5: mlr3mbo::mlr_loop_functions_smsego</span></span></code></pre></div>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co">#&gt; Key: &lt;key&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt;                key                         label    instance</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co">#&gt;             &lt;char&gt;                        &lt;char&gt;      &lt;char&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#&gt; 1:    bayesopt_ego Efficient Global Optimization single-crit</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co">#&gt; 2:    bayesopt_emo           Multi-Objective EGO  multi-crit</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co">#&gt; 3:   bayesopt_mpcl      Multipoint Constant Liar single-crit</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">#&gt; 4: bayesopt_parego                        ParEGO  multi-crit</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co">#&gt; 5: bayesopt_smsego                       SMS-EGO  multi-crit</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="co">#&gt;                                   man</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="co">#&gt;                                &lt;char&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="co">#&gt; 1:    mlr3mbo::mlr_loop_functions_ego</span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co">#&gt; 2:    mlr3mbo::mlr_loop_functions_emo</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="co">#&gt; 3:   mlr3mbo::mlr_loop_functions_mpcl</span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="co">#&gt; 4: mlr3mbo::mlr_loop_functions_parego</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="co">#&gt; 5: mlr3mbo::mlr_loop_functions_smsego</span></span></code></pre></div>
 <p>The dictionary shows the <code>key</code>, i.e., ID of the
 <code>loop_function</code>, a brief description, for which optimization
 instance the resulting BO flavor can be used, as well as how
@@ -473,10 +477,14 @@ for higher dimensional mixed (and / or hierarchical) search spaces</li>
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>surrogate <span class="ot">=</span> SurrogateLearner<span class="sc">$</span><span class="fu">new</span>(<span class="fu">lrn</span>(<span class="st">&quot;regr.km&quot;</span>))</span></code></pre></div>
 <p>or using syntactic sugar:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">lrn</span>(<span class="st">&quot;regr.km&quot;</span>))</span></code></pre></div>
+<p>Note that <a href="https://mlr3mbo.mlr-org.com/reference/default_gp.html"><code>default_gp</code></a>
+and <a href="https://mlr3mbo.mlr-org.com/reference/default_rf.html"><code>default_rf</code></a>
+allow for the construction of a Gaussian Process and random forest with
+sensible hyperparamter values already specified.</p>
 <p>The encapsulated learner can be accessed via the
 <code>$learner</code> field:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>surrogate<span class="sc">$</span>learner</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co">#&gt; &lt;LearnerRegrKM:regr.km&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co">#&gt; &lt;LearnerRegrKM:regr.km&gt;: Kriging</span></span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt; * Model: -</span></span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; * Parameters: list()</span></span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; * Packages: mlr3, mlr3learners, DiceKriging</span></span>
@@ -486,16 +494,26 @@ for higher dimensional mixed (and / or hierarchical) search spaces</li>
 <p>The surrogate itself has the following hyperparameters:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>surrogate<span class="sc">$</span>param_set</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#&gt; &lt;ParamSet&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt;                      id    class lower upper nlevels        default</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; 1: assert_insample_perf ParamLgl    NA    NA       2 &lt;NoDefault[3]&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt; 2:         catch_errors ParamLgl    NA    NA       2 &lt;NoDefault[3]&gt;</span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; 3:         perf_measure ParamUty    NA    NA     Inf &lt;NoDefault[3]&gt;</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; 4:       perf_threshold ParamDbl  -Inf   Inf     Inf &lt;NoDefault[3]&gt;</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt;                 parents value</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; 1:                      FALSE</span></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt; 2:                       TRUE</span></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt; 3: assert_insample_perf      </span></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt; 4: assert_insample_perf</span></span></code></pre></div>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt; Warning: Unknown argument &#39;on&#39; has been passed.</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; Key: &lt;id&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt;                      id    class lower upper nlevels</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt;                  &lt;char&gt;   &lt;char&gt; &lt;num&gt; &lt;num&gt;   &lt;num&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; 1: assert_insample_perf ParamLgl    NA    NA       2</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt; 2:         catch_errors ParamLgl    NA    NA       2</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; 3:         perf_measure ParamUty    NA    NA     Inf</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt; 4:       perf_threshold ParamDbl  -Inf   Inf     Inf</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt;                                                                                      default</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt;                                                                                       &lt;list&gt;</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; 1: &lt;NoDefault&gt;\n  Public:\n    clone: function (deep = FALSE) \n    initialize: function () </span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt; 2: &lt;NoDefault&gt;\n  Public:\n    clone: function (deep = FALSE) \n    initialize: function () </span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; 3: &lt;NoDefault&gt;\n  Public:\n    clone: function (deep = FALSE) \n    initialize: function () </span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt; 4: &lt;NoDefault&gt;\n  Public:\n    clone: function (deep = FALSE) \n    initialize: function () </span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt;                 parents  value</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt;                  &lt;list&gt; &lt;list&gt;</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt; 1:                       FALSE</span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt; 2:                        TRUE</span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#&gt; 3: assert_insample_perf       </span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co">#&gt; 4: assert_insample_perf</span></span></code></pre></div>
 <p><code>assert_insample_perf = TRUE</code> results in the insample
 performance of the learner being calculated and asserted against a
 performance threshold after each <code>$update()</code>. This requires
@@ -555,28 +573,31 @@ function value observed so far (when assuming minimization).</p>
 <p>To get an overview of available acquisition functions, the following
 dictionary can be inspected:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">as.data.table</span>(mlr_acqfunctions)</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt;        key                                              label</span></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt;  1:    aei                     Augmented Expected Improvement</span></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt;  2:     cb                     Lower / Upper Confidence Bound</span></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt;  3:   ehvi                   Expected Hypervolume Improvement</span></span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt;  4: ehvigh Expected Hypervolume Improvement via GH Quadrature</span></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt;  5:     ei                               Expected Improvement</span></span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt;  6:   eips                    Expected Improvement Per Second</span></span>
-<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt;  7:   mean                                     Posterior Mean</span></span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt;  8:     pi                         Probability Of Improvement</span></span>
-<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt;  9:     sd                       Posterior Standard Deviation</span></span>
-<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt; 10: smsego                                            SMS-EGO</span></span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt;                                  man</span></span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt;  1:    mlr3mbo::mlr_acqfunctions_aei</span></span>
-<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt;  2:     mlr3mbo::mlr_acqfunctions_cb</span></span>
-<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt;  3:   mlr3mbo::mlr_acqfunctions_ehvi</span></span>
-<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt;  4: mlr3mbo::mlr_acqfunctions_ehvigh</span></span>
-<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt;  5:     mlr3mbo::mlr_acqfunctions_ei</span></span>
-<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#&gt;  6:   mlr3mbo::mlr_acqfunctions_eips</span></span>
-<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="co">#&gt;  7:   mlr3mbo::mlr_acqfunctions_mean</span></span>
-<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co">#&gt;  8:     mlr3mbo::mlr_acqfunctions_pi</span></span>
-<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co">#&gt;  9:     mlr3mbo::mlr_acqfunctions_sd</span></span>
-<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="co">#&gt; 10: mlr3mbo::mlr_acqfunctions_smsego</span></span></code></pre></div>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt; Key: &lt;key&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt;        key                                              label</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt;     &lt;char&gt;                                             &lt;char&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt;  1:    aei                     Augmented Expected Improvement</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt;  2:     cb                     Lower / Upper Confidence Bound</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt;  3:   ehvi                   Expected Hypervolume Improvement</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt;  4: ehvigh Expected Hypervolume Improvement via GH Quadrature</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt;  5:     ei                               Expected Improvement</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt;  6:   eips                    Expected Improvement Per Second</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt;  7:   mean                                     Posterior Mean</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt;  8:     pi                         Probability Of Improvement</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt;  9:     sd                       Posterior Standard Deviation</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; 10: smsego                                            SMS-EGO</span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt;                                  man</span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt;                               &lt;char&gt;</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt;  1:    mlr3mbo::mlr_acqfunctions_aei</span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt;  2:     mlr3mbo::mlr_acqfunctions_cb</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#&gt;  3:   mlr3mbo::mlr_acqfunctions_ehvi</span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="co">#&gt;  4: mlr3mbo::mlr_acqfunctions_ehvigh</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co">#&gt;  5:     mlr3mbo::mlr_acqfunctions_ei</span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co">#&gt;  6:   mlr3mbo::mlr_acqfunctions_eips</span></span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="co">#&gt;  7:   mlr3mbo::mlr_acqfunctions_mean</span></span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co">#&gt;  8:     mlr3mbo::mlr_acqfunctions_pi</span></span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co">#&gt;  9:     mlr3mbo::mlr_acqfunctions_sd</span></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co">#&gt; 10: mlr3mbo::mlr_acqfunctions_smsego</span></span></code></pre></div>
 <p>The dictionary shows the <code>key</code>, i.e., ID of the
 acquisition function, a brief description, and how the documentation can
 be accessed.</p>
@@ -606,8 +627,9 @@ hyperparameters should be passed as constants, e.g.:</p>
 <span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co">#&gt; Empty.</span></span>
 <span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="co">#&gt; Constants:</span></span>
 <span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="co">#&gt; &lt;ParamSet&gt;</span></span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="co">#&gt;        id    class lower upper nlevels default value</span></span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="co">#&gt; 1: lambda ParamDbl     0   Inf     Inf       2     2</span></span></code></pre></div>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="co">#&gt;        id    class lower upper nlevels default  value</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="co">#&gt;    &lt;char&gt;   &lt;char&gt; &lt;num&gt; &lt;num&gt;   &lt;num&gt;  &lt;list&gt; &lt;list&gt;</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="co">#&gt; 1: lambda ParamDbl     0   Inf     Inf       2      2</span></span></code></pre></div>
 <p>To use a custom acquisition function you should implement a new
 <code>R6</code> class inheriting from <a href="https://mlr3mbo.mlr-org.com/reference/AcqFunction.html"><code>AcqFunction</code></a>.</p>
 </div>
@@ -645,18 +667,32 @@ argument should be specified during construction.</p>
 has the following hyperparameters:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>acq_optimizer<span class="sc">$</span>param_set</span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co">#&gt; &lt;ParamSet&gt;</span></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co">#&gt;                        id    class lower upper nlevels        default   parents</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co">#&gt; 1:           catch_errors ParamLgl    NA    NA       2           TRUE          </span></span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co">#&gt; 2:          logging_level ParamFct    NA    NA       6           warn          </span></span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co">#&gt; 3: skip_already_evaluated ParamLgl    NA    NA       2           TRUE          </span></span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co">#&gt; 4:              warmstart ParamLgl    NA    NA       2          FALSE          </span></span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">#&gt; 5:         warmstart_size ParamInt     1   Inf     Inf &lt;NoDefault[3]&gt; warmstart</span></span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">#&gt;    value</span></span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co">#&gt; 1:  TRUE</span></span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co">#&gt; 2:  warn</span></span>
-<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="co">#&gt; 3:  TRUE</span></span>
-<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="co">#&gt; 4: FALSE</span></span>
-<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="co">#&gt; 5:</span></span></code></pre></div>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co">#&gt; Warning: Unknown argument &#39;on&#39; has been passed.</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co">#&gt; Key: &lt;id&gt;</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co">#&gt;                        id    class lower upper nlevels</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co">#&gt;                    &lt;char&gt;   &lt;char&gt; &lt;num&gt; &lt;num&gt;   &lt;num&gt;</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co">#&gt; 1:           catch_errors ParamLgl    NA    NA       2</span></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">#&gt; 2:          logging_level ParamFct    NA    NA       6</span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">#&gt; 3:           n_candidates ParamInt     1   Inf     Inf</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co">#&gt; 4: skip_already_evaluated ParamLgl    NA    NA       2</span></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co">#&gt; 5:              warmstart ParamLgl    NA    NA       2</span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="co">#&gt; 6:         warmstart_size ParamInt     1   Inf     Inf</span></span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="co">#&gt;                                                                                      default</span></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="co">#&gt;                                                                                       &lt;list&gt;</span></span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="co">#&gt; 1:                                                                                      TRUE</span></span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="co">#&gt; 2:                                                                                      warn</span></span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="co">#&gt; 3:                                                                                         1</span></span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="co">#&gt; 4:                                                                                      TRUE</span></span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="co">#&gt; 5:                                                                                     FALSE</span></span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="co">#&gt; 6: &lt;NoDefault&gt;\n  Public:\n    clone: function (deep = FALSE) \n    initialize: function () </span></span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="co">#&gt;      parents  value</span></span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="co">#&gt;       &lt;list&gt; &lt;list&gt;</span></span>
+<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a><span class="co">#&gt; 1:             TRUE</span></span>
+<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a><span class="co">#&gt; 2:             warn</span></span>
+<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a><span class="co">#&gt; 3:                1</span></span>
+<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a><span class="co">#&gt; 4:             TRUE</span></span>
+<span id="cb15-27"><a href="#cb15-27" tabindex="-1"></a><span class="co">#&gt; 5:            FALSE</span></span>
+<span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a><span class="co">#&gt; 6: warmstart</span></span></code></pre></div>
 <p><code>catch_errors = TRUE</code> results in catching any errors that
 can happen during the acquisition function optimization which allows
 for, e.g., proposing the next candidate uniformly at random within the
@@ -736,9 +772,11 @@ which will directly choose the final solution based on the evaluations
 logged in the <code>archive</code>. To get an overview of available
 result assigners, the following dictionary can be inspected:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">as.data.table</span>(mlr_result_assigners)</span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="co">#&gt;          key                     label                                     man</span></span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="co">#&gt; 1:   archive                   Archive   mlr3mbo::mlr_result_assigners_archive</span></span>
-<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="co">#&gt; 2: surrogate Mean Surrogate Prediction mlr3mbo::mlr_result_assigners_surrogate</span></span></code></pre></div>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="co">#&gt; Key: &lt;key&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="co">#&gt;          key                     label                                     man</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="co">#&gt;       &lt;char&gt;                    &lt;char&gt;                                  &lt;char&gt;</span></span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="co">#&gt; 1:   archive                   Archive   mlr3mbo::mlr_result_assigners_archive</span></span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="co">#&gt; 2: surrogate Mean Surrogate Prediction mlr3mbo::mlr_result_assigners_surrogate</span></span></code></pre></div>
 <p>The dictionary shows the <code>key</code>, i.e., ID of the result
 assigner, a brief description, and how the documentation can be
 accessed.</p>
@@ -835,7 +873,7 @@ handled appropriately within the <a href="https://mlr3mbo.mlr-org.com/reference/
 <span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a>  }, <span class="at">mbo_error =</span> <span class="cf">function</span>(mbo_error_condition) {</span>
 <span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a>    lg<span class="sc">$</span><span class="fu">info</span>(<span class="fu">paste0</span>(<span class="fu">class</span>(mbo_error_condition), <span class="at">collapse =</span> <span class="st">&quot; / &quot;</span>))</span>
 <span id="cb25-11"><a href="#cb25-11" tabindex="-1"></a>    lg<span class="sc">$</span><span class="fu">info</span>(<span class="st">&quot;Proposing a randomly sampled point&quot;</span>)</span>
-<span id="cb25-12"><a href="#cb25-12" tabindex="-1"></a>    SamplerUnif<span class="sc">$</span><span class="fu">new</span>(domain)<span class="sc">$</span><span class="fu">sample</span>(1L)<span class="sc">$</span>data</span>
+<span id="cb25-12"><a href="#cb25-12" tabindex="-1"></a>    SamplerUnif<span class="sc">$</span><span class="fu">new</span>(domain)<span class="sc">$</span><span class="fu">sample</span>(<span class="dv">1</span><span class="dt">L</span>)<span class="sc">$</span>data</span>
 <span id="cb25-13"><a href="#cb25-13" tabindex="-1"></a>  })</span>
 <span id="cb25-14"><a href="#cb25-14" tabindex="-1"></a>  .</span>
 <span id="cb25-15"><a href="#cb25-15" tabindex="-1"></a>  .</span>
@@ -875,63 +913,61 @@ Process fails due to data points being too close to each other:</p>
 <span id="cb26-18"><a href="#cb26-18" tabindex="-1"></a></span>
 <span id="cb26-19"><a href="#cb26-19" tabindex="-1"></a>initial_design <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">4</span>))</span>
 <span id="cb26-20"><a href="#cb26-20" tabindex="-1"></a>instance<span class="sc">$</span><span class="fu">eval_batch</span>(initial_design)</span>
-<span id="cb26-21"><a href="#cb26-21" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:27.780] [bbotk] Evaluating 4 configuration(s)</span></span>
-<span id="cb26-22"><a href="#cb26-22" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:27.816] [bbotk] Result of batch 1:</span></span>
-<span id="cb26-23"><a href="#cb26-23" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:27.823] [bbotk]  x y</span></span>
-<span id="cb26-24"><a href="#cb26-24" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:27.823] [bbotk]  1 1</span></span>
-<span id="cb26-25"><a href="#cb26-25" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:27.823] [bbotk]  1 1</span></span>
-<span id="cb26-26"><a href="#cb26-26" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:27.823] [bbotk]  1 1</span></span>
-<span id="cb26-27"><a href="#cb26-27" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:27.823] [bbotk]  1 1</span></span>
+<span id="cb26-21"><a href="#cb26-21" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:00.984] [bbotk] Evaluating 4 configuration(s)</span></span>
+<span id="cb26-22"><a href="#cb26-22" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.024] [bbotk] Result of batch 1:</span></span>
+<span id="cb26-23"><a href="#cb26-23" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.032] [bbotk]  x y</span></span>
+<span id="cb26-24"><a href="#cb26-24" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.032] [bbotk]  1 1</span></span>
+<span id="cb26-25"><a href="#cb26-25" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.032] [bbotk]  1 1</span></span>
+<span id="cb26-26"><a href="#cb26-26" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.032] [bbotk]  1 1</span></span>
+<span id="cb26-27"><a href="#cb26-27" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.032] [bbotk]  1 1</span></span>
 <span id="cb26-28"><a href="#cb26-28" tabindex="-1"></a></span>
-<span id="cb26-29"><a href="#cb26-29" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">lrn</span>(<span class="st">&quot;regr.km&quot;</span>,</span>
-<span id="cb26-30"><a href="#cb26-30" tabindex="-1"></a>  <span class="at">covtype =</span> <span class="st">&quot;matern3_2&quot;</span>,</span>
-<span id="cb26-31"><a href="#cb26-31" tabindex="-1"></a>  <span class="at">optim.method =</span> <span class="st">&quot;gen&quot;</span>,</span>
-<span id="cb26-32"><a href="#cb26-32" tabindex="-1"></a>  <span class="at">nugget.stability =</span> <span class="dv">10</span><span class="sc">^-</span><span class="dv">8</span>,</span>
-<span id="cb26-33"><a href="#cb26-33" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">list</span>(<span class="at">trace =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb26-34"><a href="#cb26-34" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;ei&quot;</span>)</span>
-<span id="cb26-35"><a href="#cb26-35" tabindex="-1"></a>acq_optimizer <span class="ot">=</span> <span class="fu">acqo</span>(<span class="fu">opt</span>(<span class="st">&quot;random_search&quot;</span>, <span class="at">batch_size =</span> <span class="dv">1000</span>),</span>
-<span id="cb26-36"><a href="#cb26-36" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;evals&quot;</span>, <span class="at">n_evals =</span> <span class="dv">1000</span>))</span>
-<span id="cb26-37"><a href="#cb26-37" tabindex="-1"></a>optimizer <span class="ot">=</span> <span class="fu">opt</span>(<span class="st">&quot;mbo&quot;</span>,</span>
-<span id="cb26-38"><a href="#cb26-38" tabindex="-1"></a>  <span class="at">loop_function =</span> bayesopt_ego,</span>
-<span id="cb26-39"><a href="#cb26-39" tabindex="-1"></a>  <span class="at">surrogate =</span> surrogate,</span>
-<span id="cb26-40"><a href="#cb26-40" tabindex="-1"></a>  <span class="at">acq_function =</span> acq_function,</span>
-<span id="cb26-41"><a href="#cb26-41" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
-<span id="cb26-42"><a href="#cb26-42" tabindex="-1"></a></span>
-<span id="cb26-43"><a href="#cb26-43" tabindex="-1"></a>optimizer<span class="sc">$</span><span class="fu">optimize</span>(instance)</span>
-<span id="cb26-44"><a href="#cb26-44" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:27.948] [bbotk] Starting to optimize 1 parameter(s) with &#39;&lt;OptimizerMbo&gt;&#39; and &#39;&lt;TerminatorEvals&gt; [n_evals=10, k=0]&#39;</span></span>
-<span id="cb26-45"><a href="#cb26-45" tabindex="-1"></a><span class="co">#&gt; WARN  [11:13:27.994] [bbotk] missing value where TRUE/FALSE needed</span></span>
-<span id="cb26-46"><a href="#cb26-46" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:27.995] [bbotk] surrogate_update_error / mbo_error / error / condition</span></span>
-<span id="cb26-47"><a href="#cb26-47" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.002] [bbotk] Proposing a randomly sampled point</span></span>
-<span id="cb26-48"><a href="#cb26-48" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.011] [bbotk] Evaluating 1 configuration(s)</span></span>
-<span id="cb26-49"><a href="#cb26-49" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.014] [bbotk] Result of batch 2:</span></span>
-<span id="cb26-50"><a href="#cb26-50" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.015] [bbotk]          x         y</span></span>
-<span id="cb26-51"><a href="#cb26-51" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.015] [bbotk]  0.6742299 0.4545859</span></span>
-<span id="cb26-52"><a href="#cb26-52" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.270] [bbotk] Evaluating 1 configuration(s)</span></span>
-<span id="cb26-53"><a href="#cb26-53" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.274] [bbotk] Result of batch 3:</span></span>
-<span id="cb26-54"><a href="#cb26-54" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.275] [bbotk]          x  x_domain     acq_ei .already_evaluated         y</span></span>
-<span id="cb26-55"><a href="#cb26-55" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.275] [bbotk]  0.6686506 &lt;list[1]&gt; 0.04353973              FALSE 0.4470936</span></span>
-<span id="cb26-56"><a href="#cb26-56" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.566] [bbotk] Evaluating 1 configuration(s)</span></span>
-<span id="cb26-57"><a href="#cb26-57" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.570] [bbotk] Result of batch 4:</span></span>
-<span id="cb26-58"><a href="#cb26-58" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.571] [bbotk]          x  x_domain    acq_ei .already_evaluated         y</span></span>
-<span id="cb26-59"><a href="#cb26-59" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.571] [bbotk]  0.4553257 &lt;list[1]&gt; 0.0848473              FALSE 0.2073215</span></span>
-<span id="cb26-60"><a href="#cb26-60" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.807] [bbotk] Evaluating 1 configuration(s)</span></span>
-<span id="cb26-61"><a href="#cb26-61" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.811] [bbotk] Result of batch 5:</span></span>
-<span id="cb26-62"><a href="#cb26-62" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.812] [bbotk]          x  x_domain    acq_ei .already_evaluated          y</span></span>
-<span id="cb26-63"><a href="#cb26-63" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:28.812] [bbotk]  -0.242293 &lt;list[1]&gt; 0.1899698              FALSE 0.05870589</span></span>
-<span id="cb26-64"><a href="#cb26-64" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.035] [bbotk] Evaluating 1 configuration(s)</span></span>
-<span id="cb26-65"><a href="#cb26-65" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.039] [bbotk] Result of batch 6:</span></span>
-<span id="cb26-66"><a href="#cb26-66" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.040] [bbotk]          x  x_domain     acq_ei .already_evaluated         y</span></span>
-<span id="cb26-67"><a href="#cb26-67" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.040] [bbotk]  -0.998351 &lt;list[1]&gt; 0.09128581              FALSE 0.9967047</span></span>
-<span id="cb26-68"><a href="#cb26-68" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.272] [bbotk] Evaluating 1 configuration(s)</span></span>
-<span id="cb26-69"><a href="#cb26-69" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.275] [bbotk] Result of batch 7:</span></span>
-<span id="cb26-70"><a href="#cb26-70" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.277] [bbotk]           x  x_domain     acq_ei .already_evaluated            y</span></span>
-<span id="cb26-71"><a href="#cb26-71" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.277] [bbotk]  0.01617037 &lt;list[1]&gt; 0.09341134              FALSE 0.0002614808</span></span>
-<span id="cb26-72"><a href="#cb26-72" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.280] [bbotk] Finished optimizing after 10 evaluation(s)</span></span>
-<span id="cb26-73"><a href="#cb26-73" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.284] [bbotk] Result:</span></span>
-<span id="cb26-74"><a href="#cb26-74" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.285] [bbotk]           x  x_domain            y</span></span>
-<span id="cb26-75"><a href="#cb26-75" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.285] [bbotk]  0.01617037 &lt;list[1]&gt; 0.0002614808</span></span>
-<span id="cb26-76"><a href="#cb26-76" tabindex="-1"></a><span class="co">#&gt;             x  x_domain            y</span></span>
-<span id="cb26-77"><a href="#cb26-77" tabindex="-1"></a><span class="co">#&gt; 1: 0.01617037 &lt;list[1]&gt; 0.0002614808</span></span></code></pre></div>
+<span id="cb26-29"><a href="#cb26-29" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">default_gp</span>())</span>
+<span id="cb26-30"><a href="#cb26-30" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;ei&quot;</span>)</span>
+<span id="cb26-31"><a href="#cb26-31" tabindex="-1"></a>acq_optimizer <span class="ot">=</span> <span class="fu">acqo</span>(<span class="fu">opt</span>(<span class="st">&quot;random_search&quot;</span>, <span class="at">batch_size =</span> <span class="dv">1000</span>),</span>
+<span id="cb26-32"><a href="#cb26-32" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;evals&quot;</span>, <span class="at">n_evals =</span> <span class="dv">1000</span>))</span>
+<span id="cb26-33"><a href="#cb26-33" tabindex="-1"></a>optimizer <span class="ot">=</span> <span class="fu">opt</span>(<span class="st">&quot;mbo&quot;</span>,</span>
+<span id="cb26-34"><a href="#cb26-34" tabindex="-1"></a>  <span class="at">loop_function =</span> bayesopt_ego,</span>
+<span id="cb26-35"><a href="#cb26-35" tabindex="-1"></a>  <span class="at">surrogate =</span> surrogate,</span>
+<span id="cb26-36"><a href="#cb26-36" tabindex="-1"></a>  <span class="at">acq_function =</span> acq_function,</span>
+<span id="cb26-37"><a href="#cb26-37" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
+<span id="cb26-38"><a href="#cb26-38" tabindex="-1"></a></span>
+<span id="cb26-39"><a href="#cb26-39" tabindex="-1"></a>optimizer<span class="sc">$</span><span class="fu">optimize</span>(instance)</span>
+<span id="cb26-40"><a href="#cb26-40" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.178] [bbotk] Starting to optimize 1 parameter(s) with &#39;&lt;OptimizerMbo&gt;&#39; and &#39;&lt;TerminatorEvals&gt; [n_evals=10, k=0]&#39;</span></span>
+<span id="cb26-41"><a href="#cb26-41" tabindex="-1"></a><span class="co">#&gt; WARN  [19:58:01.234] [bbotk] missing value where TRUE/FALSE needed</span></span>
+<span id="cb26-42"><a href="#cb26-42" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.235] [bbotk] surrogate_update_error / mbo_error / error / condition</span></span>
+<span id="cb26-43"><a href="#cb26-43" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.236] [bbotk] Proposing a randomly sampled point</span></span>
+<span id="cb26-44"><a href="#cb26-44" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.245] [bbotk] Evaluating 1 configuration(s)</span></span>
+<span id="cb26-45"><a href="#cb26-45" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.249] [bbotk] Result of batch 2:</span></span>
+<span id="cb26-46"><a href="#cb26-46" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.250] [bbotk]          x         y</span></span>
+<span id="cb26-47"><a href="#cb26-47" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.250] [bbotk]  0.6742299 0.4545859</span></span>
+<span id="cb26-48"><a href="#cb26-48" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.487] [bbotk] Evaluating 1 configuration(s)</span></span>
+<span id="cb26-49"><a href="#cb26-49" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.491] [bbotk] Result of batch 3:</span></span>
+<span id="cb26-50"><a href="#cb26-50" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.493] [bbotk]          x  x_domain     acq_ei .already_evaluated         y</span></span>
+<span id="cb26-51"><a href="#cb26-51" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.493] [bbotk]  0.6686506 &lt;list[1]&gt; 0.04358139              FALSE 0.4470936</span></span>
+<span id="cb26-52"><a href="#cb26-52" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.821] [bbotk] Evaluating 1 configuration(s)</span></span>
+<span id="cb26-53"><a href="#cb26-53" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.826] [bbotk] Result of batch 4:</span></span>
+<span id="cb26-54"><a href="#cb26-54" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.828] [bbotk]          x  x_domain    acq_ei .already_evaluated         y</span></span>
+<span id="cb26-55"><a href="#cb26-55" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:01.828] [bbotk]  0.3883431 &lt;list[1]&gt; 0.1264502              FALSE 0.1508104</span></span>
+<span id="cb26-56"><a href="#cb26-56" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.111] [bbotk] Evaluating 1 configuration(s)</span></span>
+<span id="cb26-57"><a href="#cb26-57" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.117] [bbotk] Result of batch 5:</span></span>
+<span id="cb26-58"><a href="#cb26-58" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.120] [bbotk]           x  x_domain    acq_ei .already_evaluated         y</span></span>
+<span id="cb26-59"><a href="#cb26-59" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.120] [bbotk]  -0.5325387 &lt;list[1]&gt; 0.2231668              FALSE 0.2835975</span></span>
+<span id="cb26-60"><a href="#cb26-60" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.406] [bbotk] Evaluating 1 configuration(s)</span></span>
+<span id="cb26-61"><a href="#cb26-61" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.410] [bbotk] Result of batch 6:</span></span>
+<span id="cb26-62"><a href="#cb26-62" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.412] [bbotk]           x  x_domain    acq_ei .already_evaluated           y</span></span>
+<span id="cb26-63"><a href="#cb26-63" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.412] [bbotk]  0.04818857 &lt;list[1]&gt; 0.1256542              FALSE 0.002322138</span></span>
+<span id="cb26-64"><a href="#cb26-64" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.678] [bbotk] Evaluating 1 configuration(s)</span></span>
+<span id="cb26-65"><a href="#cb26-65" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.681] [bbotk] Result of batch 7:</span></span>
+<span id="cb26-66"><a href="#cb26-66" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.684] [bbotk]            x  x_domain      acq_ei .already_evaluated            y</span></span>
+<span id="cb26-67"><a href="#cb26-67" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.684] [bbotk]  -0.01951836 &lt;list[1]&gt; 0.002040261              FALSE 0.0003809664</span></span>
+<span id="cb26-68"><a href="#cb26-68" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.732] [bbotk] Finished optimizing after 10 evaluation(s)</span></span>
+<span id="cb26-69"><a href="#cb26-69" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.733] [bbotk] Result:</span></span>
+<span id="cb26-70"><a href="#cb26-70" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.734] [bbotk]            x  x_domain            y</span></span>
+<span id="cb26-71"><a href="#cb26-71" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.734] [bbotk]        &lt;num&gt;    &lt;list&gt;        &lt;num&gt;</span></span>
+<span id="cb26-72"><a href="#cb26-72" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.734] [bbotk]  -0.01951836 &lt;list[1]&gt; 0.0003809664</span></span>
+<span id="cb26-73"><a href="#cb26-73" tabindex="-1"></a><span class="co">#&gt;              x  x_domain            y</span></span>
+<span id="cb26-74"><a href="#cb26-74" tabindex="-1"></a><span class="co">#&gt;          &lt;num&gt;    &lt;list&gt;        &lt;num&gt;</span></span>
+<span id="cb26-75"><a href="#cb26-75" tabindex="-1"></a><span class="co">#&gt; 1: -0.01951836 &lt;list[1]&gt; 0.0003809664</span></span></code></pre></div>
 <p>The log tells us that an error happened and was caught:
 <code>&quot;surrogate_update_error / mbo_error / error / condition&quot;</code>.
 We also see in the <code>archive</code> that the first candidate after
@@ -939,44 +975,46 @@ the initial design (the fifth point) was not proposed based on
 optimizing the acquisition function (because the <code>&quot;acq_ei&quot;</code>
 column is NA here):</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>instance<span class="sc">$</span>archive<span class="sc">$</span>data</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="co">#&gt;               x            y  x_domain           timestamp batch_nr     acq_ei</span></span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="co">#&gt;  1:  1.00000000 1.0000000000 &lt;list[1]&gt; 2023-06-05 11:13:27        1         NA</span></span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="co">#&gt;  2:  1.00000000 1.0000000000 &lt;list[1]&gt; 2023-06-05 11:13:27        1         NA</span></span>
-<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="co">#&gt;  3:  1.00000000 1.0000000000 &lt;list[1]&gt; 2023-06-05 11:13:27        1         NA</span></span>
-<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="co">#&gt;  4:  1.00000000 1.0000000000 &lt;list[1]&gt; 2023-06-05 11:13:27        1         NA</span></span>
-<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a><span class="co">#&gt;  5:  0.67422986 0.4545859064 &lt;list[1]&gt; 2023-06-05 11:13:28        2         NA</span></span>
-<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a><span class="co">#&gt;  6:  0.66865060 0.4470936288 &lt;list[1]&gt; 2023-06-05 11:13:28        3 0.04353973</span></span>
-<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a><span class="co">#&gt;  7:  0.45532567 0.2073214654 &lt;list[1]&gt; 2023-06-05 11:13:28        4 0.08484730</span></span>
-<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a><span class="co">#&gt;  8: -0.24229299 0.0587058937 &lt;list[1]&gt; 2023-06-05 11:13:28        5 0.18996976</span></span>
-<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a><span class="co">#&gt;  9: -0.99835097 0.9967046528 &lt;list[1]&gt; 2023-06-05 11:13:29        6 0.09128581</span></span>
-<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a><span class="co">#&gt; 10:  0.01617037 0.0002614808 &lt;list[1]&gt; 2023-06-05 11:13:29        7 0.09341134</span></span>
-<span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a><span class="co">#&gt;     .already_evaluated</span></span>
-<span id="cb27-14"><a href="#cb27-14" tabindex="-1"></a><span class="co">#&gt;  1:                 NA</span></span>
-<span id="cb27-15"><a href="#cb27-15" tabindex="-1"></a><span class="co">#&gt;  2:                 NA</span></span>
-<span id="cb27-16"><a href="#cb27-16" tabindex="-1"></a><span class="co">#&gt;  3:                 NA</span></span>
-<span id="cb27-17"><a href="#cb27-17" tabindex="-1"></a><span class="co">#&gt;  4:                 NA</span></span>
-<span id="cb27-18"><a href="#cb27-18" tabindex="-1"></a><span class="co">#&gt;  5:                 NA</span></span>
-<span id="cb27-19"><a href="#cb27-19" tabindex="-1"></a><span class="co">#&gt;  6:              FALSE</span></span>
-<span id="cb27-20"><a href="#cb27-20" tabindex="-1"></a><span class="co">#&gt;  7:              FALSE</span></span>
-<span id="cb27-21"><a href="#cb27-21" tabindex="-1"></a><span class="co">#&gt;  8:              FALSE</span></span>
-<span id="cb27-22"><a href="#cb27-22" tabindex="-1"></a><span class="co">#&gt;  9:              FALSE</span></span>
-<span id="cb27-23"><a href="#cb27-23" tabindex="-1"></a><span class="co">#&gt; 10:              FALSE</span></span></code></pre></div>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="co">#&gt;               x            y  x_domain           timestamp batch_nr      acq_ei</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="co">#&gt;           &lt;num&gt;        &lt;num&gt;    &lt;list&gt;              &lt;POSc&gt;    &lt;int&gt;       &lt;num&gt;</span></span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="co">#&gt;  1:  1.00000000 1.0000000000 &lt;list[1]&gt; 2024-03-01 19:58:00        1          NA</span></span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="co">#&gt;  2:  1.00000000 1.0000000000 &lt;list[1]&gt; 2024-03-01 19:58:00        1          NA</span></span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="co">#&gt;  3:  1.00000000 1.0000000000 &lt;list[1]&gt; 2024-03-01 19:58:00        1          NA</span></span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a><span class="co">#&gt;  4:  1.00000000 1.0000000000 &lt;list[1]&gt; 2024-03-01 19:58:00        1          NA</span></span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a><span class="co">#&gt;  5:  0.67422986 0.4545859064 &lt;list[1]&gt; 2024-03-01 19:58:01        2          NA</span></span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a><span class="co">#&gt;  6:  0.66865060 0.4470936288 &lt;list[1]&gt; 2024-03-01 19:58:01        3 0.043581388</span></span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a><span class="co">#&gt;  7:  0.38834314 0.1508103944 &lt;list[1]&gt; 2024-03-01 19:58:01        4 0.126450229</span></span>
+<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a><span class="co">#&gt;  8: -0.53253872 0.2835974922 &lt;list[1]&gt; 2024-03-01 19:58:02        5 0.223166768</span></span>
+<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a><span class="co">#&gt;  9:  0.04818857 0.0023221379 &lt;list[1]&gt; 2024-03-01 19:58:02        6 0.125654216</span></span>
+<span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a><span class="co">#&gt; 10: -0.01951836 0.0003809664 &lt;list[1]&gt; 2024-03-01 19:58:02        7 0.002040261</span></span>
+<span id="cb27-14"><a href="#cb27-14" tabindex="-1"></a><span class="co">#&gt;     .already_evaluated</span></span>
+<span id="cb27-15"><a href="#cb27-15" tabindex="-1"></a><span class="co">#&gt;                 &lt;lgcl&gt;</span></span>
+<span id="cb27-16"><a href="#cb27-16" tabindex="-1"></a><span class="co">#&gt;  1:                 NA</span></span>
+<span id="cb27-17"><a href="#cb27-17" tabindex="-1"></a><span class="co">#&gt;  2:                 NA</span></span>
+<span id="cb27-18"><a href="#cb27-18" tabindex="-1"></a><span class="co">#&gt;  3:                 NA</span></span>
+<span id="cb27-19"><a href="#cb27-19" tabindex="-1"></a><span class="co">#&gt;  4:                 NA</span></span>
+<span id="cb27-20"><a href="#cb27-20" tabindex="-1"></a><span class="co">#&gt;  5:                 NA</span></span>
+<span id="cb27-21"><a href="#cb27-21" tabindex="-1"></a><span class="co">#&gt;  6:              FALSE</span></span>
+<span id="cb27-22"><a href="#cb27-22" tabindex="-1"></a><span class="co">#&gt;  7:              FALSE</span></span>
+<span id="cb27-23"><a href="#cb27-23" tabindex="-1"></a><span class="co">#&gt;  8:              FALSE</span></span>
+<span id="cb27-24"><a href="#cb27-24" tabindex="-1"></a><span class="co">#&gt;  9:              FALSE</span></span>
+<span id="cb27-25"><a href="#cb27-25" tabindex="-1"></a><span class="co">#&gt; 10:              FALSE</span></span></code></pre></div>
 <p>Nevertheless, due to the safety net, the BO loop eventually worked
 just fine and did not simply throw an error.</p>
 <p>If we set <code>catch_errors = FALSE</code> within the surrogate, we
 see that the error was indeed caused by the surrogate:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>instance<span class="sc">$</span>archive<span class="sc">$</span><span class="fu">clear</span>()</span>
 <span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>instance<span class="sc">$</span><span class="fu">eval_batch</span>(initial_design)</span>
-<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.304] [bbotk] Evaluating 4 configuration(s)</span></span>
-<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.310] [bbotk] Result of batch 1:</span></span>
-<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.311] [bbotk]  x y</span></span>
-<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.311] [bbotk]  1 1</span></span>
-<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.311] [bbotk]  1 1</span></span>
-<span id="cb28-8"><a href="#cb28-8" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.311] [bbotk]  1 1</span></span>
-<span id="cb28-9"><a href="#cb28-9" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.311] [bbotk]  1 1</span></span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.756] [bbotk] Evaluating 4 configuration(s)</span></span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.761] [bbotk] Result of batch 1:</span></span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.763] [bbotk]  x y</span></span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.763] [bbotk]  1 1</span></span>
+<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.763] [bbotk]  1 1</span></span>
+<span id="cb28-8"><a href="#cb28-8" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.763] [bbotk]  1 1</span></span>
+<span id="cb28-9"><a href="#cb28-9" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.763] [bbotk]  1 1</span></span>
 <span id="cb28-10"><a href="#cb28-10" tabindex="-1"></a>optimizer<span class="sc">$</span>surrogate<span class="sc">$</span>param_set<span class="sc">$</span>values<span class="sc">$</span>catch_errors <span class="ot">=</span> <span class="cn">FALSE</span></span>
 <span id="cb28-11"><a href="#cb28-11" tabindex="-1"></a>optimizer<span class="sc">$</span><span class="fu">optimize</span>(instance)</span>
-<span id="cb28-12"><a href="#cb28-12" tabindex="-1"></a><span class="co">#&gt; INFO  [11:13:29.315] [bbotk] Starting to optimize 1 parameter(s) with &#39;&lt;OptimizerMbo&gt;&#39; and &#39;&lt;TerminatorEvals&gt; [n_evals=10, k=0]&#39;</span></span>
+<span id="cb28-12"><a href="#cb28-12" tabindex="-1"></a><span class="co">#&gt; INFO  [19:58:02.767] [bbotk] Starting to optimize 1 parameter(s) with &#39;&lt;OptimizerMbo&gt;&#39; and &#39;&lt;TerminatorEvals&gt; [n_evals=10, k=0]&#39;</span></span>
 <span id="cb28-13"><a href="#cb28-13" tabindex="-1"></a><span class="co">#&gt; Error in if (varinit.vario &lt;= 1e-20) varinit.vario &lt;- 1/2 * varinit.vario.total: missing value where TRUE/FALSE needed</span></span></code></pre></div>
 <p>In case of the error belonging to the
 <code>acq_optimizer_error</code> class, it is helpful to increase the
@@ -1048,21 +1086,18 @@ following:</p>
 <span id="cb31-16"><a href="#cb31-16" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;evals&quot;</span>, <span class="at">n_evals =</span> <span class="dv">60</span>))</span>
 <span id="cb31-17"><a href="#cb31-17" tabindex="-1"></a></span>
 <span id="cb31-18"><a href="#cb31-18" tabindex="-1"></a><span class="co"># Gaussian Process, EI, DIRECT</span></span>
-<span id="cb31-19"><a href="#cb31-19" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">lrn</span>(<span class="st">&quot;regr.km&quot;</span>,</span>
-<span id="cb31-20"><a href="#cb31-20" tabindex="-1"></a>  <span class="at">covtype =</span> <span class="st">&quot;matern3_2&quot;</span>,</span>
-<span id="cb31-21"><a href="#cb31-21" tabindex="-1"></a>  <span class="at">optim.method =</span> <span class="st">&quot;gen&quot;</span>,</span>
-<span id="cb31-22"><a href="#cb31-22" tabindex="-1"></a>  <span class="at">nugget.stability =</span> <span class="dv">10</span><span class="sc">^-</span><span class="dv">8</span>, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">trace =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb31-23"><a href="#cb31-23" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;ei&quot;</span>)</span>
-<span id="cb31-24"><a href="#cb31-24" tabindex="-1"></a>acq_optimizer <span class="ot">=</span> <span class="fu">acqo</span>(<span class="fu">opt</span>(<span class="st">&quot;nloptr&quot;</span>, <span class="at">algorithm =</span> <span class="st">&quot;NLOPT_GN_DIRECT_L&quot;</span>),</span>
-<span id="cb31-25"><a href="#cb31-25" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;stagnation&quot;</span>, <span class="at">threshold =</span> <span class="fl">1e-8</span>))</span>
-<span id="cb31-26"><a href="#cb31-26" tabindex="-1"></a>optimizer <span class="ot">=</span> <span class="fu">opt</span>(<span class="st">&quot;mbo&quot;</span>,</span>
-<span id="cb31-27"><a href="#cb31-27" tabindex="-1"></a>  <span class="at">loop_function =</span> bayesopt_ego,</span>
-<span id="cb31-28"><a href="#cb31-28" tabindex="-1"></a>  <span class="at">surrogate =</span> surrogate,</span>
-<span id="cb31-29"><a href="#cb31-29" tabindex="-1"></a>  <span class="at">acq_function =</span> acq_function,</span>
-<span id="cb31-30"><a href="#cb31-30" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
-<span id="cb31-31"><a href="#cb31-31" tabindex="-1"></a></span>
-<span id="cb31-32"><a href="#cb31-32" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2906</span>)</span>
-<span id="cb31-33"><a href="#cb31-33" tabindex="-1"></a>optimizer<span class="sc">$</span><span class="fu">optimize</span>(instance)</span></code></pre></div>
+<span id="cb31-19"><a href="#cb31-19" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">default_gp</span>())</span>
+<span id="cb31-20"><a href="#cb31-20" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;ei&quot;</span>)</span>
+<span id="cb31-21"><a href="#cb31-21" tabindex="-1"></a>acq_optimizer <span class="ot">=</span> <span class="fu">acqo</span>(<span class="fu">opt</span>(<span class="st">&quot;nloptr&quot;</span>, <span class="at">algorithm =</span> <span class="st">&quot;NLOPT_GN_DIRECT_L&quot;</span>),</span>
+<span id="cb31-22"><a href="#cb31-22" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;stagnation&quot;</span>, <span class="at">threshold =</span> <span class="fl">1e-8</span>))</span>
+<span id="cb31-23"><a href="#cb31-23" tabindex="-1"></a>optimizer <span class="ot">=</span> <span class="fu">opt</span>(<span class="st">&quot;mbo&quot;</span>,</span>
+<span id="cb31-24"><a href="#cb31-24" tabindex="-1"></a>  <span class="at">loop_function =</span> bayesopt_ego,</span>
+<span id="cb31-25"><a href="#cb31-25" tabindex="-1"></a>  <span class="at">surrogate =</span> surrogate,</span>
+<span id="cb31-26"><a href="#cb31-26" tabindex="-1"></a>  <span class="at">acq_function =</span> acq_function,</span>
+<span id="cb31-27"><a href="#cb31-27" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
+<span id="cb31-28"><a href="#cb31-28" tabindex="-1"></a></span>
+<span id="cb31-29"><a href="#cb31-29" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2906</span>)</span>
+<span id="cb31-30"><a href="#cb31-30" tabindex="-1"></a>optimizer<span class="sc">$</span><span class="fu">optimize</span>(instance)</span></code></pre></div>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> batch_nr, <span class="at">y =</span> <span class="fu">cummin</span>(y)), <span class="at">data =</span> instance<span class="sc">$</span>archive<span class="sc">$</span>data) <span class="sc">+</span></span>
@@ -1099,22 +1134,18 @@ following:</p>
 <span id="cb34-15"><a href="#cb34-15" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;evals&quot;</span>, <span class="at">n_evals =</span> <span class="dv">30</span>))</span>
 <span id="cb34-16"><a href="#cb34-16" tabindex="-1"></a></span>
 <span id="cb34-17"><a href="#cb34-17" tabindex="-1"></a><span class="co"># Gaussian Process, EI, DIRECT</span></span>
-<span id="cb34-18"><a href="#cb34-18" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">lrn</span>(<span class="st">&quot;regr.km&quot;</span>,</span>
-<span id="cb34-19"><a href="#cb34-19" tabindex="-1"></a>  <span class="at">covtype =</span> <span class="st">&quot;matern3_2&quot;</span>,</span>
-<span id="cb34-20"><a href="#cb34-20" tabindex="-1"></a>  <span class="at">optim.method =</span> <span class="st">&quot;gen&quot;</span>,</span>
-<span id="cb34-21"><a href="#cb34-21" tabindex="-1"></a>  <span class="at">nugget.stability =</span> <span class="dv">10</span><span class="sc">^-</span><span class="dv">8</span>,</span>
-<span id="cb34-22"><a href="#cb34-22" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">list</span>(<span class="at">trace =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb34-23"><a href="#cb34-23" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;ei&quot;</span>)</span>
-<span id="cb34-24"><a href="#cb34-24" tabindex="-1"></a>acq_optimizer <span class="ot">=</span> <span class="fu">acqo</span>(<span class="fu">opt</span>(<span class="st">&quot;nloptr&quot;</span>, <span class="at">algorithm =</span> <span class="st">&quot;NLOPT_GN_DIRECT_L&quot;</span>),</span>
-<span id="cb34-25"><a href="#cb34-25" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;stagnation&quot;</span>, <span class="at">threshold =</span> <span class="fl">1e-8</span>))</span>
-<span id="cb34-26"><a href="#cb34-26" tabindex="-1"></a>optimizer <span class="ot">=</span> <span class="fu">opt</span>(<span class="st">&quot;mbo&quot;</span>,</span>
-<span id="cb34-27"><a href="#cb34-27" tabindex="-1"></a>  <span class="at">loop_function =</span> bayesopt_parego,</span>
-<span id="cb34-28"><a href="#cb34-28" tabindex="-1"></a>  <span class="at">surrogate =</span> surrogate,</span>
-<span id="cb34-29"><a href="#cb34-29" tabindex="-1"></a>  <span class="at">acq_function =</span> acq_function,</span>
-<span id="cb34-30"><a href="#cb34-30" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
-<span id="cb34-31"><a href="#cb34-31" tabindex="-1"></a></span>
-<span id="cb34-32"><a href="#cb34-32" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2906</span>)</span>
-<span id="cb34-33"><a href="#cb34-33" tabindex="-1"></a>optimizer<span class="sc">$</span><span class="fu">optimize</span>(instance)</span></code></pre></div>
+<span id="cb34-18"><a href="#cb34-18" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">default_gp</span>())</span>
+<span id="cb34-19"><a href="#cb34-19" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;ei&quot;</span>)</span>
+<span id="cb34-20"><a href="#cb34-20" tabindex="-1"></a>acq_optimizer <span class="ot">=</span> <span class="fu">acqo</span>(<span class="fu">opt</span>(<span class="st">&quot;nloptr&quot;</span>, <span class="at">algorithm =</span> <span class="st">&quot;NLOPT_GN_DIRECT_L&quot;</span>),</span>
+<span id="cb34-21"><a href="#cb34-21" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;stagnation&quot;</span>, <span class="at">threshold =</span> <span class="fl">1e-8</span>))</span>
+<span id="cb34-22"><a href="#cb34-22" tabindex="-1"></a>optimizer <span class="ot">=</span> <span class="fu">opt</span>(<span class="st">&quot;mbo&quot;</span>,</span>
+<span id="cb34-23"><a href="#cb34-23" tabindex="-1"></a>  <span class="at">loop_function =</span> bayesopt_parego,</span>
+<span id="cb34-24"><a href="#cb34-24" tabindex="-1"></a>  <span class="at">surrogate =</span> surrogate,</span>
+<span id="cb34-25"><a href="#cb34-25" tabindex="-1"></a>  <span class="at">acq_function =</span> acq_function,</span>
+<span id="cb34-26"><a href="#cb34-26" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
+<span id="cb34-27"><a href="#cb34-27" tabindex="-1"></a></span>
+<span id="cb34-28"><a href="#cb34-28" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2906</span>)</span>
+<span id="cb34-29"><a href="#cb34-29" tabindex="-1"></a>optimizer<span class="sc">$</span><span class="fu">optimize</span>(instance)</span></code></pre></div>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> y1, <span class="at">y =</span> y2), <span class="at">data =</span> instance<span class="sc">$</span>archive<span class="sc">$</span><span class="fu">best</span>()) <span class="sc">+</span></span>
 <span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
@@ -1152,24 +1183,20 @@ following:</p>
 <span id="cb37-15"><a href="#cb37-15" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;evals&quot;</span>, <span class="at">n_evals =</span> <span class="dv">30</span>))</span>
 <span id="cb37-16"><a href="#cb37-16" tabindex="-1"></a></span>
 <span id="cb37-17"><a href="#cb37-17" tabindex="-1"></a><span class="co"># Gaussian Processes, SMS-EGO, DIRECT</span></span>
-<span id="cb37-18"><a href="#cb37-18" tabindex="-1"></a>learner_y1 <span class="ot">=</span> <span class="fu">lrn</span>(<span class="st">&quot;regr.km&quot;</span>,</span>
-<span id="cb37-19"><a href="#cb37-19" tabindex="-1"></a>  <span class="at">covtype =</span> <span class="st">&quot;matern3_2&quot;</span>,</span>
-<span id="cb37-20"><a href="#cb37-20" tabindex="-1"></a>  <span class="at">optim.method =</span> <span class="st">&quot;gen&quot;</span>,</span>
-<span id="cb37-21"><a href="#cb37-21" tabindex="-1"></a>  <span class="at">nugget.stability =</span> <span class="dv">10</span><span class="sc">^-</span><span class="dv">8</span>,</span>
-<span id="cb37-22"><a href="#cb37-22" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">list</span>(<span class="at">trace =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb37-23"><a href="#cb37-23" tabindex="-1"></a>learner_y2 <span class="ot">=</span> learner_y1<span class="sc">$</span><span class="fu">clone</span>(<span class="at">deep =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb37-24"><a href="#cb37-24" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">list</span>(learner_y1, learner_y2))</span>
-<span id="cb37-25"><a href="#cb37-25" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;smsego&quot;</span>)</span>
-<span id="cb37-26"><a href="#cb37-26" tabindex="-1"></a>acq_optimizer <span class="ot">=</span> <span class="fu">acqo</span>(<span class="fu">opt</span>(<span class="st">&quot;nloptr&quot;</span>, <span class="at">algorithm =</span> <span class="st">&quot;NLOPT_GN_DIRECT_L&quot;</span>),</span>
-<span id="cb37-27"><a href="#cb37-27" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;stagnation&quot;</span>, <span class="at">threshold =</span> <span class="fl">1e-8</span>))</span>
-<span id="cb37-28"><a href="#cb37-28" tabindex="-1"></a>optimizer <span class="ot">=</span> <span class="fu">opt</span>(<span class="st">&quot;mbo&quot;</span>,</span>
-<span id="cb37-29"><a href="#cb37-29" tabindex="-1"></a>  <span class="at">loop_function =</span> bayesopt_smsego,</span>
-<span id="cb37-30"><a href="#cb37-30" tabindex="-1"></a>  <span class="at">surrogate =</span> surrogate,</span>
-<span id="cb37-31"><a href="#cb37-31" tabindex="-1"></a>  <span class="at">acq_function =</span> acq_function,</span>
-<span id="cb37-32"><a href="#cb37-32" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
-<span id="cb37-33"><a href="#cb37-33" tabindex="-1"></a></span>
-<span id="cb37-34"><a href="#cb37-34" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2906</span>)</span>
-<span id="cb37-35"><a href="#cb37-35" tabindex="-1"></a>optimizer<span class="sc">$</span><span class="fu">optimize</span>(instance)</span></code></pre></div>
+<span id="cb37-18"><a href="#cb37-18" tabindex="-1"></a>learner_y1 <span class="ot">=</span> <span class="fu">default_gp</span>()</span>
+<span id="cb37-19"><a href="#cb37-19" tabindex="-1"></a>learner_y2 <span class="ot">=</span> learner_y1<span class="sc">$</span><span class="fu">clone</span>(<span class="at">deep =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-20"><a href="#cb37-20" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">list</span>(learner_y1, learner_y2))</span>
+<span id="cb37-21"><a href="#cb37-21" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;smsego&quot;</span>)</span>
+<span id="cb37-22"><a href="#cb37-22" tabindex="-1"></a>acq_optimizer <span class="ot">=</span> <span class="fu">acqo</span>(<span class="fu">opt</span>(<span class="st">&quot;nloptr&quot;</span>, <span class="at">algorithm =</span> <span class="st">&quot;NLOPT_GN_DIRECT_L&quot;</span>),</span>
+<span id="cb37-23"><a href="#cb37-23" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;stagnation&quot;</span>, <span class="at">threshold =</span> <span class="fl">1e-8</span>))</span>
+<span id="cb37-24"><a href="#cb37-24" tabindex="-1"></a>optimizer <span class="ot">=</span> <span class="fu">opt</span>(<span class="st">&quot;mbo&quot;</span>,</span>
+<span id="cb37-25"><a href="#cb37-25" tabindex="-1"></a>  <span class="at">loop_function =</span> bayesopt_smsego,</span>
+<span id="cb37-26"><a href="#cb37-26" tabindex="-1"></a>  <span class="at">surrogate =</span> surrogate,</span>
+<span id="cb37-27"><a href="#cb37-27" tabindex="-1"></a>  <span class="at">acq_function =</span> acq_function,</span>
+<span id="cb37-28"><a href="#cb37-28" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
+<span id="cb37-29"><a href="#cb37-29" tabindex="-1"></a></span>
+<span id="cb37-30"><a href="#cb37-30" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2906</span>)</span>
+<span id="cb37-31"><a href="#cb37-31" tabindex="-1"></a>optimizer<span class="sc">$</span><span class="fu">optimize</span>(instance)</span></code></pre></div>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> y1, <span class="at">y =</span> y2), <span class="at">data =</span> instance<span class="sc">$</span>archive<span class="sc">$</span><span class="fu">best</span>()) <span class="sc">+</span></span>
 <span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
@@ -1206,24 +1233,19 @@ following:</p>
 <span id="cb40-16"><a href="#cb40-16" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;evals&quot;</span>, <span class="at">n_evals =</span> <span class="dv">30</span>))</span>
 <span id="cb40-17"><a href="#cb40-17" tabindex="-1"></a></span>
 <span id="cb40-18"><a href="#cb40-18" tabindex="-1"></a><span class="co"># Gaussian Process, EI, FocusSearch</span></span>
-<span id="cb40-19"><a href="#cb40-19" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">lrn</span>(<span class="st">&quot;regr.km&quot;</span>,</span>
-<span id="cb40-20"><a href="#cb40-20" tabindex="-1"></a>  <span class="at">covtype =</span> <span class="st">&quot;matern3_2&quot;</span>,</span>
-<span id="cb40-21"><a href="#cb40-21" tabindex="-1"></a>  <span class="at">optim.method =</span> <span class="st">&quot;gen&quot;</span>,</span>
-<span id="cb40-22"><a href="#cb40-22" tabindex="-1"></a>  <span class="at">nugget.estim =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb40-23"><a href="#cb40-23" tabindex="-1"></a>  <span class="at">jitter =</span> <span class="fl">1e-12</span>,</span>
-<span id="cb40-24"><a href="#cb40-24" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">list</span>(<span class="at">trace =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb40-25"><a href="#cb40-25" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;ei&quot;</span>)</span>
-<span id="cb40-26"><a href="#cb40-26" tabindex="-1"></a>acq_optimizer <span class="ot">=</span> <span class="fu">acqo</span>(<span class="fu">opt</span>(<span class="st">&quot;focus_search&quot;</span>, <span class="at">n_points =</span> 100L, <span class="at">maxit =</span> <span class="dv">9</span>),</span>
-<span id="cb40-27"><a href="#cb40-27" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;evals&quot;</span>, <span class="at">n_evals =</span> <span class="dv">3000</span>))</span>
-<span id="cb40-28"><a href="#cb40-28" tabindex="-1"></a>tuner <span class="ot">=</span> <span class="fu">tnr</span>(<span class="st">&quot;mbo&quot;</span>,</span>
-<span id="cb40-29"><a href="#cb40-29" tabindex="-1"></a>  <span class="at">loop_function =</span> bayesopt_ego,</span>
-<span id="cb40-30"><a href="#cb40-30" tabindex="-1"></a>  <span class="at">surrogate =</span> surrogate,</span>
-<span id="cb40-31"><a href="#cb40-31" tabindex="-1"></a>  <span class="at">acq_function =</span> acq_function,</span>
-<span id="cb40-32"><a href="#cb40-32" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
-<span id="cb40-33"><a href="#cb40-33" tabindex="-1"></a></span>
-<span id="cb40-34"><a href="#cb40-34" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2906</span>)</span>
-<span id="cb40-35"><a href="#cb40-35" tabindex="-1"></a>tuner<span class="sc">$</span><span class="fu">optimize</span>(instance)</span>
-<span id="cb40-36"><a href="#cb40-36" tabindex="-1"></a>instance<span class="sc">$</span>result</span></code></pre></div>
+<span id="cb40-19"><a href="#cb40-19" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">default_gp</span>(<span class="at">noisy =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb40-20"><a href="#cb40-20" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;ei&quot;</span>)</span>
+<span id="cb40-21"><a href="#cb40-21" tabindex="-1"></a>acq_optimizer <span class="ot">=</span> <span class="fu">acqo</span>(<span class="fu">opt</span>(<span class="st">&quot;focus_search&quot;</span>, <span class="at">n_points =</span> <span class="dv">100</span><span class="dt">L</span>, <span class="at">maxit =</span> <span class="dv">9</span>),</span>
+<span id="cb40-22"><a href="#cb40-22" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;evals&quot;</span>, <span class="at">n_evals =</span> <span class="dv">3000</span>))</span>
+<span id="cb40-23"><a href="#cb40-23" tabindex="-1"></a>tuner <span class="ot">=</span> <span class="fu">tnr</span>(<span class="st">&quot;mbo&quot;</span>,</span>
+<span id="cb40-24"><a href="#cb40-24" tabindex="-1"></a>  <span class="at">loop_function =</span> bayesopt_ego,</span>
+<span id="cb40-25"><a href="#cb40-25" tabindex="-1"></a>  <span class="at">surrogate =</span> surrogate,</span>
+<span id="cb40-26"><a href="#cb40-26" tabindex="-1"></a>  <span class="at">acq_function =</span> acq_function,</span>
+<span id="cb40-27"><a href="#cb40-27" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
+<span id="cb40-28"><a href="#cb40-28" tabindex="-1"></a></span>
+<span id="cb40-29"><a href="#cb40-29" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2906</span>)</span>
+<span id="cb40-30"><a href="#cb40-30" tabindex="-1"></a>tuner<span class="sc">$</span><span class="fu">optimize</span>(instance)</span>
+<span id="cb40-31"><a href="#cb40-31" tabindex="-1"></a>instance<span class="sc">$</span>result</span></code></pre></div>
 </div>
 <div id="multi-objective-hpo" class="section level2">
 <h2>Multi-Objective HPO</h2>
@@ -1245,25 +1267,20 @@ following:</p>
 <span id="cb41-16"><a href="#cb41-16" tabindex="-1"></a>  <span class="at">store_models =</span> <span class="cn">TRUE</span>) <span class="co"># required due to selected features</span></span>
 <span id="cb41-17"><a href="#cb41-17" tabindex="-1"></a></span>
 <span id="cb41-18"><a href="#cb41-18" tabindex="-1"></a><span class="co"># Gaussian Process, EI, FocusSearch</span></span>
-<span id="cb41-19"><a href="#cb41-19" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">lrn</span>(<span class="st">&quot;regr.km&quot;</span>,</span>
-<span id="cb41-20"><a href="#cb41-20" tabindex="-1"></a>  <span class="at">covtype =</span> <span class="st">&quot;matern3_2&quot;</span>,</span>
-<span id="cb41-21"><a href="#cb41-21" tabindex="-1"></a>  <span class="at">optim.method =</span> <span class="st">&quot;gen&quot;</span>,</span>
-<span id="cb41-22"><a href="#cb41-22" tabindex="-1"></a>  <span class="at">nugget.estim =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb41-23"><a href="#cb41-23" tabindex="-1"></a>  <span class="at">jitter =</span> <span class="fl">1e-12</span>,</span>
-<span id="cb41-24"><a href="#cb41-24" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">list</span>(<span class="at">trace =</span> <span class="cn">FALSE</span>)))</span>
-<span id="cb41-25"><a href="#cb41-25" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;ei&quot;</span>)</span>
-<span id="cb41-26"><a href="#cb41-26" tabindex="-1"></a>acq_optimizer <span class="ot">=</span> <span class="fu">acqo</span>(<span class="fu">opt</span>(<span class="st">&quot;focus_search&quot;</span>, <span class="at">n_points =</span> 100L, <span class="at">maxit =</span> <span class="dv">9</span>),</span>
-<span id="cb41-27"><a href="#cb41-27" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;evals&quot;</span>, <span class="at">n_evals =</span> <span class="dv">3000</span>))</span>
-<span id="cb41-28"><a href="#cb41-28" tabindex="-1"></a>tuner <span class="ot">=</span> <span class="fu">tnr</span>(<span class="st">&quot;mbo&quot;</span>,</span>
-<span id="cb41-29"><a href="#cb41-29" tabindex="-1"></a>  <span class="at">loop_function =</span> bayesopt_parego,</span>
-<span id="cb41-30"><a href="#cb41-30" tabindex="-1"></a>  <span class="at">surrogate =</span> surrogate,</span>
-<span id="cb41-31"><a href="#cb41-31" tabindex="-1"></a>  <span class="at">acq_function =</span> acq_function,</span>
-<span id="cb41-32"><a href="#cb41-32" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
-<span id="cb41-33"><a href="#cb41-33" tabindex="-1"></a></span>
-<span id="cb41-34"><a href="#cb41-34" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2906</span>)</span>
-<span id="cb41-35"><a href="#cb41-35" tabindex="-1"></a>tuner<span class="sc">$</span><span class="fu">optimize</span>(instance)</span>
-<span id="cb41-36"><a href="#cb41-36" tabindex="-1"></a>instance<span class="sc">$</span>result</span></code></pre></div>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<span id="cb41-19"><a href="#cb41-19" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">default_gp</span>(<span class="at">noisy =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb41-20"><a href="#cb41-20" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;ei&quot;</span>)</span>
+<span id="cb41-21"><a href="#cb41-21" tabindex="-1"></a>acq_optimizer <span class="ot">=</span> <span class="fu">acqo</span>(<span class="fu">opt</span>(<span class="st">&quot;focus_search&quot;</span>, <span class="at">n_points =</span> <span class="dv">100</span><span class="dt">L</span>, <span class="at">maxit =</span> <span class="dv">9</span>),</span>
+<span id="cb41-22"><a href="#cb41-22" tabindex="-1"></a>  <span class="at">terminator =</span> <span class="fu">trm</span>(<span class="st">&quot;evals&quot;</span>, <span class="at">n_evals =</span> <span class="dv">3000</span>))</span>
+<span id="cb41-23"><a href="#cb41-23" tabindex="-1"></a>tuner <span class="ot">=</span> <span class="fu">tnr</span>(<span class="st">&quot;mbo&quot;</span>,</span>
+<span id="cb41-24"><a href="#cb41-24" tabindex="-1"></a>  <span class="at">loop_function =</span> bayesopt_parego,</span>
+<span id="cb41-25"><a href="#cb41-25" tabindex="-1"></a>  <span class="at">surrogate =</span> surrogate,</span>
+<span id="cb41-26"><a href="#cb41-26" tabindex="-1"></a>  <span class="at">acq_function =</span> acq_function,</span>
+<span id="cb41-27"><a href="#cb41-27" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
+<span id="cb41-28"><a href="#cb41-28" tabindex="-1"></a></span>
+<span id="cb41-29"><a href="#cb41-29" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2906</span>)</span>
+<span id="cb41-30"><a href="#cb41-30" tabindex="-1"></a>tuner<span class="sc">$</span><span class="fu">optimize</span>(instance)</span>
+<span id="cb41-31"><a href="#cb41-31" tabindex="-1"></a>instance<span class="sc">$</span>result</span></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-bischl_2021" class="csl-entry">
 Bischl, Bernd, Martin Binder, Michel Lang, Tobias Pielok, Jakob Richter,
 Stefan Coors, Janek Thomas, et al. 2023. <span>“Hyperparameter
