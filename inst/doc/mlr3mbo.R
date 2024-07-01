@@ -289,7 +289,7 @@ objective = ObjectiveRFun$new(
   domain = domain,
   codomain = codomain)
 
-instance = OptimInstanceSingleCrit$new(
+instance = OptimInstanceBatchSingleCrit$new(
   objective = objective,
   terminator = trm("evals", n_evals = 10))
 
@@ -349,7 +349,7 @@ bayesopt_custom
 #    domain = domain,
 #    codomain = codomain)
 #  
-#  instance = OptimInstanceSingleCrit$new(
+#  instance = OptimInstanceBatchSingleCrit$new(
 #    objective = objective,
 #    search_space = domain,
 #    terminator = trm("evals", n_evals = 60))
@@ -398,7 +398,7 @@ bayesopt_custom
 #    domain = domain,
 #    codomain = codomain)
 #  
-#  instance = OptimInstanceMultiCrit$new(
+#  instance = OptimInstanceBatchMultiCrit$new(
 #    objective = objective,
 #    search_space = domain,
 #    terminator = trm("evals", n_evals = 30))
@@ -450,7 +450,7 @@ bayesopt_custom
 #    domain = domain,
 #    codomain = codomain)
 #  
-#  instance = OptimInstanceMultiCrit$new(
+#  instance = OptimInstanceBatchMultiCrit$new(
 #    objective = objective,
 #    search_space = domain,
 #    terminator = trm("evals", n_evals = 30))
@@ -500,7 +500,7 @@ bayesopt_custom
 #  resampling = rsmp("cv", folds = 3)
 #  measure = msr("classif.acc")
 #  
-#  instance = TuningInstanceSingleCrit$new(
+#  instance = TuningInstanceBatchSingleCrit$new(
 #    task = task,
 #    learner = learner,
 #    resampling = resampling,
@@ -532,7 +532,7 @@ bayesopt_custom
 #  resampling = rsmp("cv", folds = 3)
 #  measures = msrs(c("classif.acc", "selected_features"))
 #  
-#  instance = TuningInstanceMultiCrit$new(
+#  instance = TuningInstanceBatchMultiCrit$new(
 #    task = task,
 #    learner = learner,
 #    resampling = resampling,

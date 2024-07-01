@@ -1,3 +1,7 @@
+# mlr3mbo 0.2.3
+
+* compatibility: Work with new bbotk and mlr3tuning version 1.0.0.
+
 # mlr3mbo 0.2.2
 
 * refactor: compatibility with upcoming paradox upgrade.
