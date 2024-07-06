@@ -1,7 +1,7 @@
-e6fbe87f2abf000d2763f4cc8a4c867c *DESCRIPTION
+8fbafd062ebd52d56a198ad4de969794 *DESCRIPTION
 659570bff6c7a240b79ca1e95ad918a3 *NAMESPACE
-9d7a775783168a5f51e59ff4bec80b52 *NEWS.md
-a452db8bcdcaae3d3ed268022f325a96 *R/AcqFunction.R
+204da77c048ef1e6b7ce874347a391f4 *NEWS.md
+26bd14240dbf3157b5a935f6607202c9 *R/AcqFunction.R
 b6eba6fbe83e36517a21794abcf93b0c *R/AcqFunctionAEI.R
 70ae074d2a8bd0b39d6884a38f3c510c *R/AcqFunctionCB.R
 4cc225b1a5b19935b0ed7ad0063c7dba *R/AcqFunctionEHVI.R
@@ -36,12 +36,12 @@ ac5d5a3638354c1d47494a772fd653e9 *R/mlr_loop_functions.R
 3b6c67bb57bf7b4c0b25fb86a42cd418 *R/mlr_result_assigners.R
 1c077c341590326a22df70bfd8dc477b *R/sugar.R
 f78ada037343b7c929c76c7bd7409426 *R/zzz.R
-e29b9365d05b79b2eff13a5302b30341 *README.md
+e0341b2a25fda55b172847c0a9e885fd *README.md
 7080893e02c49cd296d4424b9be55069 *build/partial.rdb
 563ae810ff874fac6aae8adad6b3355a *build/vignette.rds
 b14a6bdf33258ac46d8521e1582bfe45 *inst/doc/mlr3mbo.R
 51796f1fe3bc6894ddd19ff7fe88fb60 *inst/doc/mlr3mbo.Rmd
-af55e872ddb356191aad8a49e1a572c1 *inst/doc/mlr3mbo.html
+7c201f7f415faf0fe09e007c697f5e2e *inst/doc/mlr3mbo.html
 84f125682d2c3dc236a5b62fd494ff2f *man/AcqFunction.Rd
 2ae4c58bf5e6843d6e144ea4029b263a *man/AcqOptimizer.Rd
 86a06336beda05a299541038edd65e74 *man/ResultAssigner.Rd

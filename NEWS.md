@@ -1,3 +1,7 @@
+# mlr3mbo 0.2.4
+
+* fix: Improve runtime of `AcqOptimizer` by setting `check_values = FALSE`.
+
 # mlr3mbo 0.2.3
 
 * compatibility: Work with new bbotk and mlr3tuning version 1.0.0.

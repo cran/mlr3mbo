@@ -897,13 +897,13 @@ Process fails due to data points being too close to each other:</p>
 <span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>initial_design <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">4</span>))</span>
 <span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>instance<span class="sc">$</span><span class="fu">eval_batch</span>(initial_design)</span>
-<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.680] [bbotk] Evaluating 4 configuration(s)</span></span>
-<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.717] [bbotk] Result of batch 1:</span></span>
-<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.721] [bbotk]  x y</span></span>
-<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.721] [bbotk]  1 1</span></span>
-<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.721] [bbotk]  1 1</span></span>
-<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.721] [bbotk]  1 1</span></span>
-<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.721] [bbotk]  1 1</span></span></code></pre></div>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.374] [bbotk] Evaluating 4 configuration(s)</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.453] [bbotk] Result of batch 1:</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.460] [bbotk]  x y</span></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.460] [bbotk]  1 1</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.460] [bbotk]  1 1</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.460] [bbotk]  1 1</span></span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.460] [bbotk]  1 1</span></span></code></pre></div>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>surrogate <span class="ot">=</span> <span class="fu">srlrn</span>(<span class="fu">default_gp</span>())</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>acq_function <span class="ot">=</span> <span class="fu">acqf</span>(<span class="st">&quot;ei&quot;</span>)</span>
@@ -916,39 +916,39 @@ Process fails due to data points being too close to each other:</p>
 <span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">acq_optimizer =</span> acq_optimizer)</span>
 <span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>optimizer<span class="sc">$</span><span class="fu">optimize</span>(instance)</span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.836] [bbotk] Starting to optimize 1 parameter(s) with &#39;&lt;OptimizerMbo&gt;&#39; and &#39;&lt;TerminatorEvals&gt; [n_evals=10, k=0]&#39;</span></span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WARN  [21:24:23.897] [bbotk] missing value where TRUE/FALSE needed</span></span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.897] [bbotk] surrogate_update_error / mbo_error / error / condition</span></span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.898] [bbotk] Proposing a randomly sampled point</span></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.909] [bbotk] Evaluating 1 configuration(s)</span></span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.920] [bbotk] Result of batch 2:</span></span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.921] [bbotk]          x         y</span></span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:23.921] [bbotk]  0.6742299 0.4545859</span></span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:26.153] [bbotk] Evaluating 1 configuration(s)</span></span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:26.163] [bbotk] Result of batch 3:</span></span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:26.164] [bbotk]          x  x_domain     acq_ei .already_evaluated         y</span></span>
-<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:26.164] [bbotk]  0.6686506 &lt;list[1]&gt; 0.04358139              FALSE 0.4470936</span></span>
-<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:28.479] [bbotk] Evaluating 1 configuration(s)</span></span>
-<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:28.487] [bbotk] Result of batch 4:</span></span>
-<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:28.488] [bbotk]          x  x_domain    acq_ei .already_evaluated         y</span></span>
-<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:28.488] [bbotk]  0.3883431 &lt;list[1]&gt; 0.1264431              FALSE 0.1508104</span></span>
-<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:30.754] [bbotk] Evaluating 1 configuration(s)</span></span>
-<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:30.762] [bbotk] Result of batch 5:</span></span>
-<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:30.763] [bbotk]           x  x_domain    acq_ei .already_evaluated         y</span></span>
-<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:30.763] [bbotk]  -0.5325387 &lt;list[1]&gt; 0.2231668              FALSE 0.2835975</span></span>
-<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:33.046] [bbotk] Evaluating 1 configuration(s)</span></span>
-<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:33.066] [bbotk] Result of batch 6:</span></span>
-<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:33.068] [bbotk]           x  x_domain    acq_ei .already_evaluated           y</span></span>
-<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:33.068] [bbotk]  0.04818857 &lt;list[1]&gt; 0.1256545              FALSE 0.002322138</span></span>
-<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.472] [bbotk] Evaluating 1 configuration(s)</span></span>
-<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.481] [bbotk] Result of batch 7:</span></span>
-<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.482] [bbotk]            x  x_domain      acq_ei .already_evaluated            y</span></span>
-<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.482] [bbotk]  -0.01951836 &lt;list[1]&gt; 0.002040261              FALSE 0.0003809664</span></span>
-<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.523] [bbotk] Finished optimizing after 10 evaluation(s)</span></span>
-<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.524] [bbotk] Result:</span></span>
-<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.527] [bbotk]            x  x_domain            y</span></span>
-<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.527] [bbotk]        &lt;num&gt;    &lt;list&gt;        &lt;num&gt;</span></span>
-<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.527] [bbotk]  -0.01951836 &lt;list[1]&gt; 0.0003809664</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.709] [bbotk] Starting to optimize 1 parameter(s) with &#39;&lt;OptimizerMbo&gt;&#39; and &#39;&lt;TerminatorEvals&gt; [n_evals=10, k=0]&#39;</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WARN  [09:59:00.905] [bbotk] missing value where TRUE/FALSE needed</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.907] [bbotk] surrogate_update_error / mbo_error / error / condition</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.909] [bbotk] Proposing a randomly sampled point</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.952] [bbotk] Evaluating 1 configuration(s)</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.989] [bbotk] Result of batch 2:</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.992] [bbotk]          x         y</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:00.992] [bbotk]  0.6742299 0.4545859</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:01.390] [bbotk] Evaluating 1 configuration(s)</span></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:01.425] [bbotk] Result of batch 3:</span></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:01.428] [bbotk]          x  x_domain     acq_ei .already_evaluated         y</span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:01.428] [bbotk]  0.6686506 &lt;list[1]&gt; 0.04358139              FALSE 0.4470936</span></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:01.689] [bbotk] Evaluating 1 configuration(s)</span></span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:01.705] [bbotk] Result of batch 4:</span></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:01.707] [bbotk]          x  x_domain    acq_ei .already_evaluated         y</span></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:01.707] [bbotk]  0.3883431 &lt;list[1]&gt; 0.1264431              FALSE 0.1508104</span></span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:01.878] [bbotk] Evaluating 1 configuration(s)</span></span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:01.892] [bbotk] Result of batch 5:</span></span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:01.894] [bbotk]           x  x_domain    acq_ei .already_evaluated         y</span></span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:01.894] [bbotk]  -0.5325387 &lt;list[1]&gt; 0.2231668              FALSE 0.2835975</span></span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.051] [bbotk] Evaluating 1 configuration(s)</span></span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.065] [bbotk] Result of batch 6:</span></span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.066] [bbotk]           x  x_domain    acq_ei .already_evaluated           y</span></span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.066] [bbotk]  0.04818857 &lt;list[1]&gt; 0.1256545              FALSE 0.002322138</span></span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.217] [bbotk] Evaluating 1 configuration(s)</span></span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.230] [bbotk] Result of batch 7:</span></span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.232] [bbotk]            x  x_domain      acq_ei .already_evaluated            y</span></span>
+<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.232] [bbotk]  -0.01951836 &lt;list[1]&gt; 0.002040261              FALSE 0.0003809664</span></span>
+<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.290] [bbotk] Finished optimizing after 10 evaluation(s)</span></span>
+<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.290] [bbotk] Result:</span></span>
+<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.292] [bbotk]            x  x_domain            y</span></span>
+<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.292] [bbotk]        &lt;num&gt;    &lt;list&gt;        &lt;num&gt;</span></span>
+<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.292] [bbotk]  -0.01951836 &lt;list[1]&gt; 0.0003809664</span></span>
 <span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              x  x_domain            y</span></span>
 <span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          &lt;num&gt;    &lt;list&gt;        &lt;num&gt;</span></span>
 <span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1: -0.01951836 &lt;list[1]&gt; 0.0003809664</span></span></code></pre></div>
@@ -961,16 +961,16 @@ column is NA here):</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>instance<span class="sc">$</span>archive<span class="sc">$</span>data</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               x            y  x_domain           timestamp batch_nr      acq_ei</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           &lt;num&gt;        &lt;num&gt;    &lt;list&gt;              &lt;POSc&gt;    &lt;int&gt;       &lt;num&gt;</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:  1.00000000 1.0000000000 &lt;list[1]&gt; 2024-06-30 21:24:23        1          NA</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:  1.00000000 1.0000000000 &lt;list[1]&gt; 2024-06-30 21:24:23        1          NA</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:  1.00000000 1.0000000000 &lt;list[1]&gt; 2024-06-30 21:24:23        1          NA</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:  1.00000000 1.0000000000 &lt;list[1]&gt; 2024-06-30 21:24:23        1          NA</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:  0.67422986 0.4545859064 &lt;list[1]&gt; 2024-06-30 21:24:23        2          NA</span></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:  0.66865060 0.4470936288 &lt;list[1]&gt; 2024-06-30 21:24:26        3 0.043581388</span></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:  0.38834314 0.1508103944 &lt;list[1]&gt; 2024-06-30 21:24:28        4 0.126443136</span></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8: -0.53253872 0.2835974922 &lt;list[1]&gt; 2024-06-30 21:24:30        5 0.223166767</span></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:  0.04818857 0.0023221379 &lt;list[1]&gt; 2024-06-30 21:24:33        6 0.125654544</span></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10: -0.01951836 0.0003809664 &lt;list[1]&gt; 2024-06-30 21:24:35        7 0.002040261</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:  1.00000000 1.0000000000 &lt;list[1]&gt; 2024-07-06 09:59:00        1          NA</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2:  1.00000000 1.0000000000 &lt;list[1]&gt; 2024-07-06 09:59:00        1          NA</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3:  1.00000000 1.0000000000 &lt;list[1]&gt; 2024-07-06 09:59:00        1          NA</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4:  1.00000000 1.0000000000 &lt;list[1]&gt; 2024-07-06 09:59:00        1          NA</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5:  0.67422986 0.4545859064 &lt;list[1]&gt; 2024-07-06 09:59:00        2          NA</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6:  0.66865060 0.4470936288 &lt;list[1]&gt; 2024-07-06 09:59:01        3 0.043581388</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7:  0.38834314 0.1508103944 &lt;list[1]&gt; 2024-07-06 09:59:01        4 0.126443136</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8: -0.53253872 0.2835974922 &lt;list[1]&gt; 2024-07-06 09:59:01        5 0.223166767</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9:  0.04818857 0.0023221379 &lt;list[1]&gt; 2024-07-06 09:59:02        6 0.125654544</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10: -0.01951836 0.0003809664 &lt;list[1]&gt; 2024-07-06 09:59:02        7 0.002040261</span></span>
 <span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     .already_evaluated</span></span>
 <span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                 &lt;lgcl&gt;</span></span>
 <span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1:                 NA</span></span>
@@ -989,16 +989,16 @@ just fine and did not simply throw an error.</p>
 see that the error was indeed caused by the surrogate:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>instance<span class="sc">$</span>archive<span class="sc">$</span><span class="fu">clear</span>()</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>instance<span class="sc">$</span><span class="fu">eval_batch</span>(initial_design)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.554] [bbotk] Evaluating 4 configuration(s)</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.579] [bbotk] Result of batch 1:</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.580] [bbotk]  x y</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.580] [bbotk]  1 1</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.580] [bbotk]  1 1</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.580] [bbotk]  1 1</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.580] [bbotk]  1 1</span></span></code></pre></div>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.325] [bbotk] Evaluating 4 configuration(s)</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.363] [bbotk] Result of batch 1:</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.365] [bbotk]  x y</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.365] [bbotk]  1 1</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.365] [bbotk]  1 1</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.365] [bbotk]  1 1</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.365] [bbotk]  1 1</span></span></code></pre></div>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>optimizer<span class="sc">$</span>surrogate<span class="sc">$</span>param_set<span class="sc">$</span>values<span class="sc">$</span>catch_errors <span class="ot">=</span> <span class="cn">FALSE</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>optimizer<span class="sc">$</span><span class="fu">optimize</span>(instance)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [21:24:35.587] [bbotk] Starting to optimize 1 parameter(s) with &#39;&lt;OptimizerMbo&gt;&#39; and &#39;&lt;TerminatorEvals&gt; [n_evals=10, k=0]&#39;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [09:59:02.375] [bbotk] Starting to optimize 1 parameter(s) with &#39;&lt;OptimizerMbo&gt;&#39; and &#39;&lt;TerminatorEvals&gt; [n_evals=10, k=0]&#39;</span></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in if (varinit.vario &lt;= 1e-20) varinit.vario &lt;- 1/2 * varinit.vario.total: missing value where TRUE/FALSE needed</span></span></code></pre></div>
 <p>In case of the error belonging to the
 <code>acq_optimizer_error</code> class, it is helpful to increase the
