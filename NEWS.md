@@ -1,3 +1,10 @@
+# mlr3mbo 0.2.5
+
+* docs: Move vignette to mlr3book.
+* feat: Add `AcqFunctionMulti` that can wrap multiple acquisition functions resulting in a multi-objective acquisition function problem.
+* feat: Support callbacks in `AcqOptimizer`.
+* feat: Allow `AcqFunctionEI` to be adjusted by epsilon to strengthen exploration.
+
 # mlr3mbo 0.2.4
 
 * fix: Improve runtime of `AcqOptimizer` by setting `check_values = FALSE`.
