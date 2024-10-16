@@ -1,6 +1,6 @@
-86036b84e6569ee352d210ce4dc37ccb *DESCRIPTION
+f36d64c192109acec10f841d629eb22e *DESCRIPTION
 3e3b2a22f799d72b82ea99a30c650c04 *NAMESPACE
-4e076f117a26152cc52330ff5446330b *NEWS.md
+2fce19ef107427b044dc6cd67e60810a *NEWS.md
 26bd14240dbf3157b5a935f6607202c9 *R/AcqFunction.R
 07d456ca74e7d48b1e7088aef392c42f *R/AcqFunctionAEI.R
 9d15e4cd6c53b5a5f125bc5c41cf0d2e *R/AcqFunctionCB.R
@@ -16,8 +16,8 @@ ccca13d7c52d542e4bdc681bc9b26be6 *R/AcqFunctionPI.R
 1e57649c6c2b208bebd89ec1bbc8ca30 *R/AcqOptimizer.R
 9e4960bc050f9b3fd8781cc1ec405231 *R/OptimizerMbo.R
 916eeddd958a4a2f41e034b6d98fb34a *R/ResultAssigner.R
-ac50f767aa50ec21ee6fba09966d1b3b *R/ResultAssignerArchive.R
-309f23b3497c4b240ea2b296ae289fd2 *R/ResultAssignerSurrogate.R
+4946039ac49712814c17f668f9205cf1 *R/ResultAssignerArchive.R
+308405e73ddca3e4f2471e1595dd184b *R/ResultAssignerSurrogate.R
 5e7655006eb864e7a552b2a854a14b5c *R/Surrogate.R
 1a8167706ef4b3440478e896892a5ec3 *R/SurrogateLearner.R
 676f0bb2113c539098cc4a22f139e465 *R/SurrogateLearnerCollection.R
@@ -108,8 +108,8 @@ d564a4c29f5afc17ca7c998d30a88d77 *tests/testthat/test_AcqFunctionMulti.R
 347b8d323229d8cc7fb27450a396d10f *tests/testthat/test_AcqOptimizer.R
 d916d4d7d0f5adc282520bb979c4b50f *tests/testthat/test_OptimizerMbo.R
 535f3f5cb1858fe761ae2b6f0f3e64d9 *tests/testthat/test_ResultAssigner.R
-e0ad379818751924cddd98595a368047 *tests/testthat/test_ResultAssignerArchive.R
-e8baf3cd297d9972c886e4892a4cd508 *tests/testthat/test_ResultAssignerSurrogate.R
+7a3aed48c7522fcc47eeb34c90135ab1 *tests/testthat/test_ResultAssignerArchive.R
+5268fd491e5ef19c4679fbb7bab76f7b *tests/testthat/test_ResultAssignerSurrogate.R
 c67db0f4e3dc05a7ecbb2d80502a3cd2 *tests/testthat/test_SurrogateLearner.R
 fc71d5000ec9c4406f3e8edd2a39f90f *tests/testthat/test_SurrogateLearnerCollection.R
 85f0c60b84d1be635487f081f4930b08 *tests/testthat/test_TunerMbo.R
