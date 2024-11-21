@@ -1,7 +1,7 @@
 Type: Package
 Package: mlr3mbo
 Title: Flexible Bayesian Optimization
-Version: 0.2.7
+Version: 0.2.8
 Authors@R: c(
     person("Lennart", "Schneider", , "lennart.sch@web.de", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0003-4152-5308")),
@@ -66,7 +66,7 @@ Collate: 'mlr_acqfunctions.R' 'AcqFunction.R' 'AcqFunctionAEI.R'
         'bayesopt_emo.R' 'bayesopt_mpcl.R' 'bayesopt_parego.R'
         'bayesopt_smsego.R' 'bibentries.R' 'helper.R' 'loop_function.R'
         'mbo_defaults.R' 'sugar.R' 'zzz.R'
-Packaged: 2024-11-15 16:24:13 UTC; lps
+Packaged: 2024-11-21 16:12:28 UTC; lps
 Author: Lennart Schneider [cre, aut] (<https://orcid.org/0000-0003-4152-5308>),
   Jakob Richter [aut] (<https://orcid.org/0000-0003-4481-5554>),
   Marc Becker [aut] (<https://orcid.org/0000-0002-8115-0400>),
@@ -82,4 +82,4 @@ Author: Lennart Schneider [cre, aut] (<https://orcid.org/0000-0003-4152-5308>),
   Luis Paquete [cph]
 Maintainer: Lennart Schneider <lennart.sch@web.de>
 Repository: CRAN
-Date/Publication: 2024-11-15 16:50:02 UTC
+Date/Publication: 2024-11-21 21:30:07 UTC
