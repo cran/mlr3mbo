@@ -1,7 +1,7 @@
 Type: Package
 Package: mlr3mbo
 Title: Flexible Bayesian Optimization
-Version: 0.2.8
+Version: 0.2.9
 Authors@R: c(
     person("Lennart", "Schneider", , "lennart.sch@web.de", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0003-4152-5308")),
@@ -40,7 +40,7 @@ URL: https://mlr3mbo.mlr-org.com, https://github.com/mlr-org/mlr3mbo
 BugReports: https://github.com/mlr-org/mlr3mbo/issues
 Depends: mlr3tuning (>= 1.1.0), R (>= 3.1.0)
 Imports: bbotk (>= 1.2.0), checkmate (>= 2.0.0), data.table, lgr (>=
-        0.3.4), mlr3 (>= 0.21.1), mlr3misc (>= 0.11.0), paradox (>=
+        0.3.4), mlr3 (>= 0.22.1), mlr3misc (>= 0.11.0), paradox (>=
         1.0.1), spacefillr, R6 (>= 2.4.1)
 Suggests: DiceKriging, emoa, fastGHQuad, lhs, mlr3learners (>= 0.5.4),
         mlr3pipelines (>= 0.4.2), nloptr, ranger, rgenoud, rpart,
@@ -66,7 +66,7 @@ Collate: 'mlr_acqfunctions.R' 'AcqFunction.R' 'AcqFunctionAEI.R'
         'bayesopt_emo.R' 'bayesopt_mpcl.R' 'bayesopt_parego.R'
         'bayesopt_smsego.R' 'bibentries.R' 'helper.R' 'loop_function.R'
         'mbo_defaults.R' 'sugar.R' 'zzz.R'
-Packaged: 2024-11-21 16:12:28 UTC; lps
+Packaged: 2025-03-04 08:39:10 UTC; lps
 Author: Lennart Schneider [cre, aut] (<https://orcid.org/0000-0003-4152-5308>),
   Jakob Richter [aut] (<https://orcid.org/0000-0003-4481-5554>),
   Marc Becker [aut] (<https://orcid.org/0000-0002-8115-0400>),
@@ -82,4 +82,4 @@ Author: Lennart Schneider [cre, aut] (<https://orcid.org/0000-0003-4152-5308>),
   Luis Paquete [cph]
 Maintainer: Lennart Schneider <lennart.sch@web.de>
 Repository: CRAN
-Date/Publication: 2024-11-21 21:30:07 UTC
+Date/Publication: 2025-03-04 09:10:02 UTC
