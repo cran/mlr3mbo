@@ -150,7 +150,7 @@ AcqOptimizer = R6Class("AcqOptimizer",
     optimize = function() {
       is_multi_acq_function = self$acq_function$codomain$length > 1L
 
-      lg = lgr::get_logger("bbotk")
+      lg = lgr::get_logger("mlr3/bbotk")
       old_threshold = lg$threshold
       lg$set_threshold(self$param_set$values$logging_level)
       on.exit(lg$set_threshold(old_threshold))
@@ -206,6 +206,10 @@ AcqOptimizer = R6Class("AcqOptimizer",
           self$optimizer$optimize(instance)
           get_best(instance, is_multi_acq_function = is_multi_acq_function, evaluated = self$acq_function$archive$data, n_select = self$param_set$values$n_candidates, not_already_evaluated = FALSE)
         }
+      }
+      # the following is required to assure that evaluations of numerical gradient based methods that potentially evaluated out of bounds are not returned as out of bound but clipped to bounds
+      for (param in names(which(instance$search_space$is_number))) {
+        set(xdt, j = param, value = pmax(pmin(xdt[[param]], instance$search_space$upper[[param]]), instance$search_space$lower[[param]]))
       }
       #if (is_multi_acq_function) {
       #  set(xdt, j = instance$objective$id, value = apply(xdt[, instance$objective$acq_function_ids, with = FALSE], MARGIN = 1L, FUN = c, simplify = FALSE))

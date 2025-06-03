@@ -172,7 +172,6 @@ assert_xdt = function(xdt) {
 assert_learner_surrogate = function(x, .var.name = vname(x)) {
   # NOTE: this is buggy in checkmate; assert should always return x invisible not TRUE as is the case here
   assert(check_learner_surrogate(x), .var.name = .var.name)
-
   x
 }
 
