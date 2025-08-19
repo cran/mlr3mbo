@@ -1,14 +1,14 @@
 Type: Package
 Package: mlr3mbo
 Title: Flexible Bayesian Optimization
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: c(
-    person("Lennart", "Schneider", , "lennart.sch@web.de", role = c("cre", "aut"),
+    person("Marc", "Becker", , "marcbecker@posteo.de", role = c("cre", "aut"),
+           comment = c(ORCID = "0000-0002-8115-0400")),
+    person("Lennart", "Schneider", , "lennart.sch@web.de", role = "aut",
            comment = c(ORCID = "0000-0003-4152-5308")),
     person("Jakob", "Richter", , "jakob1richter@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0003-4481-5554")),
-    person("Marc", "Becker", , "marcbecker@posteo.de", role = "aut",
-           comment = c(ORCID = "0000-0002-8115-0400")),
     person("Michel", "Lang", , "michellang@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9754-0393")),
     person("Bernd", "Bischl", , "bernd_bischl@gmx.net", role = "aut",
@@ -38,13 +38,13 @@ Description: A modern and flexible approach to Bayesian Optimization / Model
 License: LGPL-3
 URL: https://mlr3mbo.mlr-org.com, https://github.com/mlr-org/mlr3mbo
 BugReports: https://github.com/mlr-org/mlr3mbo/issues
-Depends: mlr3tuning (>= 1.1.0), R (>= 3.1.0)
-Imports: bbotk (>= 1.2.0), checkmate (>= 2.0.0), data.table, lgr (>=
-        0.3.4), mlr3 (>= 0.22.1), mlr3misc (>= 0.11.0), paradox (>=
+Depends: mlr3tuning (>= 1.4.0), R (>= 3.1.0)
+Imports: bbotk (>= 1.6.0), checkmate (>= 2.0.0), data.table, lgr (>=
+        0.3.4), mlr3 (>= 0.23.0), mlr3misc (>= 0.15.1), paradox (>=
         1.0.1), spacefillr, R6 (>= 2.4.1)
-Suggests: DiceKriging, emoa, fastGHQuad, lhs, mlr3learners (>= 0.5.4),
-        mlr3pipelines (>= 0.4.2), nloptr, ranger, rgenoud, rpart,
-        redux, rush, stringi, testthat (>= 3.0.0)
+Suggests: DiceKriging, emoa, fastGHQuad, lhs, mirai, mlr3learners (>=
+        0.7.0), mlr3pipelines (>= 0.5.2), nloptr, ranger, rgenoud,
+        rpart, redux, rush, stringi, testthat (>= 3.0.0)
 ByteCompile: no
 Encoding: UTF-8
 Config/testthat/edition: 3
@@ -69,11 +69,11 @@ Collate: 'mlr_acqfunctions.R' 'AcqFunction.R' 'AcqFunctionAEI.R'
         'bayesopt_emo.R' 'bayesopt_mpcl.R' 'bayesopt_parego.R'
         'bayesopt_smsego.R' 'bibentries.R' 'helper.R' 'loop_function.R'
         'mbo_defaults.R' 'sugar.R' 'zzz.R'
-Packaged: 2025-06-03 10:52:20 UTC; lps
-Author: Lennart Schneider [cre, aut] (ORCID:
+Packaged: 2025-08-18 20:36:30 UTC; lps
+Author: Marc Becker [cre, aut] (ORCID: <https://orcid.org/0000-0002-8115-0400>),
+  Lennart Schneider [aut] (ORCID:
     <https://orcid.org/0000-0003-4152-5308>),
   Jakob Richter [aut] (ORCID: <https://orcid.org/0000-0003-4481-5554>),
-  Marc Becker [aut] (ORCID: <https://orcid.org/0000-0002-8115-0400>),
   Michel Lang [aut] (ORCID: <https://orcid.org/0000-0001-9754-0393>),
   Bernd Bischl [aut] (ORCID: <https://orcid.org/0000-0001-6002-6980>),
   Florian Pfisterer [aut] (ORCID:
@@ -86,6 +86,6 @@ Author: Lennart Schneider [cre, aut] (ORCID:
   Carlos Fonseca [cph],
   Manuel Lopez-Ibanez [cph],
   Luis Paquete [cph]
-Maintainer: Lennart Schneider <lennart.sch@web.de>
+Maintainer: Marc Becker <marcbecker@posteo.de>
 Repository: CRAN
-Date/Publication: 2025-06-03 14:50:02 UTC
+Date/Publication: 2025-08-19 09:00:07 UTC
