@@ -1,6 +1,6 @@
-407fa51bd852549f5f9960e39ddfbc75 *DESCRIPTION
+1220c72843481312be5aa28fcdd43f2b *DESCRIPTION
 911ce20b5c16a766ac2d6f959b4992e3 *NAMESPACE
-e4f7b29f452a8faceccd35345cc44b81 *NEWS.md
+11107bf3859d6c2911d5b84740625ad5 *NEWS.md
 e591ac820bbc4e0ea93f3c6cc1de2726 *R/AcqFunction.R
 efaf4e442a33a820a83168fcbcf0e9c8 *R/AcqFunctionAEI.R
 9d15e4cd6c53b5a5f125bc5c41cf0d2e *R/AcqFunctionCB.R
@@ -161,7 +161,7 @@ e2a5e8f1724e7ddd88118bb4ede046e4 *tests/testthat/test_bayesopt_emo.R
 970ea275cdbf6c776f0a153a2a410540 *tests/testthat/test_bayesopt_mpcl.R
 ce288f0dacad84216f0c1963faa3a3e0 *tests/testthat/test_bayesopt_parego.R
 8d59c418545030ecf0431d3a3859bf40 *tests/testthat/test_bayesopt_smsego.R
-1c8247b8391d12ce3d85ce87ee18cd3f *tests/testthat/test_mbo_defaults.R
+d8cc2c57d8fe84edbf8d2dbf470a5368 *tests/testthat/test_mbo_defaults.R
 d0016910b6f7b488491069e3dd9d1922 *tests/testthat/test_mlr_acqfunctions.R
 4ee7d12da08fc13d3a646448b3df8e1a *tests/testthat/test_mlr_loop_functions.R
 5457a7195716cbdff8ea1d9bfbec3955 *tests/testthat/test_mlr_result_assigners.R
