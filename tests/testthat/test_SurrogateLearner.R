@@ -11,12 +11,14 @@ test_that("SurrogateLearner API works", {
 
   xdt = data.table(x = seq(-1, 1, length.out = 5L))
   pred = surrogate$predict(xdt)
-  expect_data_table(pred, col.names = "named", nrows = 5, ncols = 2, any.missing = FALSE)
-  expect_named(pred, c("mean", "se"))
+  expect_list(pred, len = 2L)
+  expect_names(names(pred), identical.to = c("mean", "se"))
+  expect_numeric(pred$mean, len = 5L)
+  expect_numeric(pred$se, len = 5L)
 
   # upgrading error class works
   surrogate = SurrogateLearner$new(LearnerRegrError$new(), archive = inst$archive)
-  expect_error(surrogate$update(), class = "surrogate_update_error")
+  expect_error(surrogate$update(), class = "Mlr3ErrorMboSurrogateUpdate")
 
   surrogate$param_set$values$catch_errors = FALSE
   expect_error(surrogate$optimize(), class = "simpleError")
@@ -68,15 +70,13 @@ test_that("deep clone", {
 })
 
 test_that("packages", {
-  skip_if_not_installed("mlr3learners")
-  skip_if_not_installed("DiceKriging")
+  skip_if_missing_regr_km()
   surrogate = SurrogateLearner$new(learner = REGR_KM_DETERM)
   expect_equal(surrogate$packages, surrogate$learner$packages)
 })
 
 test_that("feature types", {
-  skip_if_not_installed("mlr3learners")
-  skip_if_not_installed("DiceKriging")
+  skip_if_missing_regr_km()
   surrogate = SurrogateLearner$new(learner = REGR_KM_DETERM)
   expect_equal(surrogate$feature_types, surrogate$learner$feature_types)
 })

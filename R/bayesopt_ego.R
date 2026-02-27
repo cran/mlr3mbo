@@ -129,7 +129,7 @@ bayesopt_ego = function(
     init_design_size = 4L * search_space$length
   }
   if (!is.null(init_design_size) && instance$archive$n_evals == 0L) {
-    design = generate_design_sobol(search_space, n = init_design_size)$data
+    design = generate_design_random(search_space, n = init_design_size)$data
     instance$eval_batch(design)
   }
 
@@ -143,13 +143,17 @@ bayesopt_ego = function(
     xdt = tryCatch({
       # random interleaving is handled here
       if (isTRUE((instance$archive$n_evals - init_design_size + 1L) %% random_interleave_iter == 0)) {
-        stop(set_class(list(message = "Random interleaving", call = NULL), classes = c("random_interleave", "mbo_error", "error", "condition")))
+        error_random_interleave("Random interleaving")
       }
+
       acq_function$surrogate$update()
       acq_function$update()
       acq_optimizer$optimize()
-    }, mbo_error = function(mbo_error_condition) {
-      lg$info(paste0(class(mbo_error_condition), collapse = " / "))
+    }, Mlr3ErrorMboRandomInterleave = function(cond) {
+      lg$info("Random interleaving triggered, proposing a randomly sampled point")
+      generate_design_random(search_space, n = 1L)$data
+    }, Mlr3ErrorMbo = function(cond) {
+      lg$warn("Caught the following error: %s", cond$message)
       lg$info("Proposing a randomly sampled point")
       generate_design_random(search_space, n = 1L)$data
     })

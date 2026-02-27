@@ -20,7 +20,7 @@ test_that("SurrogateLearnerCollection API works", {
 
   # upgrading error class works
   surrogate = SurrogateLearnerCollection$new(learners = list(LearnerRegrError$new(), LearnerRegrError$new()), archive = inst$archive)
-  expect_error(surrogate$update(), class = "surrogate_update_error")
+  expect_error(surrogate$update(), class = "Mlr3ErrorMboSurrogateUpdate")
 
   surrogate$param_set$values$catch_errors = FALSE
   expect_error(surrogate$optimize(), class = "simpleError")
@@ -82,15 +82,13 @@ test_that("deep clone", {
 })
 
 test_that("packages", {
-  skip_if_not_installed("mlr3learners")
-  skip_if_not_installed("DiceKriging")
+  skip_if_missing_regr_km()
   surrogate = SurrogateLearnerCollection$new(learners = list(REGR_KM_DETERM, REGR_FEATURELESS))
   expect_equal(surrogate$packages, unique(unlist(map(surrogate$learner, "packages"))))
 })
 
 test_that("feature types", {
-  skip_if_not_installed("mlr3learners")
-  skip_if_not_installed("DiceKriging")
+  skip_if_missing_regr_km()
   surrogate = SurrogateLearnerCollection$new(learners = list(REGR_KM_DETERM, REGR_FEATURELESS))
   expect_equal(surrogate$feature_types, Reduce(intersect, map(surrogate$learner, "feature_types")))
 })

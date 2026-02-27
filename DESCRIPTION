@@ -1,7 +1,7 @@
 Type: Package
 Package: mlr3mbo
 Title: Flexible Bayesian Optimization
-Version: 0.3.3
+Version: 1.0.0
 Authors@R: c(
     person("Marc", "Becker", , "marcbecker@posteo.de", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-8115-0400")),
@@ -38,28 +38,30 @@ Description: A modern and flexible approach to Bayesian Optimization / Model
 License: LGPL-3
 URL: https://mlr3mbo.mlr-org.com, https://github.com/mlr-org/mlr3mbo
 BugReports: https://github.com/mlr-org/mlr3mbo/issues
-Depends: mlr3tuning (>= 1.4.0), R (>= 3.1.0)
-Imports: bbotk (>= 1.6.0), checkmate (>= 2.0.0), data.table, lgr (>=
-        0.3.4), mlr3 (>= 0.23.0), mlr3misc (>= 0.15.1), paradox (>=
-        1.0.1), spacefillr, R6 (>= 2.4.1)
-Suggests: DiceKriging, emoa, fastGHQuad, lhs, mirai, mlr3learners (>=
-        0.7.0), mlr3pipelines (>= 0.5.2), nloptr, ranger, rgenoud,
+Depends: mlr3 (>= 1.2.0), mlr3tuning (>= 1.4.0), R (>= 3.1.0)
+Imports: bbotk (>= 1.8.0), checkmate (>= 2.0.0), data.table, lgr (>=
+        0.3.4), mlr3misc (>= 0.21.0), paradox (>= 1.0.1), spacefillr,
+        R6 (>= 2.4.1)
+Suggests: DiceKriging, emoa, fastGHQuad, lhs, mlr3learners (>= 0.12.0),
+        mirai, mlr3pipelines (>= 0.5.2), nloptr, ranger, rgenoud,
         rpart, redux, rush, stringi, testthat (>= 3.0.0)
 ByteCompile: no
 Encoding: UTF-8
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 NeedsCompilation: yes
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Collate: 'mlr_acqfunctions.R' 'AcqFunction.R' 'AcqFunctionAEI.R'
         'AcqFunctionCB.R' 'AcqFunctionEHVI.R' 'AcqFunctionEHVIGH.R'
         'AcqFunctionEI.R' 'AcqFunctionEILog.R' 'AcqFunctionEIPS.R'
         'AcqFunctionMean.R' 'AcqFunctionMulti.R' 'AcqFunctionPI.R'
         'AcqFunctionSD.R' 'AcqFunctionSmsEgo.R'
         'AcqFunctionStochasticCB.R' 'AcqFunctionStochasticEI.R'
-        'AcqOptimizer.R' 'mlr_input_trafos.R' 'InputTrafo.R'
+        'AcqOptimizer.R' 'mlr_acqoptimizers.R' 'AcqOptimizerDirect.R'
+        'AcqOptimizerLbfgsb.R' 'AcqOptimizerLocalSearch.R'
+        'AcqOptimzerRandomSearch.R' 'mlr_input_trafos.R' 'InputTrafo.R'
         'InputTrafoUnitcube.R' 'aaa.R' 'OptimizerADBO.R'
-        'OptimizerAsyncMbo.R' 'OptimizerMbo.R' 'mlr_output_trafos.R'
+        'OptimizerMbo.R' 'OptimizerAsyncMbo.R' 'mlr_output_trafos.R'
         'OutputTrafo.R' 'OutputTrafoLog.R' 'OutputTrafoStandardize.R'
         'mlr_result_assigners.R' 'ResultAssigner.R'
         'ResultAssignerArchive.R' 'ResultAssignerSurrogate.R'
@@ -67,9 +69,9 @@ Collate: 'mlr_acqfunctions.R' 'AcqFunction.R' 'AcqFunctionAEI.R'
         'SurrogateLearnerCollection.R' 'TunerADBO.R' 'TunerAsyncMbo.R'
         'TunerMbo.R' 'mlr_loop_functions.R' 'bayesopt_ego.R'
         'bayesopt_emo.R' 'bayesopt_mpcl.R' 'bayesopt_parego.R'
-        'bayesopt_smsego.R' 'bibentries.R' 'helper.R' 'loop_function.R'
-        'mbo_defaults.R' 'sugar.R' 'zzz.R'
-Packaged: 2025-10-10 07:08:29 UTC; marc
+        'bayesopt_smsego.R' 'bibentries.R' 'conditions.R' 'helper.R'
+        'loop_function.R' 'mbo_defaults.R' 'sugar.R' 'zzz.R'
+Packaged: 2026-02-27 11:10:37 UTC; marc
 Author: Marc Becker [cre, aut] (ORCID: <https://orcid.org/0000-0002-8115-0400>),
   Lennart Schneider [aut] (ORCID:
     <https://orcid.org/0000-0003-4152-5308>),
@@ -88,4 +90,4 @@ Author: Marc Becker [cre, aut] (ORCID: <https://orcid.org/0000-0002-8115-0400>),
   Luis Paquete [cph]
 Maintainer: Marc Becker <marcbecker@posteo.de>
 Repository: CRAN
-Date/Publication: 2025-10-10 07:50:02 UTC
+Date/Publication: 2026-02-27 11:50:02 UTC

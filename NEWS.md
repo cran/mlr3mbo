@@ -1,3 +1,9 @@
+# mlr3mbo 1.0.0
+
+* feat: Added `mlr_acqoptimizers` dictionary with pre-defined acquisition function optimizers (`AcqOptimizerDirect`, `AcqOptimizerLbfgsb`, `AcqOptimizerLocalSearch`, `AcqOptimizerRandomSearch`).
+* perf: Default surrogate model, acquisition function, optimizer, and further settings of `OptimizerMbo` are now empirically derived from a large-scale benchmark study, significantly improving out-of-the-box optimization performance.
+* feat: Added `Mlr3ErrorMbo*` condition classes.
+
 # mlr3mbo 0.3.3
 
 * compatibility: bbotk 1.7.0
