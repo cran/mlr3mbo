@@ -6,7 +6,8 @@
 \title{Acquisition Function Expected Improvement on Log Scale}
 \description{
 Expected Improvement assuming that the target variable has been modeled on log scale.
-In general only sensible if the \link{SurrogateLearner} uses an \link{OutputTrafoLog} without inverting the posterior predictive distribution (\code{invert_posterior = FALSE}).
+In general only sensible if the \link{SurrogateLearner} uses an \link{OutputTrafoLog}
+without inverting the posterior predictive distribution (\code{invert_posterior = FALSE}).
 See also the example below.
 }
 \section{Dictionary}{
@@ -24,8 +25,8 @@ acqf("ei_log")
 \itemize{
 \item \code{"epsilon"} (\code{numeric(1)})\cr
 \eqn{\epsilon} value used to determine the amount of exploration.
-Higher values result in the importance of improvements predicted by the posterior mean
-decreasing relative to the importance of potential improvements in regions of high predictive uncertainty.
+Higher values result in the importance of improvements predicted by the posterior mean decreasing
+relative to the importance of potential improvements in regions of high predictive uncertainty.
 Defaults to \code{0} (standard Expected Improvement).
 }
 }
@@ -111,6 +112,7 @@ In the case of maximization, this already includes the necessary change of sign.
 <li><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="format"><a href='../../bbotk/html/Objective.html#method-Objective-format'><code>bbotk::Objective$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="help"><a href='../../bbotk/html/Objective.html#method-Objective-help'><code>bbotk::Objective$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="print"><a href='../../bbotk/html/Objective.html#method-Objective-print'><code>bbotk::Objective$print()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqFunction" data-id="assert_surrogate"><a href='../../mlr3mbo/html/AcqFunction.html#method-AcqFunction-assert_surrogate'><code>mlr3mbo::AcqFunction$assert_surrogate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqFunction" data-id="eval_dt"><a href='../../mlr3mbo/html/AcqFunction.html#method-AcqFunction-eval_dt'><code>mlr3mbo::AcqFunction$eval_dt()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqFunction" data-id="eval_many"><a href='../../mlr3mbo/html/AcqFunction.html#method-AcqFunction-eval_many'><code>mlr3mbo::AcqFunction$eval_many()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqFunction" data-id="reset"><a href='../../mlr3mbo/html/AcqFunction.html#method-AcqFunction-reset'><code>mlr3mbo::AcqFunction$reset()</code></a></span></li>

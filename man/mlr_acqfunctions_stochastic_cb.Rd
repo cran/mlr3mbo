@@ -6,8 +6,10 @@
 \title{Acquisition Function Stochastic Confidence Bound}
 \description{
 Lower / Upper Confidence Bound with lambda sampling and decay.
-The initial \eqn{\lambda} is drawn from an uniform distribution between \code{min_lambda} and \code{max_lambda} or from an exponential distribution with rate \code{1 / lambda}.
-\eqn{\lambda} is updated after each update by the formula \code{lambda * exp(-rate * (t \%\% period))}, where \code{t} is the number of times the acquisition function has been updated.
+The initial \eqn{\lambda} is drawn from an uniform distribution between \code{min_lambda} and \code{max_lambda}
+or from an exponential distribution with rate \code{1 / lambda}.
+\eqn{\lambda} is updated after each update by the formula \code{lambda * exp(-rate * (t \%\% period))},
+where \code{t} is the number of times the acquisition function has been updated.
 
 While this acquisition function usually would be used within an asynchronous optimizer, e.g., \link{OptimizerAsyncMbo},
 it can in principle also be used in synchronous optimizers, e.g., \link{OptimizerMbo}.
@@ -29,7 +31,7 @@ acqf("stochastic_cb")
 \eqn{\lambda} value for sampling from the exponential distribution.
 Defaults to \code{1.96}.
 \item \code{"min_lambda"} (\code{numeric(1)})\cr
-Minimum value of \eqn{\lambda}for sampling from the uniform distribution.
+Minimum value of \eqn{\lambda} for sampling from the uniform distribution.
 Defaults to \code{0.01}.
 \item \code{"max_lambda"} (\code{numeric(1)})\cr
 Maximum value of \eqn{\lambda} for sampling from the uniform distribution.
@@ -50,9 +52,11 @@ Defaults to \code{NULL}, i.e., the decay has no period.
 \section{Note}{
 
 \itemize{
-\item This acquisition function always also returns its current (\code{acq_lambda}) and original (\code{acq_lambda_0}) \eqn{\lambda}.
-These values will be logged into the \link[bbotk:ArchiveBatch]{bbotk::ArchiveBatch} of the \link[bbotk:OptimInstanceBatch]{bbotk::OptimInstanceBatch} of the \link{AcqOptimizer} and
-therefore also in the \link[bbotk:Archive]{bbotk::Archive} of the actual \link[bbotk:OptimInstance]{bbotk::OptimInstance} that is to be optimized.
+\item This acquisition function always also returns its current (\code{acq_lambda}) and original (\code{acq_lambda_0})
+\eqn{\lambda}.
+These values will be logged into the \link[bbotk:ArchiveBatch]{bbotk::ArchiveBatch} of the \link[bbotk:OptimInstanceBatch]{bbotk::OptimInstanceBatch}
+of the \link{AcqOptimizer}
+and therefore also in the \link[bbotk:Archive]{bbotk::Archive} of the actual \link[bbotk:OptimInstance]{bbotk::OptimInstance} that is to be optimized.
 }
 }
 
@@ -137,6 +141,7 @@ Other Acquisition Function:
 <li><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="format"><a href='../../bbotk/html/Objective.html#method-Objective-format'><code>bbotk::Objective$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="help"><a href='../../bbotk/html/Objective.html#method-Objective-help'><code>bbotk::Objective$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="print"><a href='../../bbotk/html/Objective.html#method-Objective-print'><code>bbotk::Objective$print()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqFunction" data-id="assert_surrogate"><a href='../../mlr3mbo/html/AcqFunction.html#method-AcqFunction-assert_surrogate'><code>mlr3mbo::AcqFunction$assert_surrogate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqFunction" data-id="eval_dt"><a href='../../mlr3mbo/html/AcqFunction.html#method-AcqFunction-eval_dt'><code>mlr3mbo::AcqFunction$eval_dt()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqFunction" data-id="eval_many"><a href='../../mlr3mbo/html/AcqFunction.html#method-AcqFunction-eval_many'><code>mlr3mbo::AcqFunction$eval_many()</code></a></span></li>
 </ul>

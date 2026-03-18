@@ -34,13 +34,13 @@ Other Acquisition Function:
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
 \item{\code{direction}}{(\code{"same"} | \code{"minimize"} | \code{"maximize"})\cr
-Optimization direction of the acquisition function relative to the direction of the
-objective function of the \link[bbotk:OptimInstance]{bbotk::OptimInstance} related to the passed \link[bbotk:Archive]{bbotk::Archive}.
+Optimization direction of the acquisition function relative to the direction of
+the objective function of the \link[bbotk:OptimInstance]{bbotk::OptimInstance} related to the passed \link[bbotk:Archive]{bbotk::Archive}.
 Must be \code{"same"}, \code{"minimize"}, or \code{"maximize"}.}
 
 \item{\code{surrogate_max_to_min}}{(\code{-1} | \code{1})\cr
-Multiplicative factor to correct for minimization or maximization of the acquisition
-function.}
+Multiplicative factor to correct for minimization or maximization of
+the acquisition function.}
 
 \item{\code{label}}{(\code{character(1)})\cr
 Label for this object.}
@@ -73,6 +73,7 @@ Set of required packages.}
 \item \href{#method-AcqFunction-reset}{\code{AcqFunction$reset()}}
 \item \href{#method-AcqFunction-eval_many}{\code{AcqFunction$eval_many()}}
 \item \href{#method-AcqFunction-eval_dt}{\code{AcqFunction$eval_dt()}}
+\item \href{#method-AcqFunction-assert_surrogate}{\code{AcqFunction$assert_surrogate()}}
 \item \href{#method-AcqFunction-clone}{\code{AcqFunction$clone()}}
 }
 }
@@ -97,8 +98,9 @@ Note that the surrogate can be initialized lazy and can later be set via the act
 \if{html}{\out{<div class="r">}}\preformatted{AcqFunction$new(
   id,
   constants = ParamSet$new(),
-  surrogate,
+  surrogate = NULL,
   requires_predict_type_se,
+  surrogate_class,
   direction,
   packages = NULL,
   label = NA_character_,
@@ -120,14 +122,18 @@ Surrogate whose predictions are used in the acquisition function.}
 \item{\code{requires_predict_type_se}}{(\code{logical(1)})\cr
 Whether the acquisition function requires the surrogate to have \code{"se"} as \verb{$predict_type}.}
 
+\item{\code{surrogate_class}}{(\code{character(1)})\cr
+Allowed class of the surrogate.}
+
 \item{\code{direction}}{(\code{"same"} | \code{"minimize"} | \code{"maximize"}).
-Optimization direction of the acquisition function relative to the direction of the
-objective function of the \link[bbotk:OptimInstance]{bbotk::OptimInstance}.
+Optimization direction of the acquisition function relative to the direction of
+the objective function of the \link[bbotk:OptimInstance]{bbotk::OptimInstance}.
 Must be \code{"same"}, \code{"minimize"}, or \code{"maximize"}.}
 
 \item{\code{packages}}{(\code{character()})\cr
 Set of required packages.
-A warning is signaled prior to construction if at least one of the packages is not installed, but loaded (not attached) later on-demand via \code{\link[=requireNamespace]{requireNamespace()}}.}
+A warning is signaled prior to construction if at least one of the packages is not installed,
+but loaded (not attached) later on-demand via \code{\link[=requireNamespace]{requireNamespace()}}.}
 
 \item{\code{label}}{(\code{character(1)})\cr
 Label for this object.}
@@ -207,6 +213,29 @@ One point per row, e.g. \code{data.table(x1 = c(1, 3), x2 = c(2, 4))}.}
 data.table::data.table() that contains one y-column for
 single-objective acquisition functions and multiple y-columns for multi-objective
 acquisition functions, e.g. \code{data.table(y = 1:2)} or \code{data.table(y1 = 1:2, y2 = 3:4)}.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-AcqFunction-assert_surrogate"></a>}}
+\if{latex}{\out{\hypertarget{method-AcqFunction-assert_surrogate}{}}}
+\subsection{Method \code{assert_surrogate()}}{
+Validate that the surrogate is compatible with this acquisition function.
+Asserts the surrogate class and that \verb{$predict_type} is \code{"se"} if required.
+Subclasses with additional requirements must override this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{AcqFunction$assert_surrogate(surrogate)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{surrogate}}{(\link{Surrogate})\cr
+Surrogate to validate.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The validated \link{Surrogate}.
 }
 }
 \if{html}{\out{<hr>}}

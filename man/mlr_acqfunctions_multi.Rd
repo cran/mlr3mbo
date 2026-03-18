@@ -9,13 +9,14 @@ Wrapping multiple \link{AcqFunction}s resulting in a multi-objective acquisition
 Note that the optimization direction of each wrapped acquisition function is corrected for maximization.
 
 For each acquisition function, the same \link{Surrogate} must be used.
-If acquisition functions passed during construction already have been initialized with a surrogate, it is checked whether
-the surrogate is the same for all acquisition functions.
-If acquisition functions have not been initialized with a surrogate, the surrogate passed during construction or lazy initialization
-will be used for all acquisition functions.
+If acquisition functions passed during construction already have been initialized with a surrogate,
+it is checked whether the surrogate is the same for all acquisition functions.
+If acquisition functions have not been initialized with a surrogate,
+the surrogate passed during construction or lazy initialization will be used for all acquisition functions.
 
-For optimization, \link{AcqOptimizer} can be used as for any other \link{AcqFunction}, however, the \link[bbotk:OptimizerBatch]{bbotk::OptimizerBatch} wrapped within the \link{AcqOptimizer}
-must support multi-objective optimization as indicated via the \code{multi-crit} property.
+For optimization, \link{AcqOptimizer} can be used as for any other \link{AcqFunction},
+however, the \link[bbotk:OptimizerBatch]{bbotk::OptimizerBatch} wrapped within the \link{AcqOptimizer} must support multi-objective optimization
+as indicated via the \code{multi-crit} property.
 }
 \section{Dictionary}{
 
@@ -114,6 +115,7 @@ Points to the ids of the individual acquisition functions.}
 <li><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="format"><a href='../../bbotk/html/Objective.html#method-Objective-format'><code>bbotk::Objective$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="help"><a href='../../bbotk/html/Objective.html#method-Objective-help'><code>bbotk::Objective$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="bbotk" data-topic="Objective" data-id="print"><a href='../../bbotk/html/Objective.html#method-Objective-print'><code>bbotk::Objective$print()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqFunction" data-id="assert_surrogate"><a href='../../mlr3mbo/html/AcqFunction.html#method-AcqFunction-assert_surrogate'><code>mlr3mbo::AcqFunction$assert_surrogate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqFunction" data-id="eval_dt"><a href='../../mlr3mbo/html/AcqFunction.html#method-AcqFunction-eval_dt'><code>mlr3mbo::AcqFunction$eval_dt()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqFunction" data-id="eval_many"><a href='../../mlr3mbo/html/AcqFunction.html#method-AcqFunction-eval_many'><code>mlr3mbo::AcqFunction$eval_many()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqFunction" data-id="reset"><a href='../../mlr3mbo/html/AcqFunction.html#method-AcqFunction-reset'><code>mlr3mbo::AcqFunction$reset()</code></a></span></li>
