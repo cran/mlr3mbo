@@ -8,103 +8,119 @@ Local search acquisition function optimizer.
 Calls \code{\link[bbotk:local_search]{bbotk::local_search()}}.
 For the meaning of the control parameters, see \code{\link[bbotk:local_search_control]{bbotk::local_search_control()}}.
 The termination stops when the budget defined by the \code{n_searches}, \code{n_steps}, and \code{n_neighs} parameters is exhausted.
+
+If \code{skip_already_evaluated} is \code{TRUE} (default) and the proposed candidate was already evaluated on the actual
+\link[bbotk:OptimInstance]{bbotk::OptimInstance}, an error is raised so that the \code{loop_function} can propose a randomly sampled point instead.
 }
 \examples{
 acqo("local_search")
 }
 \section{Super class}{
-\code{\link[mlr3mbo:AcqOptimizer]{mlr3mbo::AcqOptimizer}} -> \code{AcqOptimizerLocalSearch}
+\code{\link[mlr3mbo:AcqOptimizer]{AcqOptimizer}} -> \code{AcqOptimizerLocalSearch}
 }
 \section{Public fields}{
-\if{html}{\out{<div class="r6-fields">}}
-\describe{
-\item{\code{state}}{(\code{list()})\cr
-List of \code{\link[cmaes:cma_es]{cmaes::cma_es()}} results.}
-}
-\if{html}{\out{</div>}}
+  \if{html}{\out{<div class="r6-fields">}}
+  \describe{
+    \item{\code{state}}{(\code{list()})\cr
+Result of the last \code{\link[bbotk:local_search]{bbotk::local_search()}} call.}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Active bindings}{
-\if{html}{\out{<div class="r6-active-bindings">}}
-\describe{
-\item{\code{print_id}}{(\code{character})\cr
+  \if{html}{\out{<div class="r6-active-bindings">}}
+  \describe{
+    \item{\code{print_id}}{(\code{character})\cr
 Id used when printing.}
-}
-\if{html}{\out{</div>}}
+
+    \item{\code{label}}{(\code{character(1)})\cr
+Label for this object.
+Can be used in tables, plot and text output instead of the ID.}
+
+    \item{\code{man}}{(\code{character(1)})\cr
+String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-AcqOptimizerLocalSearch-new}{\code{AcqOptimizerLocalSearch$new()}}
-\item \href{#method-AcqOptimizerLocalSearch-optimize}{\code{AcqOptimizerLocalSearch$optimize()}}
-\item \href{#method-AcqOptimizerLocalSearch-reset}{\code{AcqOptimizerLocalSearch$reset()}}
-\item \href{#method-AcqOptimizerLocalSearch-clone}{\code{AcqOptimizerLocalSearch$clone()}}
+  \itemize{
+    \item \href{#method-AcqOptimizerLocalSearch-initialize}{\code{AcqOptimizerLocalSearch$new()}}
+    \item \href{#method-AcqOptimizerLocalSearch-optimize}{\code{AcqOptimizerLocalSearch$optimize()}}
+    \item \href{#method-AcqOptimizerLocalSearch-reset}{\code{AcqOptimizerLocalSearch$reset()}}
+    \item \href{#method-AcqOptimizerLocalSearch-clone}{\code{AcqOptimizerLocalSearch$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqOptimizer" data-id="format"><a href='../../mlr3mbo/html/AcqOptimizer.html#method-AcqOptimizer-format'><code>mlr3mbo::AcqOptimizer$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqOptimizer" data-id="print"><a href='../../mlr3mbo/html/AcqOptimizer.html#method-AcqOptimizer-print'><code>mlr3mbo::AcqOptimizer$print()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqOptimizer" data-id="format"><a href='../../mlr3mbo/html/AcqOptimizer.html#method-AcqOptimizer-format'><code>AcqOptimizer$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqOptimizer" data-id="print"><a href='../../mlr3mbo/html/AcqOptimizer.html#method-AcqOptimizer-print'><code>AcqOptimizer$print()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-AcqOptimizerLocalSearch-new"></a>}}
-\if{latex}{\out{\hypertarget{method-AcqOptimizerLocalSearch-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AcqOptimizerLocalSearch$new(acq_function = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-AcqOptimizerLocalSearch-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-AcqOptimizerLocalSearch-initialize}{}}}
+\subsection{\code{AcqOptimizerLocalSearch$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{AcqOptimizerLocalSearch$new(acq_function = NULL)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{acq_function}}{(\code{NULL} | \link{AcqFunction}).}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{acq_function}}{(\code{NULL} | \link{AcqFunction}).}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AcqOptimizerLocalSearch-optimize"></a>}}
 \if{latex}{\out{\hypertarget{method-AcqOptimizerLocalSearch-optimize}{}}}
-\subsection{Method \code{optimize()}}{
-Optimize the acquisition function.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AcqOptimizerLocalSearch$optimize()}\if{html}{\out{</div>}}
+\subsection{\code{AcqOptimizerLocalSearch$optimize()}}{
+  Optimize the acquisition function.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{AcqOptimizerLocalSearch$optimize()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    \code{\link[data.table:data.table]{data.table::data.table()}} with 1 row per candidate.
+  }
 }
 
-\subsection{Returns}{
-\code{\link[data.table:data.table]{data.table::data.table()}} with 1 row per candidate.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AcqOptimizerLocalSearch-reset"></a>}}
 \if{latex}{\out{\hypertarget{method-AcqOptimizerLocalSearch-reset}{}}}
-\subsection{Method \code{reset()}}{
-Reset the acquisition function optimizer.
+\subsection{\code{AcqOptimizerLocalSearch$reset()}}{
+  Reset the acquisition function optimizer.
 
-Currently not used.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AcqOptimizerLocalSearch$reset()}\if{html}{\out{</div>}}
+Clears the \code{state} of the previous optimization run.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{AcqOptimizerLocalSearch$reset()}
+    \if{html}{\out{</div>}}
+  }
 }
 
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AcqOptimizerLocalSearch-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-AcqOptimizerLocalSearch-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AcqOptimizerLocalSearch$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{AcqOptimizerLocalSearch$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{AcqOptimizerLocalSearch$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

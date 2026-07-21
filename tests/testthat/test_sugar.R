@@ -4,6 +4,13 @@ test_that("SurrogateLearner sugar", {
   expect_false(surrogate$param_set$values$catch_errors)
 })
 
+test_that("SurrogateLearner sugar with a single learner in a list", {
+  surrogate = srlrn(list(REGR_FEATURELESS), catch_errors = FALSE)
+  expect_r6(surrogate, classes = "SurrogateLearner")
+  expect_r6(surrogate$learner, classes = "Learner")
+  expect_false(surrogate$param_set$values$catch_errors)
+})
+
 test_that("SurrogateLearnerCollection sugar", {
   surrogate = srlrn(list(REGR_FEATURELESS, REGR_FEATURELESS$clone(deep = TRUE)), catch_errors = FALSE)
   expect_r6(surrogate, classes = "SurrogateLearnerCollection")
@@ -35,4 +42,21 @@ test_that("InputTrafo sugar", {
 test_that("OutputTrafo sugar", {
   outputtrafo = ot("log")
   expect_r6(outputtrafo, "OutputTrafo")
+})
+
+test_that("acqo errors when terminator or callbacks are combined with a dictionary key", {
+  expect_error(acqo("random_search", terminator = trm("evals")), "must not be given")
+  expect_error(acqo("random_search", callbacks = list()), "must not be given")
+})
+
+test_that("srlrn replicates a single learner for multiple targets", {
+  surrogate = srlrn(lrn("regr.featureless"), cols_y = c("y1", "y2"))
+  expect_r6(surrogate, "SurrogateLearnerCollection")
+  expect_length(surrogate$learner, 2L)
+  expect_false(address(surrogate$learner[[1L]]) == address(surrogate$learner[[2L]]))
+
+  inst = MAKE_INST(OBJ_1D_2, search_space = PS_1D, terminator = trm("evals", n_evals = 5L))
+  surrogate = srlrn(lrn("regr.featureless"), archive = inst$archive)
+  expect_r6(surrogate, "SurrogateLearnerCollection")
+  expect_length(surrogate$learner, 2L)
 })

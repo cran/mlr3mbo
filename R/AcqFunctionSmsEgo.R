@@ -95,7 +95,7 @@ AcqFunctionSmsEgo = R6Class(
     #' @param lambda (`numeric(1)`).
     #' @param epsilon (`NULL` | `numeric(1)`).
     initialize = function(surrogate = NULL, lambda = 1, epsilon = NULL) {
-      assert_number(lambda, lower = 1, finite = TRUE)
+      assert_number(lambda, lower = 0, finite = TRUE)
       assert_number(epsilon, lower = 0, finite = TRUE, null.ok = TRUE)
 
       constants = ps(
@@ -140,6 +140,9 @@ AcqFunctionSmsEgo = R6Class(
       self$ref_point = apply(ys, MARGIN = 2L, FUN = max) + 1 # offset = 1 like in mlrMBO
 
       self$ys_front = self$archive$best()[, self$archive$cols_y, with = FALSE]
+      if (self$surrogate$output_trafo_must_be_considered) {
+        self$ys_front = self$surrogate$output_trafo$transform(self$ys_front)
+      }
       for (column in self$archive$cols_y) {
         # assume minimization
         set(self$ys_front, j = column, value = self$ys_front[[column]] * self$surrogate_max_to_min[[column]])
@@ -194,7 +197,13 @@ AcqFunctionSmsEgo = R6Class(
       front2 = t(rbind(self$ys_front, 0))
       # note that the negative indicator is returned from C
       sms = .Call(
-        "c_sms_indicator", PACKAGE = "mlr3mbo", cbs, self$ys_front, front2, self$epsilon, self$ref_point
+        "c_sms_indicator",
+        PACKAGE = "mlr3mbo",
+        cbs,
+        self$ys_front,
+        front2,
+        self$epsilon,
+        self$ref_point
       )
       data.table(acq_smsego = sms, acq_epsilon = list(self$epsilon))
     }

@@ -37,8 +37,9 @@ a Gaussian Process is constricted via \code{\link[=default_gp]{default_gp()}}.
 For mixed numeric-categorical parameter spaces, or spaces with conditional parameters
 a random forest is constructed via \code{\link[=default_rf]{default_rf()}}.
 
-In any case, learners are encapsulated using \code{"evaluate"}, and a fallback learner is set,
+These default learners are encapsulated using \code{"evaluate"}, and a fallback learner is set,
 in cases where the surrogate learner errors.
+A user-supplied \code{learner} is used as is, without encapsulation or a fallback learner.
 Currently, the following learner is used as a fallback:
 \code{lrn("regr.ranger", num.trees = 10L, keep.inbag = TRUE, se.method = "jack")}.
 
@@ -51,13 +52,13 @@ Otherwise, if \code{n_learner} is larger than \code{1},
 multiple deep clones of the learner are wrapped as a \link{SurrogateLearnerCollection}.
 }
 \seealso{
-Other mbo_defaults: 
-\code{\link{default_acqfunction}()},
-\code{\link{default_acqoptimizer}()},
-\code{\link{default_gp}()},
-\code{\link{default_loop_function}()},
-\code{\link{default_result_assigner}()},
-\code{\link{default_rf}()},
+Other mbo_defaults:
+\code{\link[=default_acqfunction]{default_acqfunction()}},
+\code{\link[=default_acqoptimizer]{default_acqoptimizer()}},
+\code{\link[=default_gp]{default_gp()}},
+\code{\link[=default_loop_function]{default_loop_function()}},
+\code{\link[=default_result_assigner]{default_result_assigner()}},
+\code{\link[=default_rf]{default_rf()}},
 \code{\link{mbo_defaults}}
 }
 \concept{mbo_defaults}

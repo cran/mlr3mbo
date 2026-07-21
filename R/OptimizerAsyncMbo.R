@@ -33,6 +33,11 @@
 #' simply based on the evaluations logged in the archive [ResultAssignerArchive] or based on the [Surrogate] via
 #' [ResultAssignerSurrogate].
 #'
+#' @section Defaults:
+#' All components have sensible defaults.
+#' For more information on the defaults for `surrogate`, `acq_function`, `acq_optimizer`, and `result_assigner`,
+#' see [mbo_defaults].
+#'
 #' @section Archive:
 #' The [bbotk::ArchiveAsync] holds the following additional columns that are specific to AMBO algorithms:
 #'   * `acq_function$id` (`numeric(1)`)\cr
@@ -125,9 +130,6 @@ OptimizerAsyncMbo = R6Class(
     #' Even if already initialized, the `surrogate$archive` field will always be overwritten by the
     #' [bbotk::ArchiveAsync] of the current [bbotk::OptimInstanceAsyncSingleCrit] to be optimized.
     #'
-    #' For more information on default values for `surrogate`, `acq_function`, `acq_optimizer` and `result_assigner`,
-    #' see `?mbo_defaults`.
-    #'
     #' @template param_id
     #' @template param_surrogate
     #' @template param_acq_function
@@ -147,6 +149,7 @@ OptimizerAsyncMbo = R6Class(
       label = "Asynchronous Model Based Optimization",
       man = "mlr3mbo::OptimizerAsyncMbo"
     ) {
+      assert_r6(param_set, classes = "ParamSet", null.ok = TRUE)
       default_param_set = ps(
         initial_design = p_uty(),
         design_size = p_int(lower = 1, default = 100L),
@@ -158,7 +161,7 @@ OptimizerAsyncMbo = R6Class(
       param_set$set_values(design_size = 100L, design_function = "sobol")
 
       super$initialize(
-        "async_mbo",
+        id = id,
         param_set = param_set,
         # is replaced with dynamic AB after construction
         param_classes = c("ParamLgl", "ParamInt", "ParamDbl", "ParamFct"),
@@ -274,7 +277,19 @@ OptimizerAsyncMbo = R6Class(
         lg$debug("Using provided initial design with size %s", nrow(pv$initial_design))
         pv$initial_design
       }
-      optimize_async_default(inst, self, design, n_workers = pv$n_workers)
+      result = optimize_async_default(inst, self, design, n_workers = pv$n_workers)
+
+      # the workers only update copies of the surrogate, so the final update must happen on the main process
+      tryCatch(
+        {
+          self$surrogate$update()
+        },
+        error = function(error_condition) {
+          lg$warn("Could not update the surrogate a final time after the optimization process has terminated.")
+        }
+      )
+
+      result
     }
   ),
 
@@ -390,35 +405,32 @@ OptimizerAsyncMbo = R6Class(
       # actual loop
       while (!inst$is_terminated) {
         # sample
-        xs = tryCatch(
-          {
-            self$acq_function$surrogate$update()
-            self$acq_function$update()
-            xdt = self$acq_optimizer$optimize()
-            transpose_list(xdt)[[1L]]
-          },
-          Mlr3ErrorMbo = function(cond) {
-            lg$warn("Caught the following error: %s", cond$message)
-            lg$info("Proposing a randomly sampled point")
-            xdt = generate_design_random(inst$search_space, n = 1L)$data
-            transpose_list(xdt)[[1L]]
-          }
-        )
+        xs = if (inst$archive$n_finished == 0L) {
+          # the surrogate cannot be trained without any finished evaluation
+          # this happens when a worker reaches this point before the initial design has been evaluated
+          lg$info("No finished evaluations available yet. Proposing a randomly sampled point")
+          xdt = generate_design_random(inst$search_space, n = 1L)$data
+          transpose_list(xdt)[[1L]]
+        } else {
+          tryCatch(
+            {
+              self$acq_function$surrogate$update()
+              self$acq_function$update()
+              xdt = self$acq_optimizer$optimize()
+              transpose_list(xdt)[[1L]]
+            },
+            Mlr3ErrorMbo = function(cond) {
+              lg$warn("Caught the following error: %s", cond$message)
+              lg$info("Proposing a randomly sampled point")
+              xdt = generate_design_random(inst$search_space, n = 1L)$data
+              transpose_list(xdt)[[1L]]
+            }
+          )
+        }
 
         # eval
         get_private(inst)$.eval_point(xs)
       }
-
-      on.exit({
-        tryCatch(
-          {
-            self$surrogate$update()
-          },
-          Mlr3ErrorMboSurrogateUpdate = function(error_condition) {
-            lg$warn("Could not update the surrogate a final time after the optimization process has terminated.")
-          }
-        )
-      })
     },
 
     .assign_result = function(inst) {

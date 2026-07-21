@@ -86,7 +86,10 @@ AcqFunctionMulti = R6Class(
       )
       constants = ps()
       domains = map(acq_functions, function(acq_function) acq_function$domain)
-      assert_true(all(map_lgl(domains[-1L], function(domain) all.equal(domains[[1L]]$data, domain$data))))
+      domains_equal = map_lgl(domains[-1L], function(domain) isTRUE(all.equal(domains[[1L]]$data, domain$data)))
+      if (!all(domains_equal)) {
+        stop("All acquisition functions must have the same domain.")
+      }
       if (is.null(surrogate)) {
         surrogates = map(acq_functions, function(acq_function) acq_function$surrogate)
         assert_list(surrogates, types = c("Surrogate", "NULL"))
@@ -125,9 +128,7 @@ AcqFunctionMulti = R6Class(
       self$id = assert_string(id)
       self$domain = assert_param_set(domain)
       assert_param_set(codomain)
-      # get "codomain" element if present (new paradox) or default to $params (old paradox)
-      params = get0("domains", codomain, ifnotfound = codomain$params)
-      self$codomain = Codomain$new(params)
+      self$codomain = Codomain$new(codomain$domains)
       assert_names(self$domain$ids(), disjunct.from = self$codomain$ids())
       assert_names(self$domain$ids(), disjunct.from = c("x_domain", "timestamp", "batch_nr"))
       assert_names(self$codomain$ids(), disjunct.from = c("x_domain", "timestamp", "batch_nr"))
@@ -167,7 +168,7 @@ AcqFunctionMulti = R6Class(
         self$surrogate_max_to_min = surrogate_mult_max_to_min(rhs)
         domain = generate_acq_domain(rhs)
         # lazy initialization requires this:
-        self$codomain = Codomain$new(get0("domains", codomain, ifnotfound = codomain$params)) # get0 for old paradox
+        self$codomain = Codomain$new(codomain$domains)
         self$domain = domain
       }
     },
@@ -219,7 +220,11 @@ AcqFunctionMulti = R6Class(
     },
 
     deep_clone = function(name, value) {
-      switch(name, .acq_functions = value$clone(deep = TRUE), value)
+      # .acq_functions is a plain list of R6 objects and must be cloned element-wise.
+      # Cloning an AcqFunction shares its surrogate by reference (like the inherited .surrogate field),
+      # so all cloned acquisition functions keep pointing to the same shared surrogate as the parent,
+      # which preserves the shared-surrogate invariant asserted in $update().
+      switch(name, .acq_functions = map(value, function(acq_function) acq_function$clone(deep = TRUE)), value)
     }
   )
 )

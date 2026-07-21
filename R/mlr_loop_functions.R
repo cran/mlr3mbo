@@ -21,24 +21,19 @@ mlr_loop_functions = R6Class(
   inherit = Dictionary,
   cloneable = FALSE,
   public = list(
-    #' @description
-    #' Retrieves object with key `key` from the dictionary.
-    #' Additional arguments must be named and are passed to the constructor of the stored object.
-    #'
-    #' @param key (`character(1)`).
-    #'
-    #' @param ... (`any`)\cr
-    #' Passed down to constructor.
-    #'
-    #' @return Object with corresponding key.
+    # Retrieves object with key `key` from the dictionary.
+    # Loop functions are stored as plain values, so no additional arguments must be passed.
     get = function(key, ...) {
       assert_string(key, min.chars = 1L)
-      dictionary_loop_function_get(self, key, ...)
+      if (...length() > 0L) {
+        stopf("Loop functions are stored as plain values, so additional arguments must not be passed to $get().")
+      }
+      dictionary_loop_function_get(self, key)
     }
   )
 )$new()
 
-dictionary_loop_function_get = function(self, key, ...) {
+dictionary_loop_function_get = function(self, key) {
   obj = dictionary_loop_function_retrieve_item(self, key)
   obj$value
 }

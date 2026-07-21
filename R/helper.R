@@ -28,19 +28,12 @@ generate_acq_multi_codomain = function(surrogate, acq_functions) {
 
 generate_acq_domain = function(surrogate) {
   assert_archive(surrogate$archive)
-  if ("set_id" %in% names(ps())) {
-    # old paradox
-    domain = surrogate$archive$search_space$clone(deep = TRUE)$subset(surrogate$cols_x)
-    domain$trafo = NULL
-  } else {
-    # get "domain" objects, set their .trafo-entry to NULL individually
-    dms = lapply(surrogate$archive$search_space$domains[surrogate$cols_x], function(x) {
-      x$.trafo[1] = list(NULL)
-      x
-    })
-    domain = do.call(ps, dms)
-  }
-  domain
+  # get "domain" objects, set their .trafo-entry to NULL individually
+  dms = lapply(surrogate$archive$search_space$domains[surrogate$cols_x], function(x) {
+    x$.trafo[1] = list(NULL)
+    x
+  })
+  do.call(ps, dms)
 }
 
 archive_xy = function(archive) {
@@ -122,6 +115,17 @@ get_best = function(instance, is_multi_acq_function, evaluated, n_select, not_al
   } else {
     instance$archive$best(n_select = n_select)
   }
+}
+
+# used in AcqOptimizer subclasses that produce a single candidate;
+# raises an acq optimizer error when the proposed candidate was already evaluated on the actual instance
+assert_not_already_evaluated = function(xdt, archive) {
+  cols_x = archive$cols_x
+  matched = archive$data[xdt[, cols_x, with = FALSE], on = cols_x, nomatch = NULL, which = TRUE]
+  if (length(matched)) {
+    error_acq_optimizer("Acquisition function optimization proposed an already evaluated candidate.")
+  }
+  xdt
 }
 
 catn = function(..., file = "") {

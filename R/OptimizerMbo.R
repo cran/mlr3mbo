@@ -30,6 +30,11 @@
 #' simply based on the evaluations logged in the archive [ResultAssignerArchive] or based on the [Surrogate] via
 #' [ResultAssignerSurrogate].
 #'
+#' @section Defaults:
+#' All components have sensible defaults.
+#' For more information on the defaults for `loop_function`, `surrogate`, `acq_function`, `acq_optimizer`, and
+#' `result_assigner`, see [mbo_defaults].
+#'
 #' @section Archive:
 #' The [bbotk::ArchiveBatch] holds the following additional columns that are specific to MBO algorithms:
 #'   * `acq_function$id` (`numeric(1)`)\cr
@@ -134,9 +139,6 @@ OptimizerMbo = R6Class(
     #'
     #' Even if already initialized, the `surrogate$archive` field will always be overwritten by the
     #' [bbotk::ArchiveBatch] of the current [bbotk::OptimInstanceBatch] to be optimized.
-    #'
-    #' For more information on default values for `loop_function`, `surrogate`, `acq_function`, `acq_optimizer` and
-    #' `result_assigner`, see `?mbo_defaults`.
     #'
     #' @template param_loop_function
     #' @template param_surrogate
@@ -419,6 +421,20 @@ OptimizerMbo = R6Class(
     .result_assigner = NULL,
 
     .optimize = function(inst) {
+      on.exit(
+        {
+          tryCatch(
+            {
+              self$surrogate$update()
+            },
+            error = function(error_condition) {
+              lg$warn("Could not update the surrogate a final time after the optimization process has terminated.")
+            }
+          )
+        },
+        add = TRUE
+      )
+
       invoke(
         self$loop_function,
         instance = inst,
@@ -427,18 +443,6 @@ OptimizerMbo = R6Class(
         acq_optimizer = self$acq_optimizer,
         .args = self$args
       )
-
-      on.exit({
-        tryCatch(
-          {
-            self$surrogate$update()
-          },
-          Mlr3ErrorMboSurrogateUpdate = function(error_condition) {
-            lg = lgr::get_logger("mlr3/bbotk")
-            lg$warn("Could not update the surrogate a final time after the optimization process has terminated.")
-          }
-        )
-      })
     },
 
     .assign_result = function(inst) {

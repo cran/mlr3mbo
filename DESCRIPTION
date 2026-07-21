@@ -1,7 +1,7 @@
 Type: Package
 Package: mlr3mbo
 Title: Flexible Bayesian Optimization
-Version: 1.1.1
+Version: 1.2.0
 Authors@R: c(
     person("Marc", "Becker", , "marcbecker@posteo.de", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-8115-0400")),
@@ -42,16 +42,15 @@ Depends: mlr3 (>= 1.2.0), mlr3tuning (>= 1.4.0), R (>= 3.1.0)
 Imports: bbotk (>= 1.8.0), checkmate (>= 2.0.0), data.table, lgr (>=
         0.3.4), mlr3misc (>= 0.21.0), paradox (>= 1.0.1), spacefillr,
         R6 (>= 2.4.1)
-Suggests: DiceKriging, emoa, fastGHQuad, lhs, mlr3learners (>= 0.12.0),
-        mirai, mlr3pipelines (>= 0.5.2), nloptr, processx, ranger,
-        rgenoud, rpart, redux, rush (>= 1.0.0), stringi, testthat (>=
-        3.0.0)
+Suggests: emoa, DiceKriging, fastGHQuad, lhs, mlr3learners (>= 0.12.0),
+        mirai, mlr3pipelines (>= 0.5.2), moocore, nloptr, processx,
+        ranger, rgenoud, rpart, redux, rush (>= 1.0.0), stringi,
+        testthat (>= 3.0.0)
 ByteCompile: no
 Encoding: UTF-8
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 NeedsCompilation: yes
-RoxygenNote: 7.3.3
 Collate: 'mlr_acqfunctions.R' 'AcqFunction.R' 'AcqFunctionAEI.R'
         'AcqFunctionCB.R' 'AcqFunctionEHVI.R' 'AcqFunctionEHVIGH.R'
         'AcqFunctionEI.R' 'AcqFunctionEILog.R' 'AcqFunctionEIPS.R'
@@ -60,8 +59,8 @@ Collate: 'mlr_acqfunctions.R' 'AcqFunction.R' 'AcqFunctionAEI.R'
         'AcqFunctionStochasticCB.R' 'AcqFunctionStochasticEI.R'
         'AcqOptimizer.R' 'mlr_acqoptimizers.R' 'AcqOptimizerDirect.R'
         'AcqOptimizerLbfgsb.R' 'AcqOptimizerLocalSearch.R'
-        'AcqOptimzerRandomSearch.R' 'mlr_input_trafos.R' 'InputTrafo.R'
-        'InputTrafoUnitcube.R' 'aaa.R' 'OptimizerADBO.R'
+        'AcqOptimizerRandomSearch.R' 'mlr_input_trafos.R'
+        'InputTrafo.R' 'InputTrafoUnitcube.R' 'aaa.R' 'OptimizerADBO.R'
         'OptimizerMbo.R' 'OptimizerAsyncMbo.R' 'mlr_output_trafos.R'
         'OutputTrafo.R' 'OutputTrafoLog.R' 'OutputTrafoStandardize.R'
         'mlr_result_assigners.R' 'ResultAssigner.R'
@@ -72,7 +71,8 @@ Collate: 'mlr_acqfunctions.R' 'AcqFunction.R' 'AcqFunctionAEI.R'
         'bayesopt_emo.R' 'bayesopt_mpcl.R' 'bayesopt_parego.R'
         'bayesopt_smsego.R' 'bibentries.R' 'conditions.R' 'helper.R'
         'loop_function.R' 'mbo_defaults.R' 'sugar.R' 'zzz.R'
-Packaged: 2026-04-24 15:51:47 UTC; marc
+Config/roxygen2/version: 8.0.0.9000
+Packaged: 2026-07-21 09:38:49 UTC; marc
 Author: Marc Becker [cre, aut] (ORCID: <https://orcid.org/0000-0002-8115-0400>),
   Lennart Schneider [aut] (ORCID:
     <https://orcid.org/0000-0003-4152-5308>),
@@ -91,4 +91,4 @@ Author: Marc Becker [cre, aut] (ORCID: <https://orcid.org/0000-0002-8115-0400>),
   Luis Paquete [cph]
 Maintainer: Marc Becker <marcbecker@posteo.de>
 Repository: CRAN
-Date/Publication: 2026-04-24 16:30:09 UTC
+Date/Publication: 2026-07-21 10:30:20 UTC

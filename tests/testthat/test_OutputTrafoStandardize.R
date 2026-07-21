@@ -25,6 +25,24 @@ test_that("OutputTrafoStandardize works", {
   expect_equal(data, orig_data)
 })
 
+test_that("OutputTrafoStandardize works with constant y values", {
+  ot = OutputTrafoStandardize$new()
+  ot$cols_y = "y"
+  ot$max_to_min = c(y = 1L)
+
+  ydt = data.table(y = rep(0.5, 3L))
+  ot$update(ydt)
+  transformed_data = ot$transform(ydt)
+  expect_true(all(is.finite(transformed_data$y)))
+  expect_equal(ot$inverse_transform(transformed_data), ydt)
+
+  ydt = data.table(y = 0.5)
+  ot$update(ydt)
+  transformed_data = ot$transform(ydt)
+  expect_true(is.finite(transformed_data$y))
+  expect_equal(ot$inverse_transform(transformed_data), ydt)
+})
+
 test_that("OutputTrafoStandardize works with SurrogateLearner", {
   skip_if_missing_regr_km()
   instance = MAKE_INST_1D()
@@ -131,4 +149,17 @@ test_that("OutputTrafoStandardize works with OptimizerMbo and bayesopt_smsego", 
   optimizer$optimize(instance)
   expect_true(nrow(instance$archive$data) == 5L)
   expect_data_table(instance$result, min.rows = 1L)
+})
+
+test_that("OutputTrafoStandardize inverse_transform_posterior works with mean-only predictions", {
+  ot = OutputTrafoStandardize$new()
+  ot$cols_y = "y"
+  ot$max_to_min = c(y = 1L)
+  ydt = data.table(y = c(1, 2, 3))
+  ot$update(ydt)
+  pred = data.table(mean = ot$transform(ydt)$y)
+  inverted = ot$inverse_transform_posterior(pred)
+  expect_data_table(inverted, nrows = 3L)
+  expect_equal(inverted$mean, ydt$y)
+  expect_false("se" %in% names(inverted))
 })

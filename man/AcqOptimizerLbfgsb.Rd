@@ -5,17 +5,20 @@
 \title{L-BFGS-B Acquisition Function Optimizer}
 \description{
 L-BFGS-B acquisition function optimizer.
-Calls \code{nloptr()} from \CRANpkg{nloptr}.
-In its default setting, the algorithm restarts \code{5 * D} times and runs at most for \code{100 * D^2} function evaluations,
-where \code{D} is the dimension of the search space.
-Each run stops when the relative tolerance of the parameters is less than \code{10^-4}.
-The first iteration starts with the best point in the archive and the next iterations start from a random point.
+Calls \code{nloptr()} from \CRANpkg{nloptr} with the \code{NLOPT_LD_LBFGS} algorithm.
+In its default setting, the algorithm runs a single time starting from the best point in the archive,
+for at most \code{100 * D^2} function evaluations, where \code{D} is the dimension of the search space.
+The run stops when the relative tolerance of the parameters is less than \code{10^-4}.
+With \code{restart_strategy = "random"}, the optimizer additionally restarts from random points until the evaluation
+budget is exhausted, which can help escape local optima.
+
+Only fully numeric search spaces (all parameters of type \code{p_dbl}) are supported.
 }
 \note{
-If the restart strategy is \code{"none"}, the optimizer starts with the best point in the archive.
+If the restart strategy is \code{"none"}, the optimizer runs a single time starting from the best point in the archive.
 The optimization stops when one of the stopping criteria is met.
 
-If \code{restart_strategy} is \code{"random"}, the optimizer runs at least for \code{maxeval} iterations.
+If \code{restart_strategy} is \code{"random"}, the optimizer runs at most for \code{maxeval} iterations in total.
 The first iteration starts with the best point in the archive and stops when one of the stopping criteria is met.
 The next iterations start from a random point.
 }
@@ -29,7 +32,12 @@ Default is \code{"none"}.
 }
 \item{\code{max_restarts}}{\code{integer(1)}\cr
 Maximum number of restarts.
-Default is \code{5 * D} (Default).}
+Default is \code{5 * D}, where \code{D} is the dimension of the search space.}
+\item{\code{skip_already_evaluated}}{\code{logical(1)}\cr
+Should the proposed candidate be rejected if it was already evaluated on the actual \link[bbotk:OptimInstance]{bbotk::OptimInstance}?
+If \code{TRUE} and the candidate was already evaluated, an error is raised so that the \code{loop_function} can
+propose a randomly sampled point instead.
+Default is \code{TRUE}.}
 }
 }
 
@@ -54,7 +62,7 @@ Absolute tolerance of the parameters.
 Deactivate with \code{-1} (Default).}
 \item{\code{ftol_rel}}{\code{numeric(1)}\cr
 Relative tolerance of the objective function.
-Deactivate with \code{-1}. (Default).}
+Deactivate with \code{-1} (Default).}
 \item{\code{ftol_abs}}{\code{numeric(1)}\cr
 Absolute tolerance of the objective function.
 Deactivate with \code{-1} (Default).}
@@ -67,86 +75,111 @@ if (requireNamespace("nloptr")) {
 }
 }
 \section{Super class}{
-\code{\link[mlr3mbo:AcqOptimizer]{mlr3mbo::AcqOptimizer}} -> \code{AcqOptimizerLbfgsb}
+\code{\link[mlr3mbo:AcqOptimizer]{AcqOptimizer}} -> \code{AcqOptimizerLbfgsb}
 }
 \section{Public fields}{
-\if{html}{\out{<div class="r6-fields">}}
-\describe{
-\item{\code{state}}{(\code{list()})\cr
+  \if{html}{\out{<div class="r6-fields">}}
+  \describe{
+    \item{\code{state}}{(\code{list()})\cr
 List of \code{\link[nloptr:nloptr]{nloptr::nloptr()}} results.}
-}
-\if{html}{\out{</div>}}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Active bindings}{
-\if{html}{\out{<div class="r6-active-bindings">}}
-\describe{
-\item{\code{print_id}}{(\code{character})\cr
+  \if{html}{\out{<div class="r6-active-bindings">}}
+  \describe{
+    \item{\code{print_id}}{(\code{character})\cr
 Id used when printing.}
-}
-\if{html}{\out{</div>}}
+
+    \item{\code{label}}{(\code{character(1)})\cr
+Label for this object.
+Can be used in tables, plot and text output instead of the ID.}
+
+    \item{\code{man}}{(\code{character(1)})\cr
+String in the format \verb{[pkg]::[topic]} pointing to a manual page for this object.}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-AcqOptimizerLbfgsb-new}{\code{AcqOptimizerLbfgsb$new()}}
-\item \href{#method-AcqOptimizerLbfgsb-optimize}{\code{AcqOptimizerLbfgsb$optimize()}}
-\item \href{#method-AcqOptimizerLbfgsb-clone}{\code{AcqOptimizerLbfgsb$clone()}}
+  \itemize{
+    \item \href{#method-AcqOptimizerLbfgsb-initialize}{\code{AcqOptimizerLbfgsb$new()}}
+    \item \href{#method-AcqOptimizerLbfgsb-optimize}{\code{AcqOptimizerLbfgsb$optimize()}}
+    \item \href{#method-AcqOptimizerLbfgsb-reset}{\code{AcqOptimizerLbfgsb$reset()}}
+    \item \href{#method-AcqOptimizerLbfgsb-clone}{\code{AcqOptimizerLbfgsb$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details open><summary>Inherited methods</summary>
+\if{html}{\out{<details open><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqOptimizer" data-id="format"><a href='../../mlr3mbo/html/AcqOptimizer.html#method-AcqOptimizer-format'><code>mlr3mbo::AcqOptimizer$format()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqOptimizer" data-id="print"><a href='../../mlr3mbo/html/AcqOptimizer.html#method-AcqOptimizer-print'><code>mlr3mbo::AcqOptimizer$print()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqOptimizer" data-id="reset"><a href='../../mlr3mbo/html/AcqOptimizer.html#method-AcqOptimizer-reset'><code>mlr3mbo::AcqOptimizer$reset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqOptimizer" data-id="format"><a href='../../mlr3mbo/html/AcqOptimizer.html#method-AcqOptimizer-format'><code>AcqOptimizer$format()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mlr3mbo" data-topic="AcqOptimizer" data-id="print"><a href='../../mlr3mbo/html/AcqOptimizer.html#method-AcqOptimizer-print'><code>AcqOptimizer$print()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-AcqOptimizerLbfgsb-new"></a>}}
-\if{latex}{\out{\hypertarget{method-AcqOptimizerLbfgsb-new}{}}}
-\subsection{Method \code{new()}}{
-Creates a new instance of this \link[R6:R6Class]{R6} class.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AcqOptimizerLbfgsb$new(acq_function = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-AcqOptimizerLbfgsb-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-AcqOptimizerLbfgsb-initialize}{}}}
+\subsection{\code{AcqOptimizerLbfgsb$new()}}{
+  Creates a new instance of this \link[R6:R6Class]{R6} class.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{AcqOptimizerLbfgsb$new(acq_function = NULL)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{acq_function}}{(\code{NULL} | \link{AcqFunction}).}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{acq_function}}{(\code{NULL} | \link{AcqFunction}).}
-}
-\if{html}{\out{</div>}}
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AcqOptimizerLbfgsb-optimize"></a>}}
 \if{latex}{\out{\hypertarget{method-AcqOptimizerLbfgsb-optimize}{}}}
-\subsection{Method \code{optimize()}}{
-Optimize the acquisition function.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AcqOptimizerLbfgsb$optimize()}\if{html}{\out{</div>}}
+\subsection{\code{AcqOptimizerLbfgsb$optimize()}}{
+  Optimize the acquisition function.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{AcqOptimizerLbfgsb$optimize()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    \code{\link[data.table:data.table]{data.table::data.table()}} with 1 row per candidate.
+  }
 }
 
-\subsection{Returns}{
-\code{\link[data.table:data.table]{data.table::data.table()}} with 1 row per candidate.
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-AcqOptimizerLbfgsb-reset"></a>}}
+\if{latex}{\out{\hypertarget{method-AcqOptimizerLbfgsb-reset}{}}}
+\subsection{\code{AcqOptimizerLbfgsb$reset()}}{
+  Reset the acquisition function optimizer.
+
+Clears the \code{state} of the previous optimization run.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{AcqOptimizerLbfgsb$reset()}
+    \if{html}{\out{</div>}}
+  }
 }
-}
+
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AcqOptimizerLbfgsb-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-AcqOptimizerLbfgsb-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AcqOptimizerLbfgsb$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{AcqOptimizerLbfgsb$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{AcqOptimizerLbfgsb$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

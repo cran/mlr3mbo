@@ -1,5 +1,5 @@
 test_that("AcqFunctionEHVIGH works", {
-  skip_if_not_installed("emoa")
+  skip_if_not_installed("moocore")
   skip_if_not_installed("fastGHQuad")
   inst = MAKE_INST(OBJ_1D_2, PS_1D, trm("evals", n_evals = 5L))
   surrogate = SurrogateLearnerCollection$new(
@@ -16,7 +16,7 @@ test_that("AcqFunctionEHVIGH works", {
   expect_equal(acqf$domain, inst$search_space)
   expect_list(acqf$surrogate$learner, types = "Learner")
   expect_true(acqf$requires_predict_type_se)
-  expect_setequal(acqf$packages, c("emoa", "fastGHQuad"))
+  expect_setequal(acqf$packages, c("moocore", "fastGHQuad"))
 
   expect_r6(acqf$constants, "ParamSet")
   expect_equal(acqf$constants$ids(), c("k", "r"))
@@ -34,12 +34,61 @@ test_that("AcqFunctionEHVIGH works", {
   expect_true(all(res[[acqf$id]] >= 0))
 })
 
+test_that("AcqFunctionEHVIGH does not vanish for k = 2", {
+  skip_if_not_installed("moocore")
+  skip_if_not_installed("fastGHQuad")
+  inst = MAKE_INST(OBJ_1D_2, PS_1D, trm("evals", n_evals = 5L))
+  surrogate = SurrogateLearnerCollection$new(
+    list(REGR_FEATURELESS, REGR_FEATURELESS$clone(deep = TRUE)),
+    archive = inst$archive
+  )
+  acqf = AcqFunctionEHVIGH$new(surrogate = surrogate, k = 2L)
+
+  design = MAKE_DESIGN(inst)
+  inst$eval_batch(design)
+
+  acqf$surrogate$update()
+  acqf$update()
+  res = acqf$eval_dt(data.table(x = seq(-1, 1, length.out = 5L)))
+  expect_data_table(res, ncols = 1L, nrows = 5L, any.missing = FALSE)
+  # for k = 2 all product weights are equal; strict pruning previously removed every node -> identically 0
+  expect_true(any(res[[acqf$id]] > 0))
+})
+
+test_that("AcqFunctionEHVIGH transforms ys_front onto the output trafo scale", {
+  skip_if_not_installed("moocore")
+  skip_if_not_installed("fastGHQuad")
+  inst = MAKE_INST(OBJ_1D_2, PS_1D, trm("evals", n_evals = 5L))
+  surrogate = SurrogateLearnerCollection$new(
+    list(REGR_FEATURELESS, REGR_FEATURELESS$clone(deep = TRUE)),
+    archive = inst$archive
+  )
+  ot = OutputTrafoStandardize$new()
+  ot$invert_posterior = FALSE
+  surrogate$output_trafo = ot
+  acqf = AcqFunctionEHVIGH$new(surrogate = surrogate)
+
+  design = MAKE_DESIGN(inst)
+  inst$eval_batch(design)
+
+  acqf$surrogate$update()
+  expect_true(surrogate$output_trafo_must_be_considered)
+  acqf$update()
+
+  expected = ot$transform(inst$archive$best()[, inst$archive$cols_y, with = FALSE])
+  for (col in inst$archive$cols_y) {
+    set(expected, j = col, value = expected[[col]] * acqf$surrogate_max_to_min[[col]])
+  }
+  expect_equal(acqf$ys_front, as.matrix(expected))
+  expect_true(all(apply(acqf$ys_front, 2L, max) <= acqf$ref_point))
+})
+
 test_that("AcqFunctionEHVIGH is close to AcqFunctionEHVI", {
   skip_on_cran()
   skip_if_not_installed("mlr3learners")
   skip_if_not_installed("DiceKriging")
   skip_if_not_installed("rgenoud")
-  skip_if_not_installed("emoa")
+  skip_if_not_installed("moocore")
   skip_if_not_installed("fastGHQuad")
   inst = MAKE_INST(OBJ_1D_2, PS_1D, trm("evals", n_evals = 5L))
   design = data.table(x = c(-0.8, -0.3, 0.6, 0.9))

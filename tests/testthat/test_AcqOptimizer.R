@@ -134,7 +134,12 @@ test_that("AcqOptimizer trafo", {
   acqfun$surrogate$update()
   acqfun$update()
   res = acqopt$optimize()
-  expect_equal(res$x, res$x_domain[[1L]][[1L]])
+  # the acq optimizer works in the untransformed surrogate space and does not carry an x_domain;
+  # instance$eval_batch() computes the trafo'd x_domain for the real archive
+  expect_names(names(res), disjunct.from = "x_domain")
+  instance$eval_batch(res)
+  last = tail(instance$archive$data, 1L)
+  expect_equal(last$x_domain[[1L]]$x, last$x - 15)
 })
 
 test_that("AcqOptimizer deep clone", {
@@ -171,4 +176,77 @@ test_that("AcqOptimizer callbacks", {
   acqfun$update()
   res = acqopt$optimize()
   expect_number(attr(instance, "acq_opt_runtime"))
+})
+
+test_that("AcqOptimizer warmstart respects warmstart_size for multi-crit archives", {
+  skip_if_not_installed("emoa")
+
+  instance = MAKE_INST(objective = OBJ_1D_2, search_space = PS_1D, terminator = trm("evals", n_evals = 20L))
+  instance$eval_batch(data.table(x = seq(-1, 1, length.out = 8L)))
+  surrogate = srlrn(list(lrn("regr.featureless"), lrn("regr.featureless")), archive = instance$archive)
+  acqfun = acqf("smsego", surrogate = surrogate)
+  acqfun$surrogate$update()
+  acqfun$progress = 1
+  acqfun$update()
+
+  # the non-dominated front has more than one point, so best() would ignore warmstart_size
+  expect_gt(nrow(instance$archive$best()), 1L)
+
+  callback = callback_batch("mlr3mbo.warmstart_count", on_optimization_begin = function(callback, context) {
+    attr(callback$state$outer, "n_warmstart") = context$instance$archive$n_evals
+  })
+  acqopt = AcqOptimizer$new(
+    opt("random_search", batch_size = 20L),
+    trm("evals", n_evals = 20L),
+    acq_function = acqfun,
+    callbacks = callback
+  )
+  callback$state$outer = acqopt
+  acqopt$param_set$set_values(warmstart = TRUE, warmstart_size = 1L)
+  acqopt$optimize()
+  expect_equal(attr(acqopt, "n_warmstart"), 1L)
+})
+
+test_that("AcqOptimizer deep cloning works", {
+  # base class with optimizer and terminator
+  acqopt = AcqOptimizer$new(opt("random_search", batch_size = 10L), trm("evals", n_evals = 10L))
+  acqopt_clone = acqopt$clone(deep = TRUE)
+  expect_class(acqopt_clone, "AcqOptimizer")
+  expect_false(identical(acqopt$optimizer, acqopt_clone$optimizer))
+  expect_false(identical(acqopt$terminator, acqopt_clone$terminator))
+  expect_false(identical(acqopt$param_set, acqopt_clone$param_set))
+
+  # subclasses have NULL optimizer and terminator and must still deep clone
+  for (key in c("direct", "lbfgsb", "local_search", "random_search")) {
+    acqopt = acqo(key)
+    acqopt_clone = acqopt$clone(deep = TRUE)
+    expect_class(acqopt_clone, class(acqopt)[1L])
+    expect_false(identical(acqopt$param_set, acqopt_clone$param_set))
+  }
+})
+
+test_that("mlr_acqoptimizers dictionary and label/man work", {
+  tab = as.data.table(mlr_acqoptimizers)
+  expect_data_table(tab, ncols = 3L)
+  expect_names(names(tab), permutation.of = c("key", "label", "man"))
+  expect_character(tab$label, any.missing = FALSE)
+  expect_character(tab$man, any.missing = FALSE)
+
+  # base AcqOptimizer derives its label from the wrapped bbotk::Optimizer
+  optimizer = opt("random_search")
+  acqopt = AcqOptimizer$new(optimizer, trm("evals", n_evals = 2L))
+  expect_equal(acqopt$label, optimizer$label)
+  expect_equal(acqopt$man, "mlr3mbo::AcqOptimizer")
+  expect_error(
+    {
+      acqopt$label = "x"
+    },
+    "read-only"
+  )
+  expect_error(
+    {
+      acqopt$man = "x"
+    },
+    "read-only"
+  )
 })

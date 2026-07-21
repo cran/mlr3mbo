@@ -11,6 +11,11 @@
 #' Currently, only single-objective optimization is supported and
 #' `TunerAsyncMbo` is considered an experimental feature and API might be subject to changes.
 #'
+#' @section Defaults:
+#' All components have sensible defaults.
+#' For more information on the defaults for `surrogate`, `acq_function`, `acq_optimizer`, and `result_assigner`,
+#' see [mbo_defaults].
+#'
 #' @section Parameters:
 #' \describe{
 #' \item{`initial_design`}{`data.table::data.table()`\cr
@@ -74,8 +79,6 @@ TunerAsyncMbo = R6Class(
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
-    #' For more information on default values for `surrogate`, `acq_function`, `acq_optimizer`, and `result_assigner`,
-    #' see `?mbo_defaults`.
     #'
     #' Note that all the parameters below are simply passed to the [OptimizerAsyncMbo] and
     #' the respective fields are simply (settable) active bindings to the fields of the [OptimizerAsyncMbo].
@@ -86,11 +89,19 @@ TunerAsyncMbo = R6Class(
     #' @template param_result_assigner
     #' @param param_set ([paradox::ParamSet])\cr
     #'  Set of control parameters.
-    initialize = function(surrogate = NULL, acq_function = NULL, acq_optimizer = NULL, param_set = NULL) {
+    initialize = function(
+      surrogate = NULL,
+      acq_function = NULL,
+      acq_optimizer = NULL,
+      result_assigner = NULL,
+      param_set = NULL
+    ) {
+      assert_r6(param_set, classes = "ParamSet", null.ok = TRUE)
       optimizer = OptimizerAsyncMbo$new(
         surrogate = surrogate,
         acq_function = acq_function,
         acq_optimizer = acq_optimizer,
+        result_assigner = result_assigner,
         param_set = param_set
       )
 
