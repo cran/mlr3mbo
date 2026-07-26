@@ -1,7 +1,7 @@
 Type: Package
 Package: mlr3mbo
 Title: Flexible Bayesian Optimization
-Version: 1.2.0
+Version: 1.2.1
 Authors@R: c(
     person("Marc", "Becker", , "marcbecker@posteo.de", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-8115-0400")),
@@ -72,7 +72,7 @@ Collate: 'mlr_acqfunctions.R' 'AcqFunction.R' 'AcqFunctionAEI.R'
         'bayesopt_smsego.R' 'bibentries.R' 'conditions.R' 'helper.R'
         'loop_function.R' 'mbo_defaults.R' 'sugar.R' 'zzz.R'
 Config/roxygen2/version: 8.0.0.9000
-Packaged: 2026-07-21 09:38:49 UTC; marc
+Packaged: 2026-07-25 10:03:06 UTC; marc
 Author: Marc Becker [cre, aut] (ORCID: <https://orcid.org/0000-0002-8115-0400>),
   Lennart Schneider [aut] (ORCID:
     <https://orcid.org/0000-0003-4152-5308>),
@@ -91,4 +91,4 @@ Author: Marc Becker [cre, aut] (ORCID: <https://orcid.org/0000-0002-8115-0400>),
   Luis Paquete [cph]
 Maintainer: Marc Becker <marcbecker@posteo.de>
 Repository: CRAN
-Date/Publication: 2026-07-21 10:30:20 UTC
+Date/Publication: 2026-07-26 15:20:02 UTC

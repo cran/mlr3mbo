@@ -1,6 +1,6 @@
-ef6eb3db430bf87a8a9af87d3fa4c60c *DESCRIPTION
+227bd7234646918e7979556c02d96f75 *DESCRIPTION
 7b2a7849537cd89e680049b924e93190 *NAMESPACE
-0535e406cccaf7cf00763514f44e466b *NEWS.md
+e8f595c3a7a6cc4f51f804f6e08794fb *NEWS.md
 2934bce786c5b8c222d3f93ba8be02d3 *R/AcqFunction.R
 e3a598ffa6067a72ed960f87a1ff01d3 *R/AcqFunctionAEI.R
 82684c646836e07a14d58e7dfa51a033 *R/AcqFunctionCB.R
@@ -57,9 +57,9 @@ ecc1abfabfa34d826a6cc66901496e5b *R/mlr_loop_functions.R
 20faf29b1a098e62279aea9da7e4b943 *R/mlr_result_assigners.R
 643ccd90b5e2adfca7cde74e57560f5d *R/sugar.R
 f8d753e3292a82d6a39dd8fee7ae6469 *R/zzz.R
-ba1e9c465bb372b9046aa0ad8989c806 *README.md
+36146e4440481d4c80c54949f8629a37 *README.md
 533839446f70bde34a1050627ce80586 *build/partial.rdb
-d721de44b2591c3837d500986f910691 *inst/CITATION
+59f52bf1f68e7dec04b2fb65857c0136 *inst/CITATION
 4573806c2c83700e810561d4e53d6df7 *man/AcqFunction.Rd
 8630ee8d646ef590443a685c91c4b211 *man/AcqOptimizer.Rd
 656fb99fe082c81a30d96e89bc193f9e *man/AcqOptimizerDirect.Rd
@@ -167,12 +167,12 @@ f1cbeb0c47af6a43bad3ee7973a889cc *tests/testthat/test_OptimizerAsyncMbo.R
 77f1d135581743e00959d0f7fb8bf20c *tests/testthat/test_OutputTrafoLog.R
 4f4915acd91d4ef0b68b732b6c135915 *tests/testthat/test_OutputTrafoStandardize.R
 328828e61009fd47dbb8c05d66f4afe0 *tests/testthat/test_ResultAssigner.R
-237b4dbc32c36baca13a2f2ae355deb1 *tests/testthat/test_ResultAssignerArchive.R
-7a8024f004a09946c02a4ff98de726da *tests/testthat/test_ResultAssignerSurrogate.R
+3016649add1f17aba4ce5e51295d4f5f *tests/testthat/test_ResultAssignerArchive.R
+634ba9b63de9d875108e231e62a1ae37 *tests/testthat/test_ResultAssignerSurrogate.R
 dad021aaa60e9ce023993546eb4f075e *tests/testthat/test_SurrogateLearner.R
 084949b7815d92336ca7c23b25807bd9 *tests/testthat/test_SurrogateLearnerCollection.R
-eabf0fa30cddb7c7de8c82a4a33fc913 *tests/testthat/test_TunerADBO.R
-bec61e054a044184cafb8c080a8f67fb *tests/testthat/test_TunerAsyncMbo.R
+52aa3524a7c03cc82bfcaec9c73e5bb7 *tests/testthat/test_TunerADBO.R
+a679602605b3232027186b5b388fa2f5 *tests/testthat/test_TunerAsyncMbo.R
 a2cd75525aded9b674c5cc6f486ed58c *tests/testthat/test_TunerMbo.R
 f54b8fbbc78c155a8502d32920b00f49 *tests/testthat/test_bayesopt_ego.R
 207d4fea9eb0dece880b91bbaf03e43f *tests/testthat/test_bayesopt_emo.R
